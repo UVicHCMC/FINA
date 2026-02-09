@@ -11,7 +11,7 @@
      EXAMPLE:
      Monolingual: <siteTitle>My Site Title</siteTitle>
      Bilingual:   <siteTitle>
-                        <en>My Site Title</en>
+                        <fr>My Site Title</fr>
                         <de>Mein Seitentitel</de>
                     </siteTitle>
 -->
@@ -20,12 +20,11 @@
          The build process will pull this list of languages and use that to create the necessary build targets and outputs.
          You can overwrite this logic by running the build with -Dlanguages and specifying just the language(s) you want -->
     <languages>
-        <lang code="en" label="English" default="true" />
-        <lang code="de" label="Deutsch" />
+        <lang code="fr" label="Français" default="true" />
     </languages>
 
     <files>
-        <cssFile>css/brecht.css</cssFile>
+        <cssFile>css/fina.css</cssFile>
         <jsFile>js/pux.js</jsFile>
         <faviconIco>images/favicon.ico</faviconIco>
         <faviconSvg>images/favicon.svg</faviconSvg>
@@ -34,26 +33,21 @@
 
     <metadata>
         <siteTitle>
-            <en>Brecht in the anthropocene</en>
-            <de>Brecht im Anthropozän</de>
+            <fr>Brecht in the anthropocene</fr>
         </siteTitle>
         <organizationName>
-            <en>Organization Name</en>
-            <de>Name der Organisation</de>
+            <fr>Organization Name</fr>
         </organizationName>
 
         <WhereWhen>
             <place>
-                <en>Event Venue/Host</en>
-                <de>Veranstaltungsort/Gastgeber</de>
+                <fr>Event Venue/Host</fr>
             </place>
             <date>
-                <en>June 15-17, 2024</en>
-                <de>15. bis 17. Juni 2024</de>
+                <fr>June 15-17, 2024</fr>
             </date>
             <location>
-                <en>Victoria, BC</en>
-                <de>Victoria, BC</de>
+                <fr>Victoria, BC</fr>
             </location>
         </WhereWhen>
     </metadata>
@@ -63,27 +57,25 @@
     <!-- For language selector page -->
     <!--<languageSelector>
         <heading>
-            <en>Select your language</en>
+            <fr>Select your language</fr>
             <de>Wählen Sie Ihre Sprache</de>
         </heading>
     </languageSelector>-->
-    
+
     <!--The element labels here follow CSS conventions. If you want to add an attribute to a specific element, add it as a child element. -->
 
     <!-- For nav.aria-label-->
     <nav-aria-label>
-        <en>Language Selection</en>
-        <de>Sprachauswahl</de>
+        <fr>Language Selection</fr>
     </nav-aria-label>
 
     <!--For img.splash-logo-->
     <splash-logo>
         <class>splash-logo</class>
         <src>images/logo-splash-brecht.webp</src>
-        <en
-        >Brecht in the anthropocene, 18th symposium of the International Brecht Society. University of Victoria, Victoria, BC, Canada: July 22-26, 2026.</en>
-        <de
-        >Brecht im Anthropozän, 18. Symposium der Internationalen Brecht-Gesellschaft. Universität Victoria, Victoria, BC, Kanada: 22. bis 26. Juli 2026.</de>
+        <fr
+        >Brecht in the anthropocene, 18th symposium of the International Brecht Society. University of Victoria, Victoria, BC, Canada: July 22-26, 2026.</fr>
+
     </splash-logo>
 
     <!--For img.uvic-logo-->
@@ -91,10 +83,8 @@
         <href>https://hcmc.uvic.ca</href>
         <src>images/logo-uvic.svg</src>
         <alt>
-            <en
-            >University of Victoria Humanities Computing and Media Centre</en>
-            <de
-            >Zentrum für Geisteswissenschaften, Informatik und Medien der Universität Victoria</de>
+            <fr
+            >University of Victoria Humanities Computing and Media Centre</fr>
         </alt>
     </uvic-logo>
 
@@ -103,8 +93,8 @@
     <class>mobile-header-splash</class>
         <src>images/logo-mobile-header.webp</src>
         <alt>
-            <en />
-            <de />
+            <fr />
+
         </alt>
     </mobile-header-splash>
 
@@ -113,8 +103,8 @@
     <class>mobile-header-internal</class>
         <src>images/logo-mobile-header.webp</src>
         <alt>
-            <en />
-            <de />
+            <fr />
+
         </alt>
     </mobile-header-internal>
 
@@ -126,26 +116,22 @@
 
     <!-- For a.skip-link-->
     <skip-link>
-        <en>Skip to Content</en>
-        <de>Weiter zum Inhalt</de>
+        <fr>Skip to Content</fr>
     </skip-link>
 
     <!-- For nav.aria-label-->
     <site-navigation-label>
-        <en>Primary</en>
-        <de>Primär</de>
+        <fr>Primary</fr>
     </site-navigation-label>
 
     <!--For button.aria-label-->
     <popover-close-label>
-        <en>Close</en>
-        <de>Schließen</de>
+        <fr>Close</fr>
     </popover-close-label>
 
     <!--For span.nav-toggle-label-->
     <nav-toggle-label>
-        <en>Site Menu</en>
-        <de>Seitenmenü</de>
+        <fr>Site Menu</fr>
     </nav-toggle-label>
 
     <!--For div.footer-container-->
@@ -160,28 +146,22 @@
     <!-- For div.popover-nav-items-->
     <navigation>
         <item href="index.html">
-            <en>Home</en>
-            <de>Startseite</de>
+            <fr>Home</fr>
         </item>
         <item href="registration.html">
-            <en>Registration</en>
-            <de>Anmeldung</de>
+            <fr>Registration</fr>
         </item>
         <item href="program.html">
-            <en>Program</en>
-            <de>Programm</de>
+            <fr>Program</fr>
         </item>
         <item href="accommodations.html">
-            <en>Accommodations</en>
-            <de>Unterkünfte</de>
+            <fr>Accommodations</fr>
         </item>
         <item href="gettinghere.html">
-            <en>Getting here</en>
-            <de>Anreise</de>
+            <fr>Getting here</fr>
         </item>
         <item href="about.html">
-            <en>About</en>
-            <de>Über uns</de>
+            <fr>About</fr>
         </item>
     </navigation>
 
