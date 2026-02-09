@@ -19,7 +19,6 @@
   <!-- Parameters for language -->
   <xsl:param name="lang" select="'en'"/>
   <xsl:param name="languages" select="'en'"/>
-  <xsl:param name="isRootPage" select="'false'"/>
   
   <!-- Check if bilingual -->
   <xsl:variable name="isBilingual" select="contains($languages, ',')"/>
@@ -92,10 +91,7 @@
               </xsl:when>
               <xsl:when test="local-name() = 'href' and (string-length(.) = 0 or $elementName = 'a')">
                 <xsl:attribute name="href">
-                  <!-- Root page links directly to language folders, others need ../ -->
-                  <xsl:if test="$isRootPage = 'false'">
-                    <xsl:text>../</xsl:text>
-                  </xsl:if>
+                  <xsl:text>../</xsl:text>
                   <xsl:value-of select="$otherLang"/>
                   <xsl:text>/</xsl:text>
                   <xsl:choose>

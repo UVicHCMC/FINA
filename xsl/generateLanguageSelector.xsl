@@ -2,14 +2,12 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema" 
                 exclude-result-prefixes="#all" 
-                xmlns="http://www.w3.org/1999/xhtml"
                 version="3.0">
   
   <xsl:output method="html" 
               indent="yes" 
               encoding="UTF-8" 
-              omit-xml-declaration="yes"
-              doctype-system="about:legacy-compat"/>
+              omit-xml-declaration="yes"/>
   
   <!-- Parameters -->
   <xsl:param name="languages" select="'en'"/>
@@ -41,17 +39,15 @@
               <xsl:otherwise>Select your language</xsl:otherwise>
             </xsl:choose>
           </h1>
-          <ul class="language-list">
+          <select class="language-list" name="language-list">
             <xsl:for-each select="languages/lang">
               <xsl:variable name="langCode" select="@code"/>
               <xsl:variable name="langLabel" select="@label"/>
-              <li>
-                <a href="{$langCode}/index.html" hreflang="{$langCode}">
-                  <xsl:value-of select="$langLabel"/>
-                </a>
-              </li>
+              <option value="{$langCode}">
+                <xsl:value-of select="$langLabel"/>
+              </option>
             </xsl:for-each>
-          </ul>
+          </select>
         </div>
       </body>
     </html>

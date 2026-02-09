@@ -6,7 +6,7 @@
     - Simply encode text content within each property element.
 
      FOR BILINGUAL SITES:
-    - For each property, create a separate element for each language specified in the languages section.
+    - For each property, create a separate child element for each language specified in the languages section.
 
      EXAMPLE:
      Monolingual: <siteTitle>My Site Title</siteTitle>
@@ -34,8 +34,8 @@
 
     <metadata>
         <siteTitle>
-            <en>Website Title</en>
-            <de>Website-Titel</de>
+            <en>Brecht in the anthropocene</en>
+            <de>Brecht im Anthropozän</de>
         </siteTitle>
         <organizationName>
             <en>Organization Name</en>
@@ -68,12 +68,14 @@
         </heading>
     </languageSelector>-->
     
+    <!--The element labels here follow CSS conventions. If you want to add an attribute to a specific element, add it as a child element. -->
+
     <!-- For nav.aria-label-->
     <nav-aria-label>
         <en>Language Selection</en>
         <de>Sprachauswahl</de>
     </nav-aria-label>
-    
+
     <!--For img.splash-logo-->
     <splash-logo>
         <class>splash-logo</class>
@@ -89,16 +91,32 @@
         <href>https://hcmc.uvic.ca</href>
         <src>images/logo-uvic.svg</src>
         <alt>
-            <en>University of Victoria Humanities Computing and Media Centre</en>
-            <de>Zentrum für Geisteswissenschaften, Informatik und Medien der Universität Victoria</de>
+            <en
+            >University of Victoria Humanities Computing and Media Centre</en>
+            <de
+            >Zentrum für Geisteswissenschaften, Informatik und Medien der Universität Victoria</de>
         </alt>
     </uvic-logo>
 
-    <!--For img.mobile-header-->
-    <mobile-header>
+    <!--For img.mobile-header splash page-->
+    <mobile-header-splash>
+    <class>mobile-header-splash</class>
         <src>images/logo-mobile-header.webp</src>
-        <alt />
-    </mobile-header>
+        <alt>
+            <en />
+            <de />
+        </alt>
+    </mobile-header-splash>
+
+    <!--For img.mobile-header internal pages-->
+    <mobile-header-internal>
+    <class>mobile-header-internal</class>
+        <src>images/logo-mobile-header.webp</src>
+        <alt>
+            <en />
+            <de />
+        </alt>
+    </mobile-header-internal>
 
     <!--For popover.splash-icon-->
     <popover-splash-icon>

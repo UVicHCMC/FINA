@@ -10,15 +10,13 @@
   <xsl:output method="html" 
               indent="yes" 
               encoding="UTF-8" 
-              omit-xml-declaration="yes"
-              doctype-system="about:legacy-compat"/>
+              omit-xml-declaration="yes"/>
   
   <!-- Parameters -->
   <xsl:param name="isMultilingual" select="'false'"/>
   <xsl:param name="currentLang" select="''"/>
   <xsl:param name="defaultLang" select="'en'"/>
   <xsl:param name="languages" select="'en'"/>
-  <xsl:param name="isRootPage" select="'false'"/>
   
   <!-- Convert string parameters to usable values -->
   <xsl:variable name="isMultilingualBool" select="$isMultilingual = 'true'"/>
@@ -41,27 +39,26 @@
     </xsl:map>
   </xsl:variable>
   
-  <!-- Identity template -->
-  <xsl:template match="xhtml:* | @*" priority="1">
-    <xsl:copy>
-      <xsl:apply-templates select="@* | node()"/>
-    </xsl:copy>
+  <!-- Convert XHTML-namespaced elements to no-namespace HTML5 -->
+  <xsl:template match="xhtml:html" priority="3">
+    <xsl:element name="html">
+      <xsl:copy-of select="@*[not(local-name() = 'id')]"/>
+      <xsl:if test="not(@id)">
+        <xsl:attribute name="id" select="'index'"/>
+      </xsl:if>
+      <xsl:apply-templates select="node()"/>
+    </xsl:element>
   </xsl:template>
-  
-  <!-- Fix lang-chooser links: add ../ for non-root pages -->
-  <xsl:template match="xhtml:*[contains(@class, 'lang-chooser')]/@href[starts-with(., '../')]" priority="4">
-    <xsl:attribute name="href">
-      <xsl:choose>
-        <!-- Root page: remove ../ prefix -->
-        <xsl:when test="$isRootPage = 'true'">
-          <xsl:value-of select="substring-after(., '../')"/>
-        </xsl:when>
-        <!-- Non-root: keep ../ as-is -->
-        <xsl:otherwise>
-          <xsl:value-of select="."/>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:attribute>
+
+  <xsl:template match="xhtml:*" priority="2">
+    <xsl:element name="{local-name()}">
+      <xsl:apply-templates select="@* | node()"/>
+    </xsl:element>
+  </xsl:template>
+
+  <!-- Identity template for attributes -->
+  <xsl:template match="@*" priority="1">
+    <xsl:copy/>
   </xsl:template>
   
   <!-- Fix resource paths (CSS, JS, images) for multilingual builds -->
@@ -94,21 +91,12 @@
       not(contains(., '://')) and
       ends-with(., '.html')]" priority="2">
     <xsl:attribute name="href">
-      <xsl:choose>
-        <!-- Root page: add lang/ prefix for content pages (not index.html) -->
-        <xsl:when test="$isRootPage = 'true' and . != 'index.html'">
-          <xsl:value-of select="concat($lang, '/', .)"/>
-        </xsl:when>
-        <!-- Otherwise: keep as-is -->
-        <xsl:otherwise>
-          <xsl:value-of select="."/>
-        </xsl:otherwise>
-      </xsl:choose>
+      <xsl:value-of select="."/>
     </xsl:attribute>
   </xsl:template>
   
   <!-- Replace img tags with dimensioned versions -->
-  <xsl:template match="xhtml:img[starts-with(@src, 'images/') or starts-with(@src, '/images/')]" priority="2">
+  <xsl:template match="xhtml:img[starts-with(@src, 'images/') or starts-with(@src, '/images/')]" priority="4">
     <!-- Normalize the src path (remove leading slash if present) -->
     <xsl:variable name="normalizedSrc" select="replace(@src, '^/', '')"/>
     <xsl:variable name="imgTag" select="map:get($mapImgPathsToElements, $normalizedSrc)" as="element(xhtml:img)*"/>

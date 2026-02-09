@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-                exclude-result-prefixes="#all" 
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:xhtml="http://www.w3.org/1999/xhtml"
                 xmlns:map="http://www.w3.org/2005/xpath-functions/map"
+                exclude-result-prefixes="#all" 
                 version="3.0">
   
-  <xsl:output method="xml" indent="yes" encoding="UTF-8" omit-xml-declaration="no"/>
+  <xsl:output method="html" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
   
   <!-- Parameters passed from build -->
   <xsl:param name="currentLang" select="'en'"/>
@@ -74,11 +74,49 @@
     <xsl:apply-templates select="$template/*"/>
   </xsl:template>
   
-  <!-- Identity template for template elements -->
-  <xsl:template match="xhtml:* | @*" priority="1">
-    <xsl:copy>
+  <!-- Add page id based on output filename -->
+  <xsl:template match="xhtml:html" priority="3">
+    <xsl:variable name="pageId" select="replace($currentPage, '\.html$', '')"/>
+    <xsl:element name="html">
+      <xsl:copy-of select="@*[not(local-name() = 'id')]"/>
+      <xsl:if test="not(@id)">
+        <xsl:attribute name="id" select="$pageId"/>
+      </xsl:if>
+      <xsl:apply-templates select="node()"/>
+    </xsl:element>
+  </xsl:template>
+
+  <!-- Convert XHTML-namespaced template elements to HTML5 (no namespace) -->
+  <xsl:template match="xhtml:*" priority="2">
+    <xsl:element name="{local-name()}">
       <xsl:apply-templates select="@* | node()"/>
-    </xsl:copy>
+    </xsl:element>
+  </xsl:template>
+
+  <!-- Convert XHTML-namespaced content elements to no-namespace HTML in content mode -->
+  <xsl:template match="xhtml:*" mode="content" priority="2">
+    <xsl:element name="{local-name()}">
+      <xsl:apply-templates select="@* | node()" mode="content"/>
+    </xsl:element>
+  </xsl:template>
+
+  <!-- Handle SVG elements - preserve SVG namespace -->
+  <xsl:template match="*[namespace-uri() = 'http://www.w3.org/2000/svg']" priority="3">
+    <xsl:element name="{local-name()}" namespace="http://www.w3.org/2000/svg">
+      <xsl:apply-templates select="@* | node()"/>
+    </xsl:element>
+  </xsl:template>
+
+  <!-- Handle SVG elements in content mode - preserve SVG namespace -->
+  <xsl:template match="*[namespace-uri() = 'http://www.w3.org/2000/svg']" mode="content" priority="3">
+    <xsl:element name="{local-name()}" namespace="http://www.w3.org/2000/svg">
+      <xsl:apply-templates select="@* | node()" mode="content"/>
+    </xsl:element>
+  </xsl:template>
+
+  <!-- Identity template for attributes -->
+  <xsl:template match="@*" priority="1">
+    <xsl:copy/>
   </xsl:template>
   
   <!-- Fix resource paths (CSS, JS, images) for multilingual builds. We do this because the resources are one level up from the HTML pages in bilingual builds. -->
@@ -136,14 +174,14 @@
   </xsl:template>
   
   <!-- Replace img tags with dimensioned versions (for template images) -->
-  <xsl:template match="xhtml:img[starts-with(@src, 'images/') or starts-with(@src, '/images/')]" priority="2">
+  <xsl:template match="xhtml:img[starts-with(@src, 'images/') or starts-with(@src, '/images/')]" priority="4">
     <xsl:call-template name="add-image-dimensions">
       <xsl:with-param name="img" select="."/>
     </xsl:call-template>
   </xsl:template>
   
   <!-- Replace img tags with dimensioned versions (for content images) -->
-  <xsl:template match="xhtml:img[starts-with(@src, 'images/') or starts-with(@src, '/images/')]" mode="content" priority="2">
+  <xsl:template match="xhtml:img[starts-with(@src, 'images/') or starts-with(@src, '/images/')]" mode="content" priority="4">
     <xsl:call-template name="add-image-dimensions">
       <xsl:with-param name="img" select="."/>
     </xsl:call-template>

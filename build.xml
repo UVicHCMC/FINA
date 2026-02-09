@@ -3,45 +3,39 @@
          xmlns:unless="ant:unless">
     <description>
         #####################################################################
-        #    Project build file by Illya Nokhrin (inokhrin@uvic.ca), 2025, based on previous
-        build files by Martin Holmes and Deniz Aydin.   #
+        #    Project build file by Illya Nokhrin (inokhrin@uvic.ca), 2026, based on previous
+        build files by Martin Holmes #
         
         #Usage: 
-        Monolingual (English default):        
         ant fullBuild
         
-        Monolingual (Other Language, eg. German):
-        ant fullBuild -Dlang1=de
+        All properties for the build are stored in properties.xml. The build process will look through the properties.xml file to determine whether the site is monolingual or bilingual, and will adjust the build process accordingly.
+        For bilingual builds, all user-visible chrome/layout data must be provided in both languages in the properties.xml file.
         
-        Bilingual (English/French default):
-        ant fullBilingualBuild -Dlang1=en -Dlang2=fr
-        
-        Bilingual (Other Language Pair, eg. English/German):
-        ant fullBilingualBuild -Dlang1=en -Dlang2=de
-        
-        There are two build processes: monolingual and bilingual.
-        
-        At this stage, the landing/splash page is always assumed to be monolingual. We may change this later.
-        
-        All content for the site pages is expected to be in XML format in the /content/ directory.        
-        
-        The default build process expects a monolingual build. The default language is English. If you want to change this, use -Dlang1=xx.       
-        
-        The bilingual build processes expects that all inputs will follow a bilingual directory structure (eg. that the content/ directory will have content/en and content/fr subdirectories that house all the actual content files.).
-        It also expects template files that have multiple data attributes (eg. data-en="Home" data-fr="Accuiel"). 
+        If you want to have the landing page be a language selector page, uncomment the languageSelector element in properties.xml.
+                
+        All content for the site pages is expected to be in XML format in the /content/ directory. If the site is bilingual, the content must be in the appropriate subdirectories (eg. /content/en/ and /content/de/).
         At this stage, the file names have to be the same in both languages (eg. content/en/gettinghere.xml and content/fr/gettinghere.xml, not content/fr/venir.xml).
+        
+        The templates for the landing page and content pages are in boilerplate/landingPageTemplate.xml and boilerplate/contentPageTemplate.xml respectively. 
+        These are processed to create language-specific templates in the /templates/ directory, which will then be used to process the content files.
+        DO NOT EDIT THE FILES IN THE /TEMPLATES/ DIRECTORY DIRECTLY. They are overwritten during the build process. If you want to make changes to the templates, edit the files in /boilerplate/ instead.  
         
         This build file does these basic tasks:
         
-        * Runs a script to determine the dimensions of all images and creates a text file storing those dimensions
+        * Runs a script (imageDimensions.sh) to determine the dimensions of all images and creates a text file storing those dimensions
         
         * Transforms SCSS to CSS using sass
         
         * Copies web resources (CSS, fonts, images) to the /site/ directory
         
-        * Uses a properties XML file to store site data and file locations
+        * Looks at properties.xml to determine the languages of the site
         
-        * Takes the properties of said properties XML file and uses them to fill in templates    
+        * Transforms the boilerplate templates into language-specific templates
+        
+        * Takes the properties of the properties XML file and uses them to fill in templates 
+        
+        * Takes the content XML files and processes them into HTML files using the templates
         
         It requires java libraries that are in the /lib/ folder.
         
@@ -218,38 +212,31 @@
     <target name="makeLandingPage" depends="generateLandingTemplate">
         <description>Creates landing page(s)</description>
         
-        <!-- Monolingual or multilingual without language selector: create site/index.html as default language -->
-        <sequential unless:true="${needsLanguageSelector}">
+        <!-- Multilingual: create redirect at site/index.html -->
+        <sequential if:true="${isMultilingual}">
+            <echo message="Creating language redirect at site/index.html..."/>
+            <mkdir dir="site"/>
+            <java fork="true" classname="net.sf.saxon.Transform" 
+                  classpath="${saxon}" failonerror="true">
+                <arg value="-s:boilerplate/redirectTemplate.xml"/>
+                <arg value="-xsl:xsl/generateRedirect.xsl"/>
+                <arg value="-o:site/index.html"/>
+            </java>
+        </sequential>
+        
+        <!-- Monolingual: create site/index.html as default language -->
+        <sequential if:true="${isMonolingual}">
             <echo message="Creating landing page at site/index.html (lang=${defaultLang})..."/>
             <mkdir dir="site"/>
-            
-            <!-- Monolingual: use templates/landingPage.xml -->
-            <sequential if:true="${isMonolingual}">
-                <java fork="true" classname="net.sf.saxon.Transform" 
-                      classpath="${saxon}" failonerror="true">
-                    <arg value="-s:templates/landingPage.xml"/>
-                    <arg value="-xsl:xsl/processLandingPage.xsl"/>
-                    <arg value="-o:site/index.html"/>
-                    <arg value="isMultilingual=${isMultilingual}"/>
-                    <arg value="defaultLang=${defaultLang}"/>
-                    <arg value="languages=${languages}"/>
-                    <arg value="isRootPage=true"/>
-                </java>
-            </sequential>
-            
-            <!-- Multilingual: use templates/{defaultLang}/landingPage.xml -->
-            <sequential if:true="${isMultilingual}">
-                <java fork="true" classname="net.sf.saxon.Transform" 
-                      classpath="${saxon}" failonerror="true">
-                    <arg value="-s:templates/${defaultLang}/landingPage.xml"/>
-                    <arg value="-xsl:xsl/processLandingPage.xsl"/>
-                    <arg value="-o:site/index.html"/>
-                    <arg value="isMultilingual=${isMultilingual}"/>
-                    <arg value="defaultLang=${defaultLang}"/>
-                    <arg value="languages=${languages}"/>
-                    <arg value="isRootPage=true"/>
-                </java>
-            </sequential>
+            <java fork="true" classname="net.sf.saxon.Transform" 
+                  classpath="${saxon}" failonerror="true">
+                <arg value="-s:templates/landingPage.xml"/>
+                <arg value="-xsl:xsl/processLandingPage.xsl"/>
+                <arg value="-o:site/index.html"/>
+                <arg value="isMultilingual=${isMultilingual}"/>
+                <arg value="defaultLang=${defaultLang}"/>
+                <arg value="languages=${languages}"/>
+            </java>
         </sequential>
         
         <!-- Create per-language landing pages for multilingual sites -->
@@ -268,7 +255,6 @@
                         <arg value="currentLang=@{lang}"/>
                         <arg value="defaultLang=${defaultLang}"/>
                         <arg value="languages=${languages}"/>
-                        <arg value="isRootPage=false"/>
                     </java>
                 </sequential>
             </for>
@@ -382,8 +368,7 @@
         <echo message="Building SCSS source to create CSS files in HTML folder."/>
         <mkdir dir="${basedir}/site/css"/>
         <exec executable="sass">
-            <arg value="--no-source-map"/>
-            <arg value="${basedir}/sass:${basedir}/css"/>
+            <arg value="${basedir}/scss:${basedir}/css"/>
         </exec>
     </target>
     
