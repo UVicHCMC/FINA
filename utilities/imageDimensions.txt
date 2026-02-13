@@ -1,6 +1,0 @@
-images/logo-mobile-header.webp 800x229
-images/logo-mobile-popover.webp 903x258
-images/logo-uvic.svg 225x34
-images/menu-burger.svg 24x24
-images/logo-splash-brecht.webp 761x680
-images/favicon.svg 441x441
