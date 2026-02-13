@@ -6,14 +6,16 @@
         </title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
         <link rel="stylesheet" href="{?cssFile}" />
-        <link rel="icon" href="{?faviconIco}" sizes="48x48" />
         <link
             rel="icon"
             href="{?faviconSvg}"
             sizes="any"
             type="image/svg+xml"
         />
+
+        <link rel="icon" href="{?faviconIco}" sizes="48x48" />
         <link rel="manifest" href="{?siteManifest}" />
         <?fontPreloads?>
         <script src="{?jsFile}" />
@@ -115,7 +117,13 @@
                             <!-- The attributes here will be programmatically replaced by the XSLT based on the values of the languages parameter in properties.xml -->
                             <!-- We've left the empty elements here so that the XSLT knows which ones we want and so that it is clear which attributes to expect in the output HTML -->
                             <!-- Any element with class="lang-chooser" will be transformed in this way. So if you want to change the anchor to a button (or something else), you can do so -->
-                            <a class="lang-chooser" aria-label="" lang="" hreflang="" href=""/>
+                            <a
+                                class="lang-chooser"
+                                aria-label=""
+                                lang=""
+                                hreflang=""
+                                href=""
+                            />
                         </nav>
                     </div>
                 </div>
