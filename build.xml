@@ -411,6 +411,10 @@
             </mapper>
         </pathconvert>
         <echo message="Copied images: ${copied.images}"/>
+        
+        <echo message="Copying web manifest to the 'site' folder."/>
+        <copy file="${basedir}/site.webmanifest" tofile="${basedir}/site/site.webmanifest" preservelastmodified="true"/>
+
         <!--<copy todir="site" preservelastmodified="true">
              <fileset dir="favicons">
              <include name="*.*"/>
