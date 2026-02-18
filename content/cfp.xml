@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<div id="root"><!--gets removed-->
+
+  <h1>Sample Content</h1><!--Page title-->
+
+  <section id="donut-decline">
+    <h2>Donut Decline</h2>
+    <p
+        >Donuts are delicious, but they're also high in calories and sugar. If you're trying to lose weight or maintain a healthy diet, it's important to be mindful of your donut consumption.</p>
+    <ul>
+      <li>Choose smaller donuts or share with a friend</li>
+      <li>Opt for low-calorie toppings like sprinkles or chocolate chips</li>
+      <li>Consider having a donut-free day once a week</li>
+    </ul>
+    <figure>
+      <img src="donut.jpg" alt="Alt text if necessary" />
+      <figcaption>Caption if provided</figcaption>
+    </figure>
+  </section>
+
+  <section id="coffee-drinkers">
+    <h2>Coffee Drinkers</h2>
+    <p
+        >Coffee is a popular beverage enjoyed by many people around the world. It's a great way to start your day or give yourself a boost of energy throughout the day.</p>
+    <ul>
+      <li>Choose decaf coffee if you're sensitive to caffeine</li>
+      <li>Try different types of coffee like espresso, latte, or cappuccino</li>
+      <li>Experiment with different flavors like vanilla or hazelnut</li>
+    </ul>
+  </section>
+
+  </div>
+<!--end of root-->
