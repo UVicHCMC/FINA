@@ -320,7 +320,7 @@
     </target>
     
     <!-- Full build target -->
-    <target name="fullBuild" depends="copyWebResources,makeLandingPage,processContent">
+    <target name="fullBuild" depends="getImageDimensions, copyWebResources,makeLandingPage,processContent">
         <description>Full multilingual build (DEFAULT)</description>
         <echo message="Build complete! Languages: ${languages}"/>
     </target>
