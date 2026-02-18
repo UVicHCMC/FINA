@@ -1,33 +1,51 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <div id="root"><!--gets removed-->
 
-  <h1>Sample Content</h1><!--Page title-->
+    <h1>Appel à communications</h1><!--Page title-->
 
-  <section id="donut-decline">
-    <h2>Donut Decline</h2>
-    <p
-        >Donuts are delicious, but they're also high in calories and sugar. If you're trying to lose weight or maintain a healthy diet, it's important to be mindful of your donut consumption.</p>
-    <ul>
-      <li>Choose smaller donuts or share with a friend</li>
-      <li>Opt for low-calorie toppings like sprinkles or chocolate chips</li>
-      <li>Consider having a donut-free day once a week</li>
-    </ul>
-    <figure>
-      <img src="donut.jpg" alt="Alt text if necessary" />
-      <figcaption>Caption if provided</figcaption>
-    </figure>
-  </section>
+    <p>Organisé pour la première fois en 2006, le colloque Les français d’ici en est à sa dixième édition et fêtera donc à cette occasion en 2026 son vingtième anniversaire.</p>
 
-  <section id="coffee-drinkers">
-    <h2>Coffee Drinkers</h2>
-    <p
-        >Coffee is a popular beverage enjoyed by many people around the world. It's a great way to start your day or give yourself a boost of energy throughout the day.</p>
-    <ul>
-      <li>Choose decaf coffee if you're sensitive to caffeine</li>
-      <li>Try different types of coffee like espresso, latte, or cappuccino</li>
-      <li>Experiment with different flavors like vanilla or hazelnut</li>
-    </ul>
-  </section>
+    <p>Ce colloque bisannuel offre aux chercheuses et chercheurs, professeures et professeurs qui s’intéressent aux variétés de français et à la francophonie nord-américaine une occasion de partager leurs travaux et leurs réflexions en la matière, quelles que soient les approches théoriques et méthodologiques mobilisées par leurs recherches. Il est aussi prévu des présentations étudiantes avec un prix (à la fois symbolique et pécunier) décerné à la meilleure présentation évaluée par un jury de chercheuses et chercheurs aguerri(es).</p>
 
-  </div>
-<!--end of root-->
+    <p>Ce colloque est par conséquent ouvert à toute proposition rendant compte de travaux variés, pour une communication de 20 minutes suivie d’une période de discussion de 10 minutes. La proposition ne devra pas dépasser 400 mots (sans les références). Le nombre de propositions pouvant être soumises par la même personne (seule ou en coprésentation) est limité à deux. </p>
+
+    <p>Par ailleurs et comme c’était le cas pour les éditions précédentes, ce colloque, ouvert aux diverses approches et aux contributions sur des thèmes variés, met en lumière une orientation particulière, bien que non limitative. Pour cette 10e édition, la seconde dans l’Ouest canadien depuis Winnipeg en 2016 et pour la présente occasion installée au bord du Pacifique, nous invitons les chercheuses et chercheurs à privilégier la dimension formelle de la langue, c’est-à-dire la description et l’analyse d’une ou plusieurs variantes (phonologiques, morphosyntaxiques, etc.) particulière(s) en usage dans la francophonie nord-américaine. </p>
+
+    <p>Le colloque se tiendra en présentiel. La langue du colloque est le français, mais les propositions en anglais seront prises en considération. Les communications doivent être des contributions à la recherche dans le domaine de la linguistique (toutes approches confondues) portant sur le Canada et les diasporas américaines. </p>
+
+    <p>En plus des communications orales qui seront présentées, cette édition des Français d’ici offrira deux ateliers : un sur la collecte de données sur le terrain, et l’autre sur la recherche en sociolinguistique variationniste. Plusieurs lancements d’ouvrages sont également prévus au programme. </p>
+
+    <p>Chaque proposition de communication sera évaluée de façon anonyme par un comité scientifique. </p>
+
+    <p>Les résumés doivent être soumis au plus tard le 31 décembre 2025 par le biais de la <a href="https://easyabs.linguistlist.org/conference/LFDI10/">plateforme EasyAbs (Linguist List)</a>. Chaque proposition de communication doit être soumise de façon anonyme en version PDF. </p>
+
+    <p>Les auteur(e)s seront informé(e)s au plus tard le 15 février 2026 de l’acceptation ou du refus de leur proposition. Les personnes participantes recevront ensuite diverses informations pratiques leur permettant de planifier leur séjour à Victoria. Un site Internet sera également mis à leur disposition. </p>
+
+    <p>
+        <b>Pour toute information : <a href="mailto:lfdi2026@uvic.ca">lfdi2026@uvic.ca</a></b>
+    </p>
+
+    <section id="calendrier">
+        <h2>Calendrier</h2>
+
+        <dl>
+            <dt>Date limite de réception des propositions de communication</dt>
+            <dd>31 décembre 2025</dd>
+
+            <dt>Notification d’acceptation/de rejet</dt>
+            <dd>15 février 2026</dd>
+
+            <dt>Période d’inscription en ligne</dt>
+            <dd>Du 2 mars au 15 avril 2026</dd>
+
+            <dt>Programme définitif</dt>
+            <dd>15 mai 2026</dd>
+
+            <dt>Tenue du colloque</dt>
+            <dd>15, 16, 17 juin 2026</dd>
+        </dl>
+    </section>
+
+</div>
+<!--end
+of root-->
