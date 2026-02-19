@@ -25,9 +25,6 @@ $bp-grid-collapse: 52rem; // content geometry: reduce padding / collapse breakou
 :root {
     --page-grid-gutter: clamp(1rem, 4vw, 3rem);
 
-    /* preferred readable measure (keep fixed; shrink only when forced by track) */
-    --page-grid-content-max: 90ch;
-
     /* max width for breakout content */
     --page-grid-wide-max: 90rem;
 }
@@ -122,7 +119,7 @@ $bp-grid-collapse: 52rem; // content geometry: reduce padding / collapse breakou
 
     /* preferred readable line length
      this is the target width for the content column */
-    --content-max: 90ch;
+    --content-max: 80ch;
 
     /* absolute maximum width allowed for wide / breakout content */
     --wide-max: 90rem;

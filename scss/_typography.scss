@@ -38,10 +38,14 @@
         "Liberation Mono", monospace;
 
     /* Font weights */
+    --fw-light: 300;
     --fw-regular: 400;
     --fw-medium: 500;
     --fw-semibold: 600;
     --fw-bold: 700;
+    --fw-extra-bold: 800;
+    --fw-black: 900;
+    --fw-extra-bold: 950;
 
     /* Type scale */
     --fs-300: 0.875rem;
@@ -58,9 +62,10 @@
     /* Spacing (vertical rhythm) */
     --space-1: 0.25rem;
     --space-2: 0.5rem;
-    --space-3: 1rem;
-    --space-4: 1.5rem;
-    --space-5: 3rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 3rem;
 
     /* Links */
     --underline-offset: 0.15em;
@@ -91,15 +96,25 @@ body {
     :is(h1, h2, h3, h4, h5, h6) {
         font-family: var(--font-sans);
         color: var(--color-text-heading);
-        margin-block-start: var(--space-4);
         line-height: var(--lh-tight);
         text-wrap: balance;
+    }
+
+    //Spacing of headings when in flow content:
+
+    :is(h2, h3, h4, h5, h6) {
+        margin-block-start: var(--space-4);
+    }
+
+    :is(h2, h3, h4, h5, h6) + * {
+        margin-block-start: var(--space-2);
     }
 
     h1 {
         font-weight: var(--fw-bold);
         font-size: var(--fs-800);
         text-align: center;
+        margin-block-start: var(--space-6);
     }
 
     h2 {
@@ -129,7 +144,7 @@ body {
 
     /* Spacing after headings */
     h1 + * {
-        margin-block-start: var(--space-4);
+        margin-block-start: var(--space-5);
     }
     //sections will have their own headers with margins
     h1 + section {
@@ -137,7 +152,7 @@ body {
     }
 
     h2 + * {
-        margin-block-start: var(--space-2);
+        margin-block-start: var(--space-3);
     }
     h3 + * {
         margin-block-start: var(--space-1);
@@ -153,9 +168,8 @@ body {
         font-family: var(--font-sans);
         font-size: var(--fs-400);
         line-height: var(--lh-body);
-        font-weight: var(--fw-regular);
+        font-weight: var(--fw-light);
         color: var(--color-text-primary);
-        margin-block-start: var(--space-2);
         text-wrap: pretty;
     }
 
@@ -223,7 +237,7 @@ body {
     /* Lists */
     :is(ul, ol) {
         font-family: var(--font-sans);
-        font-size: var(--fs-400);
+        font-size: var(--fs-300);
         line-height: var(--lh-body);
         font-weight: var(--fw-regular);
         color: var(--color-text-primary);
@@ -242,6 +256,27 @@ body {
     li > ul,
     li > ol {
         margin-block: var(--space-1);
+    }
+
+    //data lists
+
+    dl {
+        & dt {
+            font-family: var(--font-sans);
+            font-size: var(--fs-400);
+            font-weight: var(--fw-regular);
+        }
+
+        & dd {
+            font-family: var(--font-sans);
+            font-size: var(--fs-400);
+            font-weight: var(--fw-light);
+            margin-block-start: var(--space-1);
+
+            & + dt {
+                margin-block-start: var(--space-3);
+            }
+        }
     }
 
     /* Code */
