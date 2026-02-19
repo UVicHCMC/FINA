@@ -23,10 +23,79 @@ $desktop-break: 768px;
     --desktop-md: 1280px;
     --desktop-lg: 1440px;
 
+    /* Background reference */
+    --color-bg: #fcfcfc;
+
+    //Site highlight color;
+    --highlight: #0c6994;
+
+    /* Text colours (light theme, near-white background) */
+    --color-text-primary: #1e1e1e; /* body text */
+    --color-text-heading: #111111; /* headings */
+    --color-text-secondary: #444444; /* blockquotes, lead text */
+    --color-text-muted: #6b6b6b; /* captions, metadata */
+    --color-text-faint: #8a8a8a; /* non-essential */
+
+    /* Links */
+    --color-link: var(--color-text-primary);
+    --color-link-hover: var(--highlight);
+    --underline: var(--highlight);
+    --underline-hover: transparent;
+
+    /* Code */
+    --color-code-bg: #000000;
+    --color-code-fg: #ffffff;
+
+    /* Figures */
+    --figure-bg-color: transparent;
+    --figure-border-color: #333333;
+
+    /* Font families */
+    --font-sans: "Roboto", Verdana, Geneva, Tahoma, sans-serif;
+    --font-serif: "Source Serif", Georgia, "Times New Roman", Times, serif;
+    --font-serif-sc: "Alegreya SC", Georgia, "Times New Roman", Times, serif;
+    --font-mono:
+        ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", monospace;
+
+    /* Font weights */
+    --fw-light: 300;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+    --fw-extra-bold: 800;
+    --fw-black: 900;
+    --fw-extra-bold: 950;
+
+    /* Type scale */
+    --fs-300: 0.875rem;
+    --fs-400: 1rem;
+    --fs-500: 1.125rem;
+    --fs-600: 1.25rem;
+    --fs-700: 1.5rem;
+    --fs-800: 2rem;
+
+    /* Line heights */
+    --lh-tight: 1.15;
+    --lh-body: 1.6;
+
+    /* Spacing (vertical rhythm) */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 3rem;
+
+    /* Links */
+    --underline-offset: 0.15em;
+    --underline-thickness: from-font;
+
     //fonts
-    --primary-sans: "Roboto", Verdana, Geneva, Tahoma, sans-serif;
-    --primary-serif: "Source Serif", Georgia, Times New Roman, serif;
-    --primary-serif-sc: "Alegreya SC", Georgia, Times New Roman, serif;
+    --font-sans: "Roboto", Verdana, Geneva, Tahoma, sans-serif;
+    --font-serif: "Source Serif", Georgia, Times New Roman, serif;
+    --font-serif-sc: "Alegreya SC", Georgia, Times New Roman, serif;
 
     //borders
     --border-color: #d5d7da;
@@ -41,24 +110,8 @@ $desktop-break: 768px;
     --mobile-nav-bg-color: rgba(79, 106, 23, 1);
     --mobile-nav-bg-color-closed: #ffffff;
 
-    //cards
-    --card-text-color: #222222;
-    --card-font-family: var(--primary-sans);
-    --card-shadow:
-        0 10px 24px 0px rgba(0, 0, 0, 0.02),
-        0 8px 20px -2px rgba(0, 0, 0, 0.06), 0 6px 10px -6px rgba(0, 0, 0, 0.1);
-
-    //footer
-    --footer-specific-border-color: #ffb500;
-
     //mobile-nav-footer
     --mobile-nav-footer-border-color: #222222;
-
-    //padding and margins
-    --splash-padding-block: 2rem;
-    --splash-padding-block-mobile: 1rem;
-    --splash-padding-inline: 2rem;
-    --splash-padding-inline-mobile: 1rem;
 
     //colors
 
@@ -72,7 +125,7 @@ $desktop-break: 768px;
     --body-internal-bg: #fdfdfd;
 
     --page-bg: #fafafa;
-    --highlight: #0c6994;
+
     --text-color: #222222;
     --underline: #ffb500;
     --underline-active: transparent;
@@ -85,12 +138,6 @@ $desktop-break: 768px;
     --image-border-color: 1px lsolid #d0d0d0;
     --card-container-color: #f2f2f2;
 
-    --splashnav-bg-color-desktop: rgba(
-        34,
-        34,
-        34,
-        0.9
-    ); //used for menu, header and footer background colours
     --internalnav-bg-color-desktop: #fff;
     --mobile-bg-color: #d2d2d2;
 
@@ -117,7 +164,7 @@ $desktop-break: 768px;
     --body-text-mobile-size: 1rem;
     --body-text-lineheight-desktop: 1.5;
     --body-text-lineheight-mobile: 1.5;
-    --table-font: var(--primary-sans);
+    --table-font: var(--font-sans);
     --td-border-color: #dbdbdb;
     --map-outline-color: #222222;
     --image-border-color: #e6e6e6;
