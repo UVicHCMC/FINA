@@ -1,9 +1,13 @@
 @use "utilities" as *;
 
-header {
+:root {
     //Used by js to remove popover open if viewport changes while popover is open
-    --desktop-break: 768px;
 
+    :root {
+        --desktop-break: 768px;
+    }
+}
+header {
     --nav-bg-color: transparent;
 
     --button-color: #ffffff;
@@ -54,10 +58,12 @@ header {
 
     @media (width >=768px) {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 1rem;
         position: relative;
+        padding-block-end: 1.25rem;
     }
 }
 
@@ -78,7 +84,7 @@ header {
 
 //language chooser button
 .lang-chooser {
-    padding: 0.5rem;
+    padding: 0.5rem 0.65rem;
     width: max-content;
     font-family: var(--primary-sans);
     color: var(--lang-chooser-color);
