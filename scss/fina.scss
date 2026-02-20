@@ -88,6 +88,35 @@ header {
     width: 300px;
     height: auto;
 }
+
+//header text above menu
+
+.internal-header-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: var(--font-sans-title);
+    color: var(--highlight);
+    
+    & .site-title {
+        font-size: var(--fs-600);
+        font-weight: var(--fw-bold);
+    }
+    
+    & .location {
+        font-size: var(--fs-500);
+        font-weight: var(--fw-medium);
+
+    }
+    
+    & .date {
+        font-size: var(--fs-500);
+        font-weight: var(--fw-medium);
+    }
+}
+
+
 //blob on brecht splash
 .blob {
     --blob-width: min(75dvh, 900px);

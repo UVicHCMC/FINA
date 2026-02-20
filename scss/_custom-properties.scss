@@ -51,6 +51,11 @@ $desktop-break: 768px;
     --figure-border-color: #333333;
 
     /* Font families */
+    
+    //splash text
+    --font-sans-title: "Alegreya Sans", "Source Sans 3", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    
+    //body text
     --font-sans: "Roboto", Verdana, Geneva, Tahoma, sans-serif;
     --font-serif: "Source Serif", Georgia, "Times New Roman", Times, serif;
     --font-serif-sc: "Alegreya SC", Georgia, "Times New Roman", Times, serif;
