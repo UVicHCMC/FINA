@@ -1,5 +1,5 @@
 //Imported
-@use "utilities" as *;
+@use "custom-properties" as *;
 @use "typography" as *;
 @use "reset" as *;
 @use "fonts" as *;
@@ -41,6 +41,11 @@
     padding: 0;
     clip-path: inset(50%);
     margin: -1px;
+}
+
+//top border on body
+body:not(#index) {
+    border-top: 5px solid var(--highlight);
 }
 
 //controls viewport padding and margins, centers main content
