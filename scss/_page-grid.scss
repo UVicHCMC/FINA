@@ -223,15 +223,6 @@ figure.content--full > figcaption {
     border-radius: 0.75rem;
 }
 
-/* container-query tweaks for tight containers */
-@container (max-width: #{$bp-grid-collapse}) {
-    .page-grid {
-        /* collapse breakout cleanly + tighten padding */
-        --breakout-max-width: var(--content-max-width);
-        --padding-inline: clamp(1rem, 3vw, 1.5rem);
-    }
-}
-
 // ==========================================================================
 // Layer D — Structural utilities (full-bleed + bands)
 // ==========================================================================
