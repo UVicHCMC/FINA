@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div id="root"><!--gets removed-->
+
+  <h1>À voir et à faire à Victoria</h1><!--Page title-->
+
+  <section id="a-faire">
+    <p>Le site de Tourism Victoria propose une vaste sélection d’activités, de restaurants et de suggestions pour planifier votre séjour.</p>
+
+    <ul>
+      <li>Choose smaller donuts or share with a friend</li>
+      <li>Opt for low-calorie toppings like sprinkles or chocolate chips</li>
+      <li>Consider having a donut-free day once a week</li>
+    </ul>
+
+    <figure>
+      <img src="donut.jpg" alt="Alt text if necessary" />
+      <figcaption>Caption if provided</figcaption>
+    </figure>
+
+  </section>
+
+  <section id="coffee-drinkers">
+    <h2>Coffee Drinkers</h2>
+    <p>Coffee is a popular beverage enjoyed by many people around the world. It's a great way to start your day or give yourself a boost of energy throughout the day.</p>
+    <ul>
+      <li>Choose decaf coffee if you're sensitive to caffeine</li>
+      <li>Try different types of coffee like espresso, latte, or cappuccino</li>
+      <li>Experiment with different flavors like vanilla or hazelnut</li>
+    </ul>
+  </section>
+
+</div>
+<!--end of root-->
