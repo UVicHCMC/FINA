@@ -3,7 +3,7 @@
 
   <h1>Renseignements pratiques</h1><!--Page title-->
 
-  <section id="donut-decline">
+  <section id="lieu-du-colloque">
 
     <p>
       <i>Avec respect, nous reconnaissons les peuples Lək̓ʷəŋən (Songhees et Xʷsepsəm/Esquimalt) sur les territoires desquels est établie l’Université de Victoria, ainsi que les peuples Lək̓ʷəŋən et W̱SÁNEĆ dont les relations de longue date avec ces terres se poursuivent jusqu’à ce jour.</i>
@@ -13,24 +13,96 @@
 
     <p>Le colloque aura lieu au <a href="https://www.uvic.ca/campus/indigenous-building-names/index.php">Sŋéqə ʔéʔləŋ</a><a href="https://www.uvic.ca/search/buildings/pages/sngequ-house.php">(Sngequ House)</a> Conference Centre, sur le campus de l’Université de Victoria, au 3800 Finnerty Road. Les deux salles de conférence sont situées au 2e étage. </p>
 
-    <h2>Modalités de connexion internet sur le campus</h2>
+    <h3>Modalités de connexion internet sur le campus</h3>
 
     <p>Voir les renseignements à la page suivante : <a href="https://www.uvic.ca/systems/services/pages/guest-wi-fi.php">UVic Guest Wi-Fi</a></p>
 
-    <h2>Stationnement</h2>
+    <h3>Stationnement</h3>
 
     <p>L’Université de Victoria offre des stationnements payants sur l’ensemble du campus, dont les tarifs horaires et journaliers varient selon le lieu. Pour plus de détails, y compris les cartes de stationnement et les tarifs, consulter la page <a href="https://www.uvic.ca/security/parking/rates/index.php">Services de stationnement et de transport</a>.</p>
 
   </section>
 
-  <section id="coffee-drinkers">
-    <h2>Coffee Drinkers</h2>
-    <p>Coffee is a popular beverage enjoyed by many people around the world. It's a great way to start your day or give yourself a boost of energy throughout the day.</p>
+  <section id="information-generale-victoria">
+
+    <h2>Information générale sur Victoria</h2>
+
+    <p>Victoria est la capitale de la Colombie-Britannique, au Canada. La ville se situe sur l’île de Vancouver, à 44 km (27 miles) au large de la côte continentale de la Colombie-Britannique.</p>
+
+    <h3>Climat</h3>
+
+    <p>Victoria bénéficie du climat le plus doux du Canada et reçoit en moyenne 2 183 heures d’ensoleillement par an. Les fleurs y fleurissent toute l’année, et la saison sans gel dure environ huit mois. Le printemps est doux et peut débuter dès février. En juin, les températures maximales moyennes varient entre 19°C et 22°C (66°F-72°F). Les soirées et les nuits restent fraîches, descendant généralement entre 11°C et 13 C (52°F-55°F).</p>
+
+  </section>
+
+  <section id="rendre-a-victoria">
+
+    <h2>Comment se rendre à Victoria</h2>
+
+    <h3>En avion</h3>
+
+    <p>L’<a href="https://yyj.ca/">aéroport international de Victoria (YYJ)</a> se trouve à environ 30 minutes de l’Université de Victoria. Les vols arrivent quotidiennement de partout au Canada, des États-Unis et d’Europe. En général, il est plus économique et plus pratique de se rendre à Victoria (plutôt qu’à Vancouver ou à Seattle) sauf si vous venez de ces régions ou si vous avez d’autres raisons de vous y arrêter pendant votre voyage. <b>Notez que la Coupe du monde de la FIFA se déroulera, pour ce qui est de Vancouver, du 13 juin au 7 juillet 2026, et que la ville s’apprête à accueillir 350 000 personnes !</b></p>
+
+    <p>Pour se rendre de l’aéroport au centre-ville, vous pouvez prendre un taxi. Le trajet coûte environ 70 $-80 $. Un service d’hydravion est disponible de Vancouver (<a href="https://harbourair.com/">Harbour Air</a>) et de Seattle (<a href="https://kenmoreair.com/">Kenmore Air</a>) à Victoria Inner Harbour.</p>
+
+    <h3>Par la mer</h3>
+
+    <h4>Combinaison autocar et traversier</h4>
+
+    <p>Depuis Vancouver, le <a href="https://bcfconnector.com/">BC Ferries Connector</a> offre un service d’autocar quotidien entre le centre-ville de Vancouver (ainsi que l’aéroport de Vancouver) et le centre-ville de Victoria, dans les deux sens. Ce trajet consiste à prendre le traversier depuis le continent (Tsawwassen), jusqu’à Swartz Bay, sur l’île de Vancouver. Une fois que votre autocar vous a conduit jusqu’au traversier, vous pouvez vous promener sur le pont du bateau, prendre une collation et vous détendre. La traversée est une véritable petite croisière. L’autocar vous déposera au centre-ville de Victoria, et mutatis mutandis pour le retour.</p>
+
+    <h4>De terminal à terminal</h4>
+
+    <p>Il y a régulièrement des traversiers (pour passagers piétons et passagers avec véhicule) partant de Vancouver (Tsawwassen) pour Victoria (Swartz Bay). Le terminal de Swartz Bay est situé à environ 40 minutes du centre-ville. Pour plus d’informations, consulter le site de <a href="https://www.bcferries.com/">BC Ferries</a>.</p>
+
+    <p>De plus, un service de traversier pour passagers piétons relie le centre-ville de Seattle au Victoria Inner Harbour (au centre-ville de Victoria). Assurez-vous de la validité de votre passeport, et de l’éventuelle nécessité d’une AVE (Autorisation de voyage électronique) ou autre document avant de faire vos plans de voyage.</p>
+
+  </section>
+
+  <section id="rendre-a-uvic">
+
+    <h2>Comment se rendre du centre-ville à l’Université de Victoria</h2>
+
+    <p>L’Université de Victoria se trouve à environ 9 km du centre-ville de Victoria.</p>
+
+    <h3>Transports en commun</h3>
+
+    <p><a href="https://www.bctransit.com/victoria/">BC Transit</a> propose un service de transport en autobus abordable et pratique dans tout le Grand Victoria. Le tarif pour adulte est actuellement de 3 $ pour un trajet simple et de 6 $ pour un laissez-passer journalier illimité (<i>day pass</i>). Vous pouvez payer en espèces (faire l’appoint) ou avec l’<a href="https://www.bctransit.com/umo/">application Umo</a>. Pour plus d’informations, y compris les cartes de transport, les destinations, les points d’embarquement et les politiques de correspondance, consulter le <a href="https://www.bctransit.com/victoria/">site web de BC Transit</a>.</p>
+
+    <h4>Lignes d’autobus</h4>
+    <p>Plusieurs lignes d’autobus relient le centre-ville à l’Université de Victoria : les lignes 11, 14 et 15. Si vous êtes au centre-ville, le mieux est de vous prendre l’autobus à l’arrêt <a href="https://www.bctransit.com/victoria/next-departures/?stopId=100033">100033</a> (angle de Fort Street et Douglas Street), qui est l’<a href="https://hcmc.uvic.ca/tei2017/map/?featIds=no1415BusHotels">l’arrêt Fort Street</a>, en choisissant dans l’ordre de préférence, la ligne <b>15 (Express)</b>, <b>14</b> ou <b>11</b> (la 11 est le plus pittoresque, mais la plus lente). Tous ces autobus terminent leur trajet à l’Université de Victoria (devant la librairie/<i>bookstore</i>).</p>
+
+    <h3>Vélo</h3>
+
+    <p>Des taxis sont également disponibles dans toute la région du Grand Victoria. Les deux plus grandes compagnies de taxi locales sont :</p>
     <ul>
-      <li>Choose decaf coffee if you're sensitive to caffeine</li>
-      <li>Try different types of coffee like espresso, latte, or cappuccino</li>
-      <li>Experiment with different flavors like vanilla or hazelnut</li>
+      <li><a href="https://www.taxicab.com/">Bluebird Cabs</a> (250-382-2222)</li>
+      <li><a href="https://www.yellowcabvictoria.com/">Yellow Cab</a> (250-381-2222)</li>
     </ul>
+
+    <h3>Taxis</h3>
+
+    <p>Victoria dispose d’un <a href="https://www.victoria.ca/getting-around/walking-riding-rolling/cycling-network">réseau cyclable AAA (tous âges et tous niveaux)</a>. Ce réseau offre un accès pratique et sûr. L’infrastructure comprend des pistes cyclables protégées à sens unique et à double sens, des rues partagées pour les cyclistes et des voies cyclables conseillées.</p>
+
+    <p>Location de vélos</p>
+    <ul>
+      <li>
+        <a href="https://ruhza.com/">Bikes Victoria</a>
+      </li>
+      <li>
+        <a href="https://cyclebc.ca/victoria/bicycles/victoria-bicycle-rentals/">Cycle BC</a>
+      </li>
+      <li>
+        <a href="https://thepedaler.ca/">The Pedaler</a>
+      </li>
+      <li>
+        <a href="https://pedegoelectricbikes.ca/pedego_dealers/pedego-victoria/">Pedego Electric Bikes</a>
+      </li>
+      <li>
+        <a href="https://victoriabikerentals.com/">Victoria Bike Rentals</a>
+      </li>
+    </ul>
+
   </section>
 
 </div>
