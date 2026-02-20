@@ -18,6 +18,14 @@ $fontPath : "../../fonts/";
 }
 
 @font-face {
+	font-family: 'Roboto Condensed';
+	font-weight: 100 900;
+	font-style: normal;
+	src: url("#{$fontPath}RobotoCondensed-VariableFont.woff2") format("woff2");
+	font-display: swap;
+}
+
+@font-face {
 	font-family: 'Inter';
 	font-weight: 100 900;
 	font-style: normal;
