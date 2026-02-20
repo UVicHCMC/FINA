@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div id="root"><!--gets removed-->
+
+  <h1>Hébergement</h1><!--Page title-->
+
+  <section id="hebergement">
+
+    <p>Nous avons négocié des tarifs préférentiels auprès de plusieurs établissements. Pour en bénéficier, veuillez préciser que vous participez au colloque <i>Les français d’ici 2026 (linguistics conference)</i>. Ces tarifs sont toutefois offerts selon les disponibilités. Victoria étant une destination très prisée de mai à août, nous vous recommandons vivement de réserver votre hébergement dès que possible.</p>
+
+    <p>Voici les établissements en question (tous sont bien desservis par un bon réseau d’autobus jusqu’au campus). Nous incluons aussi les résidences sur le campus. Victoria est également très bien pourvue en logements de type Airbnb:</p>
+
+    <ol>
+      <li>Rialto-DoubleTree, 777 Douglas Street <br />Mode de réservation : soit par téléphone au 1-250-383-4157, soit par courriel à l’adresse <a href="mailto:stay@hotelrialto.ca">stay@hotelrialto.ca</a> <br />Date limite pour le tarif préférentiel : le 2 mai</li>
+
+      <li>Best Western Plus Carlton Plaza Hotel, 642 Johnson Street <br />Mode de réservation : <a href="https://www.bestwestern.com/en_US/book/hotel-rooms.62063.html?groupId=X72NX4Y5">uniquement via le lien</a>. Si certains types de chambres sont épuisés, ils ne s’afficheront pas sur la page. Si toutes les chambres sont épuisées, le code tarifaire correct (« Les français d’ici 2026 ») ne s’affichera pas et le tarif normal sera proposé. <br />Date limite pour le tarif préférentiel : le 14 mai</li>
+
+      <li>Coast Victoria hotel, 146 Kingston Street <br />Mode de réservation : par la ligne de réservation sans frais (1-800-663-1144) ou via <a href="https://book.passkey.com/e/51189042">le lien Passkey</a>. Le code de groupe doit être mentionné. <br />Date limite pour le tarif préférentiel : avant le 15 mai</li>
+
+      <li>Swans Hotel, 506 Pandora Avenue <br />Mode de réservation : par courriel (<a href="mailto:info@swanshotel.com">info@swanshotel.com</a>) ou par téléphone (1-250-940-7511). Il faut fournir le numéro de folio 670881 au moment de la réservation afin de bénéficier du tarif préférentiel. <br />Date limite pour le tarif préférentiel: le 1er mai</li>
+
+      <li>Waddington Flats, 1310 Waddington Alley <br />Mode de réservation : par téléphone (1- 778-968-1310) ou par courriel (<a href="mailto:info@waddingtonflats.com">info@waddingtonflats.com</a>)</li>
+
+      <li>Résidences sur le campus : <a href="https://www.uvic.ca/residence/visitors/index.php">UVic visitor accommodation</a></li>
+    </ol>
+  </section>
+
+</div>
+<!--end of root-->

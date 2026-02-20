@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
      This file contains metadata and properties for conference websites.
 
@@ -73,8 +73,7 @@
     <splash-logo>
         <class>splash-logo</class>
         <src>images/logo-splash-brecht.webp</src>
-        <fr
-        >Brecht in the anthropocene, 18th symposium of the International Brecht Society. University of Victoria, Victoria, BC, Canada: July 22-26, 2026.</fr>
+        <fr>Brecht in the anthropocene, 18th symposium of the International Brecht Society. University of Victoria, Victoria, BC, Canada: July 22-26, 2026.</fr>
 
     </splash-logo>
 
@@ -83,14 +82,13 @@
         <href>https://hcmc.uvic.ca</href>
         <src>images/logo-uvic.svg</src>
         <alt>
-            <fr
-            >University of Victoria Humanities Computing and Media Centre</fr>
+            <fr>University of Victoria Humanities Computing and Media Centre</fr>
         </alt>
     </uvic-logo>
 
     <!--For img.mobile-header splash page-->
     <mobile-header-splash>
-    <class>mobile-header-splash</class>
+        <class>mobile-header-splash</class>
         <src>images/logo-mobile-header.webp</src>
         <alt>
             <fr />
@@ -100,7 +98,7 @@
 
     <!--For img.mobile-header internal pages-->
     <mobile-header-internal>
-    <class>mobile-header-internal</class>
+        <class>mobile-header-internal</class>
         <src>images/logo-mobile-header.webp</src>
         <alt>
             <fr />
@@ -146,22 +144,28 @@
     <!-- For div.popover-nav-items-->
     <navigation>
         <item href="index.html">
-            <fr>Home</fr>
+            <fr>Accueil</fr>
         </item>
-        <item href="registration.html">
-            <fr>Registration</fr>
+        <item href="cfp.html">
+            <fr>Appel à communications</fr>
         </item>
         <item href="program.html">
-            <fr>Program</fr>
+            <fr>Programme</fr>
+        </item>
+        <item href="registration.html">
+            <fr>Inscriptions</fr>
+        </item>
+        <item href="practical-info.html">
+            <fr>Renseignements pratiques</fr>
         </item>
         <item href="accommodations.html">
-            <fr>Accommodations</fr>
+            <fr>Hébergement</fr>
         </item>
-        <item href="gettinghere.html">
-            <fr>Getting here</fr>
+        <item href="a-faire.html">
+            <fr>À voir et à faire à Victoria</fr>
         </item>
         <item href="about.html">
-            <fr>About</fr>
+            <fr>À propos</fr>
         </item>
     </navigation>
 
