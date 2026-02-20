@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div id="root"><!--gets removed-->
+
+  <h1>Programme</h1><!--Page title-->
+
+  <section id="plenieres">
+    <h2>Conférences plénières</h2>
+
+    <h3>Myriam Bergeron-Maguire, Université Sorbonne Nouvelle Paris 3 (France)</h3>
+    <p>[Summary and photo]</p>
+
+    <h3>Marie-Hélène Côté, Université de Lausanne (Suisse)</h3>
+    <p>[Summary and photo]</p>
+
+    <h3>France Martineau, Université d’Ottawa (Ontario, Canada)</h3>
+    <p>[Summary and photo]</p>
+
+    <h3>Oliver Mayeux, University of Cambridge (Angleterre)</h3>
+    <p>[Summary and photo]</p>
+
+    <h3>Basile Roussel, Université de Moncton, campus de Shippagan (Nouveau-Brunswick, Canada)</h3>
+    <p>[Summary and photo]</p>
+
+    <!---figure>
+      <img src="donut.jpg" alt="Alt text if necessary" />
+      <figcaption>Caption if provided</figcaption>
+    </figure-->
+
+  </section>
+
+  <section id="ateliers">
+    <h2>Ateliers</h2>
+
+    <h3>Oliver Mayeux, University of Cambridge (Angleterre)</h3>
+    <p>[Summary and photo]</p>
+
+    <h3>Basile Roussel, Université de Moncton, campus de Shippagan (Nouveau-Brunswick, Canada)</h3>
+    <p>[Summary and photo]</p>
+
+    <!---figure>
+      <img src="donut.jpg" alt="Alt text if necessary" />
+      <figcaption>Caption if provided</figcaption>
+    </figure-->
+
+  </section>
+
+  <section id="horaire">
+    <h2>Horaire</h2>
+
+    <p>Télécharger l’horaire [pdf document] À venir</p>
+
+  </section>
+
+  <section id="communications">
+    <h2>Résumés des communications</h2>
+
+    <p>Télécharger les résumés des communications [pdf document] À venir</p>
+
+  </section>
+
+</div>
+<!--end of root-->
