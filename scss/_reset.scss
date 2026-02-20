@@ -1,53 +1,69 @@
 //This sets the percived size of the element in the DOM to include its border.
-*, *::before, *::after{
-    box-sizing: border-box; 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 //Because some HTMl elements have default margins and paddings on them, this sets the default margin and padding behavior to 0.
-*{
-    margin: 0; 
-    padding: 0; 
+* {
+    margin: 0;
+    padding: 0;
 }
 //For all ordered and unordered lists, turn off the decoration (the number and dots).
-ul[role='list'], ol[role='list']{
-    list-style: none; 
+ul[role="list"],
+ol[role="list"] {
+    list-style: none;
 }
 //Set the scroll behavior of all scrollable elements to smooth.
-html:focus-within{
-    scroll-behavior: smooth; 
+html:focus-within {
+    scroll-behavior: smooth;
 }
 //Make the link underlines and normal underlines skip the "hooky" letters and symbols (q, y, j, g). Makes them look more natural.
-a:not([class]){
-    text-decoration-skip-ink: auto; 
+a:not([class]) {
+    text-decoration-skip-ink: auto;
 }
 //Images aren't repsonsive by default, and they become by setting this.
-img, picture, svg, video, canvas{
+img,
+picture,
+svg,
+video,
+canvas {
     max-width: 100%;
-    height: auto; 
-    vertical-align: middle; 
-    font-style: italic; 
-    background-repeat: no-repeat; 
+    height: auto;
+    vertical-align: middle;
+    font-style: italic;
+    background-repeat: no-repeat;
     background-size: cover;
 }
-//Don't want this to apply to open layers 
-.ol-layer>canvas {
-  max-width: none;
+//Don't want this to apply to open layers
+.ol-layer > canvas {
+    max-width: none;
 }
 
 //In the case an images doesn't load, setting and alternative text that explains the image and that is italic tells the user.
-img, picture, svg, video, canvas{
-  font-style: italic; 
-  font-family: var(--primary-sans);
+img,
+picture,
+svg,
+video,
+canvas {
+    font-style: italic;
+    font-family: var(--font-sans);
 }
 
-input, button, textarea, select{
-    font: inherit; 
+input,
+button,
+textarea,
+select {
+    font: inherit;
 }
 //Simply put, this turns off animations for people who don't want to see them. (The only usecase for !important)
-@media (prefers-reduced-motion: reduce){
+@media (prefers-reduced-motion: reduce) {
     html:focus-within {
         scroll-behavior: auto;
     }
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
@@ -56,7 +72,8 @@ input, button, textarea, select{
     }
 }
 //This makes the elements full screen while keeping the scrolling smooth.
-body, html{
-    height: 100%; 
-    scroll-behavior: smooth; 
+body,
+html {
+    height: 100%;
+    scroll-behavior: smooth;
 }

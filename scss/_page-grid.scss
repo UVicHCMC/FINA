@@ -4,71 +4,10 @@
 //
 // OVERVIEW
 // --------
-// This stylesheet defines a small set of layout primitives intended to be
-// composed together. The system is layered so that each wrapper has a single,
-// clear responsibility.
-//
-// Layers:
-//
-//   Layer A — Page chrome + safe area
-//     .page-wrapper
-//       - defines global horizontal padding (“safe area”)
-//       - keeps header/footer aligned without repeating padding
-//
-//   Layer B — Reading layout (optionally with a right-hand TOC)
-//     .doc-shell + .doc-layout (+ optional .toc)
-//       - centres the reading unit
-//       - automatically becomes 2 columns when a TOC exists
-//       - collapses back to 1 column when the *container* is too narrow
-//
-//   Layer C — Content geometry ruler
-//     .page-grid
-//       - defines named spans: content / wide / full
-//       - children explicitly opt into spans via utility classes
-//
-//   Layer D — Structural utilities
-//     .full-bleed
-//       - explicit escape hatch to reach viewport edges
-//     .band
-//       - vertical rhythm + background for horizontal “slices”
-//
-// DESIGN INTENT
-// -------------
-// - Default behaviour is readable and safe.
-// - Breakouts are explicit.
-// - Edge-to-edge is always opt-in and visible in markup.
-//
-// ==========================================================================
-
-// --------------------------------------------------------------------------
-// COMMON STRUCTURE (reference diagram)
-// --------------------------------------------------------------------------
-//
-// <body>
-//   <div class="page-wrapper">
-//
-//     <header class="site-masthead" id="site-header">…</header>
-//
-//     <div class="doc-shell">
-//       <div class="doc-layout">
-//
-//         <main class="page-grid" id="content">
-//           <!-- .content / .content--wide / .content--full -->
-//         </main>
-//
-//         <aside class="toc">…</aside> <!-- optional -->
-//
-//       </div>
-//     </div>
-//
-//     <footer class="site-footer">…</footer>
-//
-//   </div>
-// </body>
-//
-// Rule of thumb:
-//   “If it touches the viewport edge, it must be wrapped in .full-bleed.”
-//
+// Layer A — Page chrome + safe area: .page-wrapper
+// Layer B — Reading layout (+ optional TOC): .doc-shell / .doc-layout / .toc
+// Layer C — Content geometry ruler: .page-grid (+ utilities)
+// Layer D — Structural utilities: .full-bleed / .band
 // ==========================================================================
 
 // --------------------------------------------------------------------------
@@ -77,7 +16,7 @@
 
 $bp-mobile: 48rem; // generic mobile behaviour
 $bp-toc-collapse: 64rem; // reading layout: TOC → no TOC
-$bp-grid-collapse: 52rem; // content geometry: wide → content
+$bp-grid-collapse: 52rem; // content geometry: reduce padding / collapse breakout
 
 // --------------------------------------------------------------------------
 // Global defaults (tokens)
@@ -85,19 +24,9 @@ $bp-grid-collapse: 52rem; // content geometry: wide → content
 
 :root {
     --page-grid-gutter: clamp(1rem, 4vw, 3rem);
-    --page-grid-content-max: 65ch;
+
+    /* max width for breakout content */
     --page-grid-wide-max: 90rem;
-
-    --toc-min: 14rem;
-    --toc-max: 18rem;
-    --toc-gap: var(--page-grid-gutter);
-    --toc-shell-extra: calc(var(--toc-max) + var(--toc-gap));
-
-    --surface-muted: transparent;
-    --accent-bg: transparent;
-    --accent-fg: inherit;
-    --surface-dark: transparent;
-    --surface-dark-fg: inherit;
 }
 
 // ==========================================================================
@@ -105,12 +34,8 @@ $bp-grid-collapse: 52rem; // content geometry: wide → content
 // ==========================================================================
 
 .page-wrapper {
-    padding-inline: var(--page-grid-gutter);
+    padding-block: 1.5rem;
 }
-
-// ==========================================================================
-// Layer A.1 — Site header hook
-// ==========================================================================
 
 .site-masthead {
     // Header-specific styles live elsewhere
@@ -119,26 +44,11 @@ $bp-grid-collapse: 52rem; // content geometry: wide → content
 // ==========================================================================
 // Layer B — Reading layout (+ optional TOC)
 // ==========================================================================
-//
-// .doc-shell is the token + container boundary.
-// Override layout values here for different page types if needed.
-// ==========================================================================
 
 .doc-shell {
     margin-inline: auto;
-    padding-inline: 0;
-
-    container-type: inline-size;
-
-    // Explicit token boundary (inherits from :root unless overridden)
-    --page-grid-gutter: var(--page-grid-gutter);
-    --page-grid-content-max: var(--page-grid-content-max);
-    --page-grid-wide-max: var(--page-grid-wide-max);
-    --toc-min: var(--toc-min);
-    --toc-max: var(--toc-max);
-    --toc-gap: var(--toc-gap);
-    --toc-shell-extra: var(--toc-shell-extra);
-
+    padding-inline: 0; // page-wrapper provides safe padding
+    container-type: inline-size; // boundary for container queries
     max-inline-size: var(--page-grid-wide-max);
 }
 
@@ -149,13 +59,18 @@ $bp-grid-collapse: 52rem; // content geometry: wide → content
 }
 
 .doc-layout:has(.toc) {
+    --toc-min: 14rem;
+    --toc-max: 18rem;
+    --toc-gap: var(--page-grid-gutter);
+    --toc-shell-extra: calc(var(--toc-max) + var(--toc-gap));
+
     grid-template-columns:
         minmax(0, 1fr)
         minmax(var(--toc-min), var(--toc-max));
     gap: var(--toc-gap);
 }
 
-// Widen centred unit only when TOC exists
+/* widen shell only when TOC exists */
 .doc-shell:has(.doc-layout > .toc) {
     max-inline-size: calc(var(--page-grid-wide-max) + var(--toc-shell-extra));
 }
@@ -174,10 +89,7 @@ $bp-grid-collapse: 52rem; // content geometry: wide → content
     min-inline-size: 0;
 }
 
-// --------------------------------------------------------------------------
-// Container-query TOC collapse (container-based)
-// --------------------------------------------------------------------------
-
+/* container-query TOC collapse */
 @container (max-width: #{$bp-toc-collapse}) {
     .doc-layout {
         grid-template-columns: minmax(0, 1fr);
@@ -195,52 +107,89 @@ $bp-grid-collapse: 52rem; // content geometry: wide → content
 // ==========================================================================
 // Layer C — Content geometry ruler (.page-grid)
 // ==========================================================================
+//
 
-.page-grid {
-    container-type: inline-size;
+.page-grid,
+.content--full {
     display: grid;
 
+    /* horizontal safe area on both sides of the grid
+     clamp(min, fluid, max) */
+    --gutter: clamp(1rem, 4vw, 3rem);
+
+    /* preferred readable line length
+     this is the target width for the content column */
+    --content-max: 80ch;
+
+    /* absolute maximum width allowed for wide / breakout content */
+    --wide-max: 90rem;
+
+    /* breakout size calculation:
+     (wide-max - content-max) gives the total extra width available
+     dividing by 2 splits it evenly on the left and right */
+    --breakout: calc((var(--wide-max) - var(--content-max)) / 2);
+
+    /* grid geometry:
+     the sum of all columns will never exceed the container width */
     grid-template-columns:
-        [full-start]
-        minmax(var(--page-grid-gutter), 1fr)
-        [wide-start]
-        minmax(0, calc((var(--page-grid-wide-max) - var(--page-grid-content-max)) / 2))
-        [content-start]
-        minmax(0, var(--page-grid-content-max))
+    /* outer flexible space:
+       - minimum = gutter (safe area)
+       - maximum = remaining free space */
+        [full-start] minmax(var(--gutter), 1fr)
+        /* breakout column:
+       - grows up to --breakout
+       - shrinks to 0 before content is forced to shrink */
+        [breakout-start] minmax(0, var(--breakout))
+        /* content column sizing math:
+       - calc(100% - gutter * 2) = available inner space
+       - min(...) ensures content never exceeds content-max
+       - content only shrinks when container < content-max + gutters */
+        [content-start] min(
+            calc(100% - (var(--gutter) * 2)),
+            var(--content-max)
+        )
         [content-end]
-        minmax(0, calc((var(--page-grid-wide-max) - var(--page-grid-content-max)) / 2))
-        [wide-end]
-        minmax(var(--page-grid-gutter), 1fr)
-        [full-end];
+        /* symmetric breakout column on the right */
+        minmax(0, var(--breakout)) [breakout-end]
+        /* symmetric outer flexible space */
+        minmax(var(--gutter), 1fr) [full-end];
 }
 
-// Span utilities
-.content {
+/* default: normal children go to content, including inside nested full */
+.page-grid > :not(.content--breakout, .content--full),
+.content--full > :not(.content--breakout, .content--full) {
     grid-column: content;
-}
-.content--wide {
-    grid-column: wide;
-}
-.content--full {
-    grid-column: full;
-}
-
-// Intrinsic sizing override
-.content,
-.content--wide,
-.content--full {
     min-inline-size: 0;
 }
 
-// Figure integration
-figure.content--wide,
-figure.content--full {
+/* breakout (wide) */
+.page-grid > .content--breakout {
+    grid-column: breakout;
+    min-inline-size: 0;
+}
+
+/* full width (becomes a grid so its children can align to the same tracks) */
+.page-grid > .content--full {
+    grid-column: full;
+    min-inline-size: 0;
+
     display: grid;
     grid-template-columns: inherit;
+}
+
+/* allow breakout inside full-width sections */
+.content--full > .content--breakout {
+    grid-column: breakout;
+    min-inline-size: 0;
+}
+
+/* figure integration */
+figure.content--breakout,
+figure.content--full {
     margin: 0;
 }
 
-figure.content--wide > img,
+figure.content--breakout > img,
 figure.content--full > img {
     grid-column: full;
     display: block;
@@ -249,13 +198,13 @@ figure.content--full > img {
     block-size: auto;
 }
 
-figure.content--wide > figcaption,
+figure.content--breakout > figcaption,
 figure.content--full > figcaption {
     grid-column: content;
     margin-block-start: 0.75rem;
 }
 
-// Tables
+/* tables */
 .table-wrap {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -266,7 +215,7 @@ figure.content--full > figcaption {
     border-collapse: collapse;
 }
 
-// Code blocks
+/* code blocks */
 .codeblock {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -274,27 +223,27 @@ figure.content--full > figcaption {
     border-radius: 0.75rem;
 }
 
-// --------------------------------------------------------------------------
-// Container-query collapse for page-grid geometry
-// --------------------------------------------------------------------------
-// When the reading unit becomes too narrow to support wide breakouts,
-// collapse wide → content by making the math resolve to zero.
-//
-
-@container (max-width: #{$bp-grid-collapse}) {
-    .page-grid {
-        --page-grid-content-max: 100%;
-        --page-grid-wide-max: 100%;
-        --page-grid-gutter: clamp(1rem, 3vw, 1.5rem);
-    }
-}
-
 // ==========================================================================
 // Layer D — Structural utilities (full-bleed + bands)
 // ==========================================================================
 
 .full-bleed {
-    margin-inline: calc(var(--page-grid-gutter) * -1);
+    /* if used inside .page-grid, allow it to span */
+    grid-column: full;
+
+    /* escape centred/max-width containers */
+    inline-size: 100%;
+    max-inline-size: none;
+    margin-inline: calc(50% - 50vw);
+
+    /* prevent 1–2px rounding scrollbars */
+    overflow-x: clip;
+}
+
+@supports (width: 100dvw) {
+    .full-bleed {
+        margin-inline: calc(50% - 50dvw);
+    }
 }
 
 .full-bleed--mobile {
@@ -303,31 +252,4 @@ figure.content--full > figcaption {
     @media (width >= #{$bp-mobile}) {
         margin-inline: 0;
     }
-}
-
-// Band utility: vertical rhythm + background
-.band {
-    padding-block: clamp(3rem, 8vw, 6rem);
-    background: transparent;
-}
-
-.band--tight {
-    padding-block: clamp(2rem, 5vw, 3rem);
-}
-.band--loose {
-    padding-block: clamp(4rem, 10vw, 8rem);
-}
-
-.band--muted {
-    background: var(--surface-muted);
-}
-
-.band--accent {
-    background: var(--accent-bg);
-    color: var(--accent-fg);
-}
-
-.band--dark {
-    background: var(--surface-dark);
-    color: var(--surface-dark-fg);
 }

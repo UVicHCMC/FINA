@@ -11,7 +11,7 @@ $tablet-landscape-width: "1024px";
 $desktop-sm: "1024px";
 $desktop-md: "1280px";
 $desktop-lg: "1440px";
-$desktop-height:"900px";
+$desktop-height: "900px";
 
 $macbook-height: 832px;
 
@@ -19,164 +19,166 @@ $desktop-break: 768px;
 
 //CSS custom properties
 :root {
-	
-	
-	
-	--desktop-sm: 1024px;
-	--desktop-md: 1280px;
-	--desktop-lg: 1440px;
-	
-	
-	//page background (not content column)
-	--viewport-bg-color: #ffffff;
+    --desktop-sm: 1024px;
+    --desktop-md: 1280px;
+    --desktop-lg: 1440px;
 
-	//fonts
-	--primary-sans: 'Roboto', Verdana, Geneva, Tahoma, sans-serif;
-	--primary-serif: 'Source Serif', Georgia, Times New Roman, serif;
-	--primary-serif-sc: 'Alegreya SC', Georgia, Times New Roman, serif;
+    /* Background reference */
+    --color-bg: #fcfcfc;
 
-	//borders 
-	--border-color: #D5D7DA;
-	
+    //Site highlight color;
+    --highlight: #0c6994;
 
-	//hamburger menu
-	--hamburger-closed-color: var(--highlight);
-	--hamburger-open-color: #fff;
-	--hamburger-bg-color: transparent;
-	--hamburger-open-bg-color: transparent;
+    /* Text colours (light theme, near-white background) */
+    --color-text-primary: #1e1e1e; /* body text */
+    --color-text-heading: #111111; /* headings */
+    --color-text-secondary: #444444; /* blockquotes, lead text */
+    --color-text-muted: #6b6b6b; /* captions, metadata */
+    --color-text-faint: #8a8a8a; /* non-essential */
 
-	//mobile nav top bar and navigation page-break-after: none;
-	--mobile-nav-bg-color: rgba(79, 106, 23, 1);
-	--mobile-nav-bg-color-closed: #ffffff;
+    /* Links */
+    --color-link: var(--color-text-primary);
+    --color-link-hover: var(--highlight);
+    --underline: var(--highlight);
+    --underline-hover: transparent;
 
-	
+    /* Code */
+    --color-code-bg: #000000;
+    --color-code-fg: #ffffff;
 
+    /* Figures */
+    --figure-bg-color: transparent;
+    --figure-border-color: #333333;
 
-	//cards
-	--card-text-color: #222222;
-	--card-font-family: var(--primary-sans);
-	--card-shadow: 0 10px 24px 0px rgba(0, 0, 0, 0.02), 0 8px 20px -2px rgba(0, 0, 0, 0.06), 0 6px 10px -6px rgba(0, 0, 0, 0.1);
+    /* Font families */
+    --font-sans: "Roboto", Verdana, Geneva, Tahoma, sans-serif;
+    --font-serif: "Source Serif", Georgia, "Times New Roman", Times, serif;
+    --font-serif-sc: "Alegreya SC", Georgia, "Times New Roman", Times, serif;
+    --font-mono:
+        ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", monospace;
 
-	//footer
-	--footer-specific-border-color: #FFB500;
+    /* Font weights */
+    --fw-light: 300;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+    --fw-extra-bold: 800;
+    --fw-black: 900;
+    --fw-extra-black: 950;
 
-	//mobile-nav-footer
-	--mobile-nav-footer-border-color: #222222;
+    /* Type scale */
+    --fs-300: 0.875rem;
+    --fs-400: 1rem;
+    --fs-500: 1.125rem;
+    --fs-600: 1.25rem;
+    --fs-700: 1.5rem;
+    --fs-800: 2rem;
 
-	//dialog popup
-	--dialog-border: 1px solid var(--divider-bg-color);
-	--dialog-boxshadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25), inset 0 0 50px rgba(0, 0, 0, 0.15), 0 0 5px rgba(0, 0, 0, 0.25);
-	--dialog-font-family: var(--primary-sans);
-	--dialog-p-font-weight: 400;
-	--dialog-p-color: var(--text-color);
-	--dialog-header-weight: 700;
-	--dialog-header-size: 1.3rem;
-	--dialog-header-margin: 0 0 .25rem 0;
-	--dialog-bg-color: #fff;
+    /* Line heights */
+    --lh-tight: 1.15;
+    --lh-body: 1.6;
 
+    /* Spacing (vertical rhythm) */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 3rem;
 
+    /* Links */
+    --underline-offset: 0.15em;
+    --underline-thickness: from-font;
 
-	//padding and margins
-	--splash-padding-block: 2rem;
-	--splash-padding-block-mobile: 1rem;
-	--splash-padding-inline: 2rem;
-	--splash-padding-inline-mobile: 1rem;
+    //fonts
+    --font-sans: "Roboto", Verdana, Geneva, Tahoma, sans-serif;
+    --font-serif: "Source Serif", Georgia, Times New Roman, serif;
+    --font-serif-sc: "Alegreya SC", Georgia, Times New Roman, serif;
 
-	//top nav clicky menu
-	--nav-font-size-desktop: 1rem;
-	--nav-font-size-mobile: 1.138rem;
-	--nav-font-size-dropdown: 1rem;
-	--nav-bg: #f8f8f8;
-	--nav-color-splash-desktop: #fff;
-	--nav-color-splash-mobile: #fff;
-	--nav-color-desktop: #fff;
-	--nav-color-mobile: #fff;
-	--nav-text-decoration-color: transparent;
-	--nav-text-decoration-color-active: #fff;
-	--nav-text-decoration-color-splash-active: #fff;
-	--dropdown-color: #222222;
-	--dropdown-bg-hover-color: #222222;
-	--dropdown-bg-color: #ffffff;
-	--dropdown-bg-internal-color: #ffffff;
-	--dropdown-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-	--topnav-svg-active-color: #222222;
-	--topnav-bg-internal-color: #fefefe;
-	--topnav-mobile-bg-color: #ffffff;
-	--top-offset: 49px;
+    //borders
+    --border-color: #d5d7da;
 
+    //hamburger menu
+    --hamburger-closed-color: var(--highlight);
+    --hamburger-open-color: #fff;
+    --hamburger-bg-color: transparent;
+    --hamburger-open-bg-color: transparent;
 
+    //mobile nav top bar and navigation page-break-after: none;
+    --mobile-nav-bg-color: rgba(79, 106, 23, 1);
+    --mobile-nav-bg-color-closed: #ffffff;
 
+    //mobile-nav-footer
+    --mobile-nav-footer-border-color: #222222;
 
-	//colors
+    //colors
 
-	--divider-bg-color: #d8d8d8;
+    --divider-bg-color: #d8d8d8;
 
-	--internal-mobile-banner-bg-color: #fff;
-	--internal-mobile-banner-open-bg-color: rgba(0, 115, 255, 1);
-	--internal-header-bg-color: #fff;
-	--internal-nav-bg-color: #fff;
+    --internal-mobile-banner-bg-color: #fff;
+    --internal-mobile-banner-open-bg-color: rgba(0, 115, 255, 1);
+    --internal-header-bg-color: #fff;
+    --internal-nav-bg-color: #fff;
 
+    --body-internal-bg: #fdfdfd;
 
-	--body-internal-bg: #fdfdfd;
+    --page-bg: #fafafa;
 
-	--page-bg: #fafafa;
-	--highlight: #D60000;;
-	--text-color: #222222;
-	--underline: #FFB500;;
-	--underline-active: transparent;
-	--link-inactive: #222222;;
-	--link-active: #222222;
-	--mobile-toggler-color: #fff;
-	--moible-toggler-internal-color: #222222;
-	--footer-internal-bg-color: transparent;
-	--footer-internal-color: #838383;
-	--image-border-color: 1px lsolid #d0d0d0;
-	--card-container-color: #f2f2f2;
+    --text-color: #222222;
 
-	--splashnav-bg-color-desktop: rgba(34, 34, 34, 0.9); //used for menu, header and footer background colours
-	--internalnav-bg-color-desktop: #fff;
-	--mobile-bg-color: #d2d2d2;
+    --link-inactive: #222222;
+    --link-active: #222222;
+    --mobile-toggler-color: #fff;
+    --moible-toggler-internal-color: #222222;
+    --footer-internal-bg-color: transparent;
+    --footer-internal-color: #838383;
+    --image-border-color: 1px lsolid #d0d0d0;
+    --card-container-color: #f2f2f2;
 
-	--header-mobile-bg-color: #222222;
+    --internalnav-bg-color-desktop: #fff;
+    --mobile-bg-color: #d2d2d2;
 
-	//borders
-	--topnav-internal-border: 3px solid var(--highlight);
+    --header-mobile-bg-color: #222222;
 
-	//shadows
-	--topnav-internal-bs: 0 1px 2px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.05), 0 2px 8px hsla(0, 0%, 0%, 0.05);
+    //borders
+    --topnav-internal-border: 3px solid var(--highlight);
 
+    //shadows
+    --topnav-internal-bs:
+        0 1px 2px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.05),
+        0 2px 8px hsla(0, 0%, 0%, 0.05);
 
-   
+    --body-padding-mobile: 0 1rem;
+    --body-padding-desktop: 0 1rem;
+    --body-margin-mobile: 0 1rem;
+    --body-margin-desktop: 0;
 
+    --text-width: 40rem;
+    --standard-margin: 0.75rem;
+    --margin-list-item: 0rem;
+    --body-text-weight: 400;
+    --body-text-desktop-size: 1rem;
+    --body-text-mobile-size: 1rem;
+    --body-text-lineheight-desktop: 1.5;
+    --body-text-lineheight-mobile: 1.5;
+    --table-font: var(--font-sans);
+    --td-border-color: #dbdbdb;
+    --map-outline-color: #222222;
+    --image-border-color: #e6e6e6;
+    --details-bg-color: #eeeeee;
+    --standard-border-color: #b9b9b9;
 
-	--body-padding-mobile: 0 1rem;
-	--body-padding-desktop: 0 1rem;
-	--body-margin-mobile: 0 1rem;
-	--body-margin-desktop: 0;
-
-	--text-width: 40rem;
-	--standard-margin: .75rem;
-	--margin-list-item: 0rem;
-	--body-text-weight: 400;
-	--body-text-desktop-size: 1rem;
-	--body-text-mobile-size: 1rem;
-	--body-text-lineheight-desktop: 1.5;
-	--body-text-lineheight-mobile: 1.5;
-	--table-font: var(--primary-sans);
-	--td-border-color: #dbdbdb;
-	--map-outline-color: #222222;
-	--image-border-color: #e6e6e6;
-	--details-bg-color: #eeeeee;
-	--standard-border-color: #b9b9b9;
-
-
-	--scroll-top-bg-color: #4F6A17;
-	--scroll-top-bg-active: #4F6A17;
-	--scroll-top-shadow: 0 10px 24px 0px rgba(0, 0, 0, 0.02), 0 8px 20px 0px rgba(0, 0, 0, 0.06), 0 6px 10px 0px rgba(0, 0, 0, 0.1);
-	--scroll-top-color: #fff;
-	--scroll-top-color-active: #fff;
-	--scroll-top-svg-stroke: #fff;
-	--scroll-top-svg-stroke-active: #fff;
-	--map-circle-fill: rgba(70, 120, 120, 1);
-	--map-circle-stroke: rgba(255, 255, 255, 1);
+    --scroll-top-bg-color: #4f6a17;
+    --scroll-top-bg-active: #4f6a17;
+    --scroll-top-shadow:
+        0 10px 24px 0px rgba(0, 0, 0, 0.02), 0 8px 20px 0px rgba(0, 0, 0, 0.06),
+        0 6px 10px 0px rgba(0, 0, 0, 0.1);
+    --scroll-top-color: #fff;
+    --scroll-top-color-active: #fff;
+    --scroll-top-svg-stroke: #fff;
+    --scroll-top-svg-stroke-active: #fff;
+    --map-circle-fill: rgba(70, 120, 120, 1);
+    --map-circle-stroke: rgba(255, 255, 255, 1);
 }

@@ -1,10 +1,11 @@
 //Imported
-@use "utilities" as *;
+@use "custom-properties" as *;
 @use "typography" as *;
 @use "reset" as *;
 @use "fonts" as *;
 @use "hcmc-table" as *;
 @use "popover-nav-fullscreen" as *;
+@use "page-grid" as *;
 
 //skip link for acessibility
 .skip-link {
@@ -42,14 +43,20 @@
     margin: -1px;
 }
 
+//top border on body
+body:not(#index) {
+    border-top: 5px solid var(--highlight);
+}
+
 //controls viewport padding and margins, centers main content
-.page-wrapper {
+#index .page-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding-inline: 1rem;
     padding-block: 1rem;
+    margin-inline: auto;
     width: 100%;
 
     @media (width >= $desktop-break) {
@@ -59,11 +66,15 @@
     }
 }
 
+.page-wrapper {
+    padding-inline: 1rem;
+}
+
 header {
     width: 100%;
 }
 
-.mobile-header {
+.mobile-header-splash {
     width: 300px;
     height: auto;
 
@@ -72,6 +83,11 @@ header {
     }
 }
 
+.mobile-header-internal {
+    display: block;
+    width: 300px;
+    height: auto;
+}
 //blob on brecht splash
 .blob {
     --blob-width: min(75dvh, 900px);
@@ -106,24 +122,34 @@ header {
         transform: scale(1);
     }
 
-    20% {
-        border-radius: 55% 45% 38% 62% / 35% 60% 40% 65%;
-        transform: scale(1.015);
+    13% {
+        border-radius: 50% 50% 44% 56% / 38% 62% 45% 55%;
+        transform: scale(1.01);
     }
 
-    40% {
+    27% {
         border-radius: 33% 67% 52% 48% / 61% 39% 58% 42%;
         transform: scale(0.985);
     }
 
-    60% {
-        border-radius: 60% 40% 45% 55% / 32% 66% 34% 68%;
+    41% {
+        border-radius: 62% 38% 47% 53% / 35% 65% 40% 60%;
         transform: scale(1.02);
     }
 
-    80% {
-        border-radius: 47% 53% 64% 36% / 55% 37% 63% 45%;
+    58% {
+        border-radius: 45% 55% 66% 34% / 58% 42% 63% 37%;
         transform: scale(0.99);
+    }
+
+    73% {
+        border-radius: 57% 43% 39% 61% / 32% 68% 35% 65%;
+        transform: scale(1.015);
+    }
+
+    89% {
+        border-radius: 48% 52% 60% 40% / 55% 45% 58% 42%;
+        transform: scale(0.995);
     }
 
     100% {
@@ -148,11 +174,13 @@ footer {
     width: 100%;
     max-width: $desktop-sm;
     border-block-start: 1px solid var(--border-color);
-}
 
-.footer-items {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style-type: none;
+    & ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        list-style-type: none;
+    }
 }

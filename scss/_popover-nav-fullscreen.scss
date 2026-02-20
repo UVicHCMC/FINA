@@ -1,9 +1,13 @@
 @use "utilities" as *;
 
-header {
+:root {
     //Used by js to remove popover open if viewport changes while popover is open
-    --desktop-break: 768px;
 
+    :root {
+        --desktop-break: 768px;
+    }
+}
+header {
     --nav-bg-color: transparent;
 
     --button-color: #ffffff;
@@ -54,10 +58,12 @@ header {
 
     @media (width >=768px) {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 1rem;
         position: relative;
+        padding-block-end: 1.25rem;
     }
 }
 
@@ -78,9 +84,9 @@ header {
 
 //language chooser button
 .lang-chooser {
-    padding: 0.5rem;
+    padding: 0.5rem 0.65rem;
     width: max-content;
-    font-family: var(--primary-sans);
+    font-family: var(--font-sans);
     color: var(--lang-chooser-color);
     appearance: none;
     background-color: var(--lang-chooser-bg-color);
@@ -108,7 +114,7 @@ button.popover-nav-open {
     appearance: none;
 
     border: none;
-    font-family: var(--primary-sans);
+    font-family: var(--font-sans);
     color: var(--button-color);
     background-color: var(--button-bg-color);
     outline: 1px solid transparent;
@@ -156,7 +162,7 @@ button.popover-nav-close {
     appearance: none;
 
     border: none;
-    font-family: var(--primary-sans);
+    font-family: var(--font-sans);
     color: var(--button-x-color);
     background-color: var(--button-x-bg-color);
     outline: 1px solid transparent;
@@ -284,7 +290,7 @@ body:has(#site-navigation[popover]:popover-open) {
     }
 
     & .popover-header-text {
-        font-family: var(--primary-serif-sc);
+        font-family: var(--font-serif-sc);
         font-weight: 500;
         font-size: 2.5rem;
         text-shadow: 1.17329px 1.17329px 1.17329px rgba(0, 0, 0, 0.5);
@@ -377,7 +383,7 @@ body:has(#site-navigation[popover]:popover-open) {
     }
 
     & .item {
-        font-family: var(--primary-sans);
+        font-family: var(--font-sans);
         font-weight: var(--popover-font-weight);
         font-size: var(--popover-font-size);
         color: var(--popover-color);

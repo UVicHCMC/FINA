@@ -1,128 +1,130 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-    <head xmlns="http://www.w3.org/1999/xhtml">
-        <title><?siteTitle?></title>
-        
-        <!-- Core metadata -->
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        
-        <!-- Compiled styles (includes page grid + layout system) -->
-        <link rel="stylesheet" href="{?cssFile}" />
-        
-        <!-- Favicons / PWA -->
-        <link rel="icon" href="{?faviconIco}" sizes="48x48" />
-        <link rel="icon" href="{?faviconSvg}" sizes="any" type="image/svg+xml" />
-        <link rel="manifest" href="{?siteManifest}" />
-        
-    </head>
-    
-    <body id="top">
-        
-        <!--
+
+<head xmlns="http://www.w3.org/1999/xhtml">
+    <title>
+        <?siteTitle?>
+    </title>
+
+    <!-- Core metadata -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Compiled styles (includes page grid + layout system) -->
+    <link rel="stylesheet" href="{?cssFile}" />
+
+    <!-- Favicons / PWA -->
+    <link rel="icon" href="{?faviconIco}" sizes="48x48" />
+    <link rel="icon" href="{?faviconSvg}" sizes="any" type="image/svg+xml" />
+    <link rel="manifest" href="{?siteManifest}" />
+
+</head>
+
+<body id="top">
+
+    <!--
              page-wrapper
              =============
              Global safe-area wrapper.
              Controls page-level padding and prevents accidental edge collisions.
         -->
-        <div class="page-wrapper">
-            <!--
+    <div class="page-wrapper">
+        <!--
                  site-masthead
                  =============
                  Global site chrome: branding, navigation, language switcher.
                  Intentionally NOT part of the page-grid / content geometry.
-            -->            
-            <header id="site-header" class="site-masthead">
-                <a href="#content" class="skip-link"><?skip-link?></a>
-                
-                <div class="nav-wrapper">
-                    
-                    <!--Insert instruction for mobile header logo-->
-                    <?mobile-header?>
-                    
-                    <div class="button-wrapper">
-                        <!-- Primary navigation toggle (mobile) -->
-                        <button
-                            id="site-menu-toggle"
-                            class="popover-nav-open"
-                            type="button"
-                            popovertarget="site-navigation"
-                            popovertargetaction="toggle"
-                            aria-controls="site-navigation"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            >
-                            <span class="nav-toggle-label"><?nav-toggle-label?></span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="menu-burger" width="24" height="24" fill="none">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h18M3 6h18M3 18h18" />
+            -->
+        <header id="site-header" class="site-masthead">
+            <a href="#content" class="skip-link"><?skip-link?></a>
+
+            <p class="internal-header-text">
+                <span class="site-title">Les français d’ici</span>
+                <span class="location">Victoria, Colombie-Britannique, Canada</span>
+                <span class="date">
+                    <time datetime="2026-06-15/2026-06-17">15–17 juin 2026</time>
+                </span>
+            </p>
+
+            <div class="nav-wrapper">
+
+                <!--Insert instruction for mobile header logo if available-->
+                <!-- <?mobile-header-internal?> -->
+
+                <div class="button-wrapper">
+                    <!-- Primary navigation toggle (mobile) -->
+                    <button id="site-menu-toggle" class="popover-nav-open" type="button" popovertarget="site-navigation" popovertargetaction="toggle" aria-controls="site-navigation" aria-haspopup="true" aria-expanded="false">
+                        <span class="nav-toggle-label"><?nav-toggle-label?></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="menu-burger" width="24" height="24" fill="none">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h18M3 6h18M3 18h18" />
+                        </svg>
+                    </button>
+
+                    <!-- Primary navigation (popover on small screens) -->
+                    <nav id="site-navigation" class="main-menu" aria-label="{?site-navigation-label}" popover="auto">
+
+                        <button type="button" class="popover-nav-close" aria-label="{?popover-close-label}" popovertarget="site-navigation" popovertargetaction="hide">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="close-x" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6 6 18M6 6l12 12" />
                             </svg>
                         </button>
-                        
-                        <!-- Primary navigation (popover on small screens) -->
-                        <nav id="site-navigation" class="main-menu" aria-label="{?site-navigation-label}" popover="auto">
-                            
-                            <button type="button" class="popover-nav-close" aria-label="{?popover-close-label}" popovertarget="site-navigation" popovertargetaction="hide">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="close-x" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6 6 18M6 6l12 12" />
-                                </svg>
-                            </button>
-                            
-                            <div class="popover-group-container">
-                                <div class="popover-header" aria-hidden="true">
-                                    <?popover-splash-icon?>
-                                </div>
-                                
-                                <ul class="popover-nav-items">
-                                    <?navigation?>
-                                </ul>
+
+                        <div class="popover-group-container">
+                            <div class="popover-header" aria-hidden="true">
+                                <?popover-splash-icon?>
                             </div>
-                        </nav>
-                        
-                        <!-- Language toggle -->
-                        <nav aria-label="{?nav-aria-label}">
-                            <!-- The attributes here will be programmatically replaced by the XSLT based on the values of the languages parameter in properties.xml -->
-                            <!-- We've left the attributes here just so that we know what to expect in the output HTML -->
-                            <a class="lang-chooser" aria-label="" hreflang="" lang="" href=""/>
-                        </nav>
-                    </div>
-                    
+
+                            <ul class="popover-nav-items">
+                                <?navigation?>
+                            </ul>
+                        </div>
+                    </nav>
+
+                    <!-- Language toggle -->
+                    <nav aria-label="{?nav-aria-label}">
+                        <!-- The attributes here will be programmatically replaced by the XSLT based on the values of the languages parameter in properties.xml -->
+                        <!-- We've left the attributes here just so that we know what to expect in the output HTML -->
+                        <a class="lang-chooser" aria-label="" hreflang="" lang="" href="" />
+                    </nav>
                 </div>
-            </header>
-            
-            <!--
+
+            </div>
+        </header>
+
+        <!--
                  doc-shell / doc-layout
                  =====================
                  Centers the reading unit.
                  May expand when a TOC is present on interior pages.
             -->
-            <div class="doc-shell">
-                <div class="doc-layout">
-                    
-                    <!--
+        <div class="doc-shell">
+            <div class="doc-layout">
+
+                <!--
                          page-grid
                          =========
                          Content geometry ruler.
                          Children opt into content / wide / full spans via utility classes.
                     -->
-                    <main class="page-grid" id="content">
-                        <!-- NOTE: This processing-instruction will be replaced by the document 
+                <main class="page-grid" id="content">
+                    <!-- NOTE: This processing-instruction will be replaced by the document 
                              content. -->
-                        <?docContent?>
-                    </main>
-                </div>
+                    <?docContent?>
+                </main>
             </div>
-            
-            <!--
+        </div>
+
+        <!--
                  site-footer
                  ===========
                  Global site chrome.
                  Not constrained by page-grid geometry.
             -->
-            <footer class="site-footer">
-                <div class="footer-container">
-                  <?footer-content?>
-                </div>
-            </footer>
-        </div>
-    </body>
-    
+        <footer class="site-footer">
+            <div class="footer-container">
+                <?footer-content?>
+            </div>
+        </footer>
+    </div>
+</body>
+
 </html>
