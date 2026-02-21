@@ -52,56 +52,19 @@ $desktop-break: 768px;
 
     /* Font families */
     
-    //splash text
-    --font-sans-title: "Alegreya Sans", "Source Sans 3", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     
-    //body text
-    --font-sans: "Roboto", Verdana, Geneva, Tahoma, sans-serif;
-    --font-serif: "Source Serif", Georgia, "Times New Roman", Times, serif;
-    --font-serif-sc: "Alegreya SC", Georgia, "Times New Roman", Times, serif;
-    --font-mono:
-        ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-        "Liberation Mono", monospace;
 
-    /* Font weights */
-    --fw-light: 300;
-    --fw-regular: 400;
-    --fw-medium: 500;
-    --fw-semibold: 600;
-    --fw-bold: 700;
-    --fw-extra-bold: 800;
-    --fw-black: 900;
-    --fw-extra-black: 950;
+ 
 
-    /* Type scale */
-    --fs-300: 0.875rem;
-    --fs-400: 1rem;
-    --fs-500: 1.125rem;
-    --fs-600: 1.25rem;
-    --fs-700: 1.5rem;
-    --fs-800: 2rem;
+        
 
-    /* Line heights */
-    --lh-tight: 1.15;
-    --lh-body: 1.6;
-
-    /* Spacing (vertical rhythm) */
-    --space-1: 0.25rem;
-    --space-2: 0.5rem;
-    --space-3: 0.75rem;
-    --space-4: 1rem;
-    --space-5: 1.5rem;
-    --space-6: 3rem;
+   
 
     /* Links */
     --underline-offset: 0.15em;
     --underline-thickness: from-font;
 
-    //fonts
-    --font-sans: "Roboto", Verdana, Geneva, Tahoma, sans-serif;
-    --font-serif: "Source Serif", Georgia, Times New Roman, serif;
-    --font-serif-sc: "Alegreya SC", Georgia, Times New Roman, serif;
-
+  
     //borders
     --border-color: #d5d7da;
 
