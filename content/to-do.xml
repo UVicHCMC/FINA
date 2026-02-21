@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div id="root"><!--gets removed-->
+
+  <h1>À voir et à faire à Victoria</h1><!--Page title-->
+
+  <section id="a-faire">
+
+    <p>Le site de <a href="https://www.tourismvictoria.com/">Tourism Victoria</a> propose une vaste sélection d’activités, de restaurants et de suggestions pour planifier votre séjour.</p>
+
+    <p>Une fois sur place, vous pouvez également vous rendre au Destination Greater Victoria Visitor Centre, situé au 812 Wharf Street, dans le port en plein centre-ville, afin d’obtenir des conseils personnalisés et des renseignements complémentaires.</p>
+
+    <p>La liste ci-dessous présente quelques activités populaires, mais l’offre est bien plus vaste et saura satisfaire tous les goûts.</p>
+
+  </section>
+
+  <section id="musees-etc">
+
+    <h2>Musées, galeries d’art et sites patrimoniaux</h2>
+
+    <ul>
+      <li><a href="https://aggv.ca/">Art Gallery of Greater Victoria</a> : 1040 Moss Street</li>
+      <li><a href="https://www.leg.bc.ca/visit">Assemblée législative de la Colombie-Britannique</a> : 501 Belleville Street</li>
+      <li><a href="https://www.tourismvictoria.com/tours/walking-tours/chinatown-walks">Chinatown</a> : Victoria abrite le plus ancien Chinatown du Canada, où se trouve <a href="https://www.tripadvisor.ca/Attraction_Review-g154945-d10288019-Reviews-Fan_Tan_Alley-Victoria_Victoria_Capital_Regional_District_Vancouver_Island_Briti.html">Fan Tan Alley</a>, la rue la plus étroite du pays</li>
+      <li><a href="https://thecastle.ca/">Craigdarroch Castle</a> : 1050 Joan Crescent</li>
+      <li><a href="https://www.fairmont-empress.com/">Fairmont Empress Hotel</a> : 721 Government Street</li>
+      <li><a href="https://mmbc.bc.ca/">Maritime Museum of British Columbia</a> : 28 Bastion Square</li>
+      <li><a href="https://miniatureworld.com/">Miniature World</a> : 649 Humboldt Street</li>
+      <li><a href="https://www.saanich.ca/EN/main/parks-recreation-community/parks/parks-trails-amenities/signature-parks/pkols-mount-douglas-park.html">PKOLS (Mount Douglas Park)</a> : Cedar Hill Road and Churchill Drive</li>
+      <li><a href="https://www.victoriatrails.com/trails/ogden-point-breakwater/">Ogden Point Breakwater</a> : 199 Dallas Road</li>
+      <li><a href="https://rbcm.ca/">Royal BC Museum</a> : 675 Belleville Street</li>
+      <li><a href="https://www.victoriabugzoo.ca/">Victoria Bug Zoo</a> : 631 Courtney Street</li>
+    </ul>
+
+  </section>
+
+  <section id="jardins-etc">
+
+    <h2>Jardins, parcs et sites naturels</h2>
+
+    <ul>
+      <li><a href="https://www.gallopinggoosetrail.com/">Galloping Goose Regional Trail</a> : sentier de randonnée/piste cyclable reliant le centre-ville de Victoria aux Sooke Potholes.</li>
+      <li><a href="https://www.crd.ca/parks-recreation/find-park-or-trail/lochside-regional-trail">Lochside Regional Trail</a> : sentier de randonnée/piste cyclable reliant Victoria à Swartz Bay.</li>
+      <li><a href="https://butchartgardens.com/">Butchart Gardens</a> : l’un des jardins d’exposition florale les plus prestigieux du Canada, 800 Benvenuto Avenue (à 20 km au nord de Victoria).</li>
+      <li><a href="https://www.tourismvictoria.com/things-to-do/gardens-parks/gardens-parks-2387/beacon-hill-park">Beacon Hill Park</a> : grand parc urbain situé au sud du centre-ville de Victoria, au sud de Southgate Street, à l’est de Douglas Street et à l’ouest de Cook Street (gratuit).</li>
+      <li><a href="https://ltgov.bc.ca/getting-here/">Government House</a> : la résidence privée de la lieutenante-gouverneure/du lieutenant-gouverneur de la Colombie-Britannique possède des jardins soigneusement entretenus, ouverts au public, 1401 Rockland Avenue (ouvert de l’aube au crépuscule et gratuit).</li>
+      <li><a href="https://www.saanich.ca/EN/main/parks-recreation-community/parks/parks-trails-amenities/signature-parks/mount-tolmie-park.html">Mount Tolmie Park</a> : au sud du campus universitaire, ce parc offre une vue panoramique sur le Grand Victoria et ses environs (gratuit).</li>
+    </ul>
+
+  </section>
+
+  <section id="autres">
+
+    <h2>Autres choses intéressantes à voir et à faire</h2>
+
+    <ul>
+      <li><a href="https://bcliving.ca/travel/bc/discover-old-world-charm-in-victoria-cook-street-village/">Cook Street Village</a> : c’est un excellent quartier à visiter si vous avez du temps supplémentaire à Victoria. Profitez des nombreux restaurants, cafés et boutiques, ou promenez-vous tout au long de la rue jusqu’au détroit de Juan de Fuca, au niveau de <a href="https://www.discovervancouverisland.com/short-hikes-by-region/south-island/dallas-road/">Dallas Road</a>.</li>
+      <li><a href="https://gvha.ca/marinas-facilities/fishermans-wharf/">Fisherman’s Wharf</a> : cette destination unique propose des kiosques alimentaires, des boutiques originales et des aventures écotouristiques au milieu de bateaux de pêche, de bateaux de plaisance avec résidents à bord, de maisons flottantes et d’entreprises commerciales.</li>
+      <li><a href="https://gvha.ca/marinas-facilities/causeway-inner-harbour/">Victoria Inner Harbour</a> : promenez-vous au bord de l’eau et profitez des nombreux artistes de rue et marchands. Des excursions d’observation des baleines, des sorties en kayak et des bateaux-taxis sont également disponibles.</li>
+    </ul>
+
+  </section>
+
+</div>
+<!--end of root-->
