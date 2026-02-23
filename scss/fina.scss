@@ -74,13 +74,20 @@ body:not(#index) {
 }
 
 .page-wrapper {
-    padding-inline: 1rem;
+   // padding-inline: 1rem;
+    background-color: #fbfbfb;
+}
+
+#index header {
+    
 }
 
 header {
     width: 100%;
-    max-width: var(--desktop-lg);
+    max-width: 100%;
     margin-inline: auto;
+    padding-block-start: var(--space-3);
+    background-color: #fff;
 }
 
 .mobile-header-splash {
@@ -202,6 +209,24 @@ header {
     width: 60%;
     height: auto;
 }
+
+//about logos
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    
+    & .logo {
+       height: auto; 
+    }
+    
+   
+
+}
+
+
+
 
 //Footer
 footer {
