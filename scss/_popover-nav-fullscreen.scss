@@ -63,7 +63,7 @@ header {
         align-items: center;
         gap: 1rem;
         position: relative;
-        padding-block-end: 1.25rem;
+        padding-block: 0;
     }
 }
 
@@ -379,7 +379,17 @@ body:has(#site-navigation[popover]:popover-open) {
         }
 
         @media (width >= 768px) {
-            transition: none;
+            
+            border-bottom: 3px solid transparent;
+            border-top: 3px solid transparent;
+            transition: border-bottom 0.5s ease-in-out;
+            margin-bottom: 0;
+            padding-block-end: .5rem;
+            
+            &:hover {
+                border-bottom: 3px solid var(--highlight);
+            }
+            
         }
     }
 
@@ -401,9 +411,7 @@ body:has(#site-navigation[popover]:popover-open) {
             text-decoration-color: var(--nav-items-text-decoration-color);
 
             &:is(:hover, :focus-visible) {
-                text-decoration-color: var(
-                    --nav-items-text-decoration-color-active
-                );
+                text-decoration: none;
             }
         }
     }
