@@ -153,6 +153,20 @@
   <xsl:template match="@href[contains(., '{{currentPage}}')]" priority="3">
     <xsl:attribute name="href" select="replace(., '\{\{currentPage\}\}', $currentPage)"/>
   </xsl:template>
+
+  <!-- Mark current navigation item as active -->
+  <xsl:template match="xhtml:a[contains(concat(' ', normalize-space(@class), ' '), ' item ')][@href]" priority="4">
+    <xsl:variable name="targetPage" select="replace(tokenize(string(@href), '[?#]')[1], '^.*/', '')"/>
+    <xsl:variable name="isActive" select="$targetPage = $currentPage"/>
+    <xsl:element name="a">
+      <xsl:copy-of select="@*[not(local-name() = 'class' or local-name() = 'aria-current')]"/>
+      <xsl:attribute name="class" select="normalize-space(string-join((string(@class), if ($isActive) then 'active' else ()), ' '))"/>
+      <xsl:if test="$isActive">
+        <xsl:attribute name="aria-current">page</xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates select="node()"/>
+    </xsl:element>
+  </xsl:template>
   
   <!-- Process content in content mode (identity transform with image handling) -->
   <xsl:template match="xhtml:* | @*" mode="content" priority="1">
