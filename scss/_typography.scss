@@ -172,7 +172,7 @@ body {
   // Global flow densities (tune these three and you tune the whole page)
   --flow-space: var(--space-3);
   --flow-space-tight: var(--space-2);
-  --flow-space-loose: var(--space-5);
+  --flow-space-loose: var(--space-6);
 
   // --------------------------------------------------------------------------
   // Top-level flow: children of .page-grid
@@ -180,69 +180,80 @@ body {
   //   h1, section, section, section, ...
   // --------------------------------------------------------------------------
 
-  > * {
-    margin: 0;
-  }
+ // ------------------------------------------------------------------------
+    // Top-level defaults (covers pages with NO sections)
+    // ------------------------------------------------------------------------
   
-  //non sections get flow spacing
-  > :not(section) + :not(section) {
-      margin-block-start: var(--flow-space);
-    }
-  
-  //h1 gets more space
-    > h1 + * {
-      margin-block-start: var(--flow-space);
-    }
-   
-
- // Sections that begin with headings rely on the heading’s own spacing
-    > section:has(> :is(h2, h3, h4, h5, h6):first-child) {
-      margin-block-start: 0;
-    }
-  
-    // Sections that do NOT begin with headings need spacing applied here
-    > section:not(:has(> :is(h2, h3, h4, h5, h6):first-child)) {
-      margin-block-start: var(--flow-space-loose);
-    }
-
-
-  section {
-
     > * {
       margin: 0;
     }
-
+  
+    // Generic spacing between top-level siblings (h1, p, ul, figure, etc.)
     > * + * {
       margin-block-start: var(--flow-space);
     }
-
-    // Tighten paragraph-to-paragraph spacing slightly
-    > p + p {
-      margin-block-start: var(--space-2);
-    }
-
-    // Headings inside sections:
-    // - add strong separation above headings
-    // - tighten the gap after headings
-    > :is(h2, h3, h4, h5, h6) {
-      margin-block-start: var(--space-4);
-    }
-
-    > :is(h2, h3, h4, h5, h6) + * {
+  
+    // Keep the page title attached to what follows (works with or without sections)
+    > h1 + * {
       margin-block-start: var(--flow-space-tight);
     }
-
-    // If a heading is followed by a heavy block, don't over-tighten
-    > :is(h2, h3, h4, h5, h6) + :is(ul, ol, figure, blockquote, pre) {
-      margin-block-start: var(--flow-space);
+  
+  
+    // ------------------------------------------------------------------------
+    // Sectioned pages: override only what needs overriding
+    // ------------------------------------------------------------------------
+  
+    // If the first section follows h1, use your preferred title→section spacing
+    > h1 + section {
+      margin-block-start: var(--space-4);
     }
-
-    // Heavy blocks get a bit more space after (improves scanability)
-    > :is(figure, blockquote, pre, table, hr) + * {
+  
+    // Space between major sections (your boundary spacing)
+    > section + section {
       margin-block-start: var(--flow-space-loose);
     }
-
-  }
+  
+    // If you find the generic `> * + *` makes section spacing too big,
+    // you can neutralize only the generic spacing for section siblings:
+    > section + section {
+      // This rule will win over `> * + *` because it’s more specific
+      margin-block-start: var(--flow-space-loose);
+    }
+  
+    // ------------------------------------------------------------------------
+    // Section-local flow (applies only when sections exist)
+    // ------------------------------------------------------------------------
+  
+    section {
+  
+      > * {
+        margin: 0;
+      }
+  
+      > * + * {
+        margin-block-start: var(--flow-space);
+      }
+  
+      // Headings at the start of a section: no extra top gap
+      > :is(h2, h3, h4, h5, h6):first-child {
+        margin-block-start: 0;
+      }
+  
+      // Headings after content: stronger separation
+      > * + :is(h2, h3) {
+        margin-block-start: var(--space-4);
+      }
+  
+      > * + :is(h4, h5, h6) {
+        margin-block-start: var(--space-3);
+      }
+  
+      // Tight after headings
+      > :is(h2, h3, h4, h5, h6) + * {
+        margin-block-start: var(--flow-space-tight);
+      }
+    
+    }
 
   // ==========================================================================
   // Headings: typography
@@ -331,6 +342,11 @@ body {
       max-width: 70ch;
       margin-inline: auto;
     }
+    
+    //more space following the territorial acknowlegement
+     & + * {
+        margin-block-start: var(--space-5);
+     }
   }
 
   // ==========================================================================
