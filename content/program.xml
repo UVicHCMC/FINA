@@ -7,7 +7,7 @@
     <h2>Conférences plénières</h2>
 
     <h3>Myriam Bergeron-Maguire, Université Sorbonne Nouvelle Paris 3 (France)</h3>
-    <figure>
+    <figure class="headshot">
       <img src="images/myriam-bergeron-maguire.webp" alt="" />
       <figcaption>Myriam Bergeron-Maguire</figcaption>
     </figure>
@@ -22,7 +22,7 @@
     <p>L’examen conduira à mettre en lumière un état de langue que les études portant sur le français des 17e et 18e siècles ont longtemps passé sous silence faute de sources (philologiquement) fiables : un français resté relativement confidentiel, employé entre proches, qui représente le terreau sur lequel se fondent en grande partie les variétés contemporaines du français en Amérique.</p>
 
     <h3>Marie-Hélène Côté, Université de Lausanne (Suisse)</h3>
-    <figure>
+    <figure class="headshot">
       <img src="images/marie-helene-cote.webp" alt="" />
       <figcaption>Marie-Hélène Côté</figcaption>
     </figure>
@@ -31,7 +31,7 @@
     <p>Cette présentation porte essentiellement sur le français québécois et relève de la linguistique de corpus. Elle s’appuie sur le plus gros corpus de français québécois conversationnel existant: PFC-Québec (Côté et Saint-Amant Lamy 2023). On sait que le français laurentien/québécois se caractérise par de très nombreux traits qui le distinguent du français de référence et des autres variétés, sur les plans de la prononciation, du lexique et de la morpho-syntaxe. Depuis plusieurs décennies, on observe une régression de plusieurs de ces traits, remplacés par des formes perçues comme plus standard. Mais d’autres traits spécifiquement laurentiens se maintiennent, voire se répandent. Quels sont les facteurs qui pèsent sur le destin des traits laurentiens, qui déterminent leur standardisation ou leur maintien? En m’appuyant sur l’analyse de plus de 30 variables phonologiques et morpho-syntaxiques laurentiennes dans les 300 heures de conversations transcrites du corpus PFC-Québec, je montrerai que le facteur le plus important est de nature systémique: les traits qui résistent le mieux sont ceux dont le remplacement implique une réorganisation du système phonologique ou morphologie-syntaxique, plus complexe qu’un simple remplacement lexical.</p>
 
     <h3>France Martineau, Université d’Ottawa (Ontario, Canada)</h3>
-    <figure>
+    <figure class="headshot">
       <img src="images/france-martineau.webp" alt="" />
       <figcaption>France Martineau</figcaption>
     </figure>
@@ -48,8 +48,8 @@
     <h4>Références</h4>
 
     <h3>Oliver Mayeux, University of Cambridge (Angleterre)</h3>
-    <figure>
-      <img src="images/oliver-mayeux.webp" alt="" />
+    <figure class="headshot">
+      <img src="images/oliver-mayeux-small.webp" alt="" />
       <figcaption>Oliver Mayeux</figcaption>
     </figure>
 
@@ -58,7 +58,7 @@
     <p>Lorsque les langues créoles à base lexicale française se forment, elles n’héritent généralement pas de l’accord grammatical du genre ni du nombre. En contexte de contact continu avec les variétés de français louisianais, certains locuteurs du créole louisianais contemporain présentent pourtant des degrés variables d’accord grammatical, notamment dans le syntagme déterminant. Cette conférence proposera une analyse de perspective sociolinguistique de ces phénomènes en retraçant leur développement depuis les textes du XVIIIe siècle jusqu’aux données contemporaines. Elle soutiendra qu’une notion du sens social est indispensable d’un point de vue explicatif pour comprendre l’émergence diachronique de ces formes ainsi que leurs fonctions sociolinguistiques.</p>
 
     <h3>Basile Roussel, Université de Moncton, campus de Shippagan (Nouveau-Brunswick, Canada)</h3>
-    <figure>
+    <figure class="headshot">
       <img src="images/basile-roussel.webp" alt="" />
       <figcaption>Basile Roussel</figcaption>
     </figure>
