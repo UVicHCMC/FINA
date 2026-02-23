@@ -25,32 +25,36 @@ $desktop-break: 768px;
 
     /* Background reference */
     --color-bg: #fcfcfc;
+    
+    //Greys
+    
+    // ==========================================================================
+      // Neutral grey scale (cool-neutral)
+      // ==========================================================================
+      //
+      // 50  = lightest
+      // 950 = darkest usable neutral (preferred over pure black)
+      //
+      // These are perceptually balanced and suitable for typography,
+      // borders, and UI elements on near-white backgrounds.
+      // ==========================================================================
+    
+      --grey-50:  #f8f9fa;
+      --grey-100: #f1f3f5;
+      --grey-200: #e9ecef;
+      --grey-300: #dee2e6;
+      --grey-400: #ced4da;
+      --grey-500: #adb5bd;
+      --grey-600: #868e96;
+      --grey-700: #495057;
+      --grey-800: #343a40;
+      --grey-900: #212529;
+      --grey-950: #121416;
 
-    //Site highlight color;
-    --highlight: #0c6994;
 
-    /* Text colours (light theme, near-white background) */
-    --color-text-primary: #1e1e1e; /* body text */
-    --color-text-heading: #111111; /* headings */
-    --color-text-secondary: #444444; /* blockquotes, lead text */
-    --color-text-muted: #6b6b6b; /* captions, metadata */
-    --color-text-faint: #8a8a8a; /* non-essential */
 
-    /* Links */
-    --color-link: var(--color-text-primary);
-    --color-link-hover: var(--highlight);
-    --underline: var(--highlight);
-    --underline-hover: transparent;
 
-    /* Code */
-    --color-code-bg: #000000;
-    --color-code-fg: #ffffff;
 
-    /* Figures */
-    --figure-bg-color: transparent;
-    --figure-border-color: #333333;
-
-    /* Font families */
     
     
 
@@ -60,10 +64,7 @@ $desktop-break: 768px;
 
    
 
-    /* Links */
-    --underline-offset: 0.15em;
-    --underline-thickness: from-font;
-
+   
   
     //borders
     --border-color: #d5d7da;

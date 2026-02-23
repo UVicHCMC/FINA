@@ -3,11 +3,14 @@
 
   <h1>Renseignements pratiques</h1><!--Page title-->
 
-  <section id="lieu-du-colloque">
-
-    <p class="territorial-acknowledgment">
-      <i>Avec respect, nous reconnaissons les peuples Lək̓ʷəŋən (Songhees et Xʷsepsəm/Esquimalt) sur les territoires desquels est établie l’Université de Victoria, ainsi que les peuples Lək̓ʷəŋən et W̱SÁNEĆ dont les relations de longue date avec ces terres se poursuivent jusqu’à ce jour.</i>
+  <section id="territorial-acknowledgement">
+    <p class="territorial-acknowledgement">
+      Avec respect, nous reconnaissons les peuples Lək̓ʷəŋən (Songhees et Xʷsepsəm/Esquimalt) sur les territoires desquels est établie l’Université de Victoria, ainsi que les peuples Lək̓ʷəŋən et W̱SÁNEĆ dont les relations de longue date avec ces terres se poursuivent jusqu’à ce jour.
     </p>
+
+  </section>
+
+  <section id="lieu-du-colloque">
 
     <h2>Lieu du colloque</h2>
 

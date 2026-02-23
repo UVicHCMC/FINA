@@ -1,127 +1,139 @@
 @use "custom-properties" as *;
 
 // ==========================================================================
-// Content typography — Minor Second modular scale (1.067)
+// Content typography + vertical rhythm
+// - Works with content structured as a sequence of <section> blocks
+// - Handles a territorial acknowledgement <section id="territorial-acknowledgement">
+// - Keeps headings “attached” to the content that follows
 // ==========================================================================
 
 :root {
 
-    // ----------------------------------------------------------------------
-    // Font families
-    // ----------------------------------------------------------------------
+  // ------------------------------------------------------------------------
+  // Font families
+  // ------------------------------------------------------------------------
 
-    // Title / display usage
-    --font-sans-title:
-        "Alegreya Sans",
-        "Source Sans 3",
-        "Segoe UI",
-        Roboto,
-        "Helvetica Neue",
-        Arial,
-        sans-serif;
+  --font-sans-title:
+    "Alegreya Sans",
+    "Source Sans 3",
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
 
-    // Condensed face used for headings
-    --font-sans-heading:
-        "Roboto Condensed",
-        "Roboto",
-        "Helvetica Neue",
-        Arial,
-        sans-serif;
+  --font-sans-heading:
+    "Roboto Condensed",
+    "Roboto",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
 
-    // Primary body font optimized for readability
-    --font-sans-body:
-        "Roboto",
-        "Helvetica Neue",
-        Arial,
-        sans-serif;
+  --font-sans-body:
+    "Roboto",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
 
-    // Serif font for quotations and long-form typographic contrast
-    --font-serif:
-        "Source Serif",
-        Georgia,
-        "Times New Roman",
-        Times,
-        serif;
+  --font-serif:
+    "Source Serif",
+    Georgia,
+    "Times New Roman",
+    Times,
+    serif;
 
-    // Small caps serif variant
-    --font-serif-sc:
-        "Alegreya SC",
-        Georgia,
-        "Times New Roman",
-        Times,
-        serif;
+  --font-serif-sc:
+    "Alegreya SC",
+    Georgia,
+    "Times New Roman",
+    Times,
+    serif;
 
-    // Monospace font for code and technical content
-    --font-mono:
-        ui-monospace,
-        SFMono-Regular,
-        Menlo,
-        Monaco,
-        Consolas,
-        "Liberation Mono",
-        monospace;
+  --font-mono:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Liberation Mono",
+    monospace;
 
-    // ----------------------------------------------------------------------
-    // Modular scale definition
-    // ----------------------------------------------------------------------
+  // ------------------------------------------------------------------------
+  // Modular scale (Minor Second)
+  // ------------------------------------------------------------------------
 
-    // Base font size; changing this scales the entire typographic system
-    --ms-step-0: 1rem;
+  --ms-step-0: 1rem;
+  --ms-ratio: 1.067;
 
-    // Minor Second ratio produces subtle typographic hierarchy
-    --ms-ratio: 1.067;
+  --ms-step--1: calc(var(--ms-step-0) / var(--ms-ratio));
+  --ms-step--2: calc(var(--ms-step--1) / var(--ms-ratio));
+  --ms-step--3: calc(var(--ms-step--2) / var(--ms-ratio));
+  --ms-step--4: calc(var(--ms-step--3) / var(--ms-ratio));
 
-    // Downward scale
-    --ms-step--1: calc(var(--ms-step-0) / var(--ms-ratio));
-    --ms-step--2: calc(var(--ms-step--1) / var(--ms-ratio));
-    --ms-step--3: calc(var(--ms-step--2) / var(--ms-ratio));
-    --ms-step--4: calc(var(--ms-step--3) / var(--ms-ratio));
+  --ms-step-1: calc(var(--ms-step-0) * var(--ms-ratio));
+  --ms-step-2: calc(var(--ms-step-1) * var(--ms-ratio));
+  --ms-step-3: calc(var(--ms-step-2) * var(--ms-ratio));
+  --ms-step-4: calc(var(--ms-step-3) * var(--ms-ratio));
+  --ms-step-5: calc(var(--ms-step-4) * var(--ms-ratio));
+  --ms-step-6: calc(var(--ms-step-5) * var(--ms-ratio));
+  --ms-step-7: calc(var(--ms-step-6) * var(--ms-ratio));
+  --ms-step-8: calc(var(--ms-step-7) * var(--ms-ratio));
+  --ms-step-9: calc(var(--ms-step-8) * var(--ms-ratio));
 
-    // Upward scale
-    --ms-step-1: calc(var(--ms-step-0) * var(--ms-ratio));
-    --ms-step-2: calc(var(--ms-step-1) * var(--ms-ratio));
-    --ms-step-3: calc(var(--ms-step-2) * var(--ms-ratio));
-    --ms-step-4: calc(var(--ms-step-3) * var(--ms-ratio));
-    --ms-step-5: calc(var(--ms-step-4) * var(--ms-ratio));
-    --ms-step-6: calc(var(--ms-step-5) * var(--ms-ratio));
-    --ms-step-7: calc(var(--ms-step-6) * var(--ms-ratio));
-    --ms-step-8: calc(var(--ms-step-7) * var(--ms-ratio));
-    --ms-step-9: calc(var(--ms-step-8) * var(--ms-ratio));
+  // ------------------------------------------------------------------------
+  // Weights + line heights
+  // ------------------------------------------------------------------------
 
-    // ----------------------------------------------------------------------
-    // Font weights
-    // ----------------------------------------------------------------------
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
 
-    --fw-light: 300;
-    --fw-regular: 400;
-    --fw-medium: 500;
-    --fw-semibold: 600;
-    --fw-bold: 700;
+  --lh-tight: 1.15;
+  --lh-body: 1.6;
 
-    // ----------------------------------------------------------------------
-    // Line heights
-    // ----------------------------------------------------------------------
+  // ------------------------------------------------------------------------
+  // Baseline-derived spacing scale
+  // ------------------------------------------------------------------------
 
-    // Tight line-height for headings
-    --lh-tight: 1.15;
+  --baseline: calc(var(--ms-step-0) * var(--lh-body));
 
-    // Body line-height controls baseline rhythm
-    --lh-body: 1.6;
+  --space-1: calc(var(--baseline) * 0.25);
+  --space-2: calc(var(--baseline) * 0.5);
+  --space-3: calc(var(--baseline) * 0.75);
+  --space-4: var(--baseline);
+  --space-5: calc(var(--baseline) * 1.5);
+  --space-6: calc(var(--baseline) * 2);
 
-    // ----------------------------------------------------------------------
-    // Baseline rhythm system
-    // ----------------------------------------------------------------------
+  // ------------------------------------------------------------------------
+  // Colours
+  // ------------------------------------------------------------------------
 
-    // Baseline unit derived from body font size and line-height
-    --baseline: calc(var(--ms-step-0) * var(--lh-body));
+  --highlight: #0c6994;
 
-    // Spacing scale derived from baseline
-    --space-1: calc(var(--baseline) * 0.25);
-    --space-2: calc(var(--baseline) * 0.5);
-    --space-3: calc(var(--baseline) * 0.75);
-    --space-4: var(--baseline);
-    --space-5: calc(var(--baseline) * 1.5);
-    --space-6: calc(var(--baseline) * 2);
+  --color-text-primary: #084a68;
+  --color-text-heading: #0c6994;
+  --color-text-secondary: #444444;
+  --color-text-muted: #6b6b6b;
+  --color-text-faint: #8a8a8a;
+
+  --color-bg-primary: #ffffff;
+
+  --color-link: var(--color-text-primary);
+  --color-link-hover: var(--highlight);
+  --underline: var(--color-text-primary);
+  --underline-hover: transparent;
+  --underline-offset: 0.15em;
+  --underline-thickness: from-font;
+
+  --color-code-bg: #000000;
+  --color-code-fg: #ffffff;
+
+  --figure-bg-color: transparent;
+  --figure-border-color: #333333;
+
+  --bg-territorial-acknowledgement: var(--grey-100);
 }
 
 // ==========================================================================
@@ -130,226 +142,347 @@
 
 html,
 body {
-    background-color: var(--color-bg);
-
-    // Establish base size for modular scale
-    font-size: var(--ms-step-0);
+  background-color: var(--color-bg-primary);
+  font-size: var(--ms-step-0);
 }
 
-// Establish global body font
 body {
-    font-family: var(--font-sans-body);
-    line-height: var(--lh-body);
-    color: var(--color-text-primary);
+  font-family: var(--font-sans-body);
+  line-height: var(--lh-body);
+  color: var(--color-text-primary);
 }
 
 // ==========================================================================
-// Splash / index
-// ==========================================================================
-
-#index main h1 {
-    font-family: var(--font-serif);
-    font-size: var(--ms-step-9);
-    font-weight: var(--fw-semibold);
-    text-align: center;
-}
-
-// ==========================================================================
-// Main content grid
+// Main content grid + rhythm
 // ==========================================================================
 
 .page-grid {
 
-    // Headings use condensed face
-    :is(h1, h2, h3, h4, h5, h6) {
-        font-family: var(--font-sans-heading);
-        color: var(--color-text-heading);
-        line-height: var(--lh-tight);
-        text-wrap: balance;
+  // ==========================================================================
+  // FLOW SYSTEM (robust vertical rhythm)
+  // ==========================================================================
+  //
+  // Key idea:
+  // - Default spacing is applied between top-level blocks.
+  // - Sections are treated as the top-level blocks on “sectioned” pages.
+  // - Inside each section, spacing is handled similarly (local flow).
+  // - Headings have more space before and less after, so they read correctly.
+  // ==========================================================================
+
+  // Global flow densities (tune these three and you tune the whole page)
+  --flow-space: var(--space-3);
+  --flow-space-tight: var(--space-2);
+  --flow-space-loose: var(--space-5);
+
+  // --------------------------------------------------------------------------
+  // Top-level flow: children of .page-grid
+  // - This matches your DOM where the page is essentially:
+  //   h1, section, section, section, ...
+  // --------------------------------------------------------------------------
+
+  > * {
+    margin: 0;
+  }
+  
+  //non sections get flow spacing
+  > :not(section) + :not(section) {
+      margin-block-start: var(--flow-space);
+    }
+  
+  //h1 gets more space
+    > h1 + * {
+      margin-block-start: var(--flow-space);
+    }
+   
+
+ // Sections that begin with headings rely on the heading’s own spacing
+    > section:has(> :is(h2, h3, h4, h5, h6):first-child) {
+      margin-block-start: 0;
+    }
+  
+    // Sections that do NOT begin with headings need spacing applied here
+    > section:not(:has(> :is(h2, h3, h4, h5, h6):first-child)) {
+      margin-block-start: var(--flow-space-loose);
     }
 
-    h1 {
-        font-weight: var(--fw-semibold);
-        font-size: var(--ms-step-8);
-        text-align: center;
-        margin-block-start: var(--space-6);
+
+  section {
+
+    > * {
+      margin: 0;
     }
 
-    h2 {
-        font-weight: var(--fw-medium);
-        font-size: var(--ms-step-6);
-        margin-block-start: var(--space-4);
+    > * + * {
+      margin-block-start: var(--flow-space);
     }
 
-    h3 {
-        font-weight: var(--fw-regular);
-        font-size: var(--ms-step-4);
-        margin-block-start: var(--space-4);
+    // Tighten paragraph-to-paragraph spacing slightly
+    > p + p {
+      margin-block-start: var(--space-2);
     }
 
-    h4 {
-        font-weight: var(--fw-regular);
-        font-size: var(--ms-step-2);
-        margin-block-start: var(--space-4);
+    // Headings inside sections:
+    // - add strong separation above headings
+    // - tighten the gap after headings
+    > :is(h2, h3, h4, h5, h6) {
+      margin-block-start: var(--space-4);
     }
 
-    h5 {
-        font-weight: var(--fw-regular);
-        font-size: var(--ms-step-1);
-        margin-block-start: var(--space-4);
+    > :is(h2, h3, h4, h5, h6) + * {
+      margin-block-start: var(--flow-space-tight);
     }
 
-    h6 {
-        font-weight: var(--fw-regular);
-        font-size: var(--ms-step-0);
-        margin-block-start: var(--space-4);
+    // If a heading is followed by a heavy block, don't over-tighten
+    > :is(h2, h3, h4, h5, h6) + :is(ul, ol, figure, blockquote, pre) {
+      margin-block-start: var(--flow-space);
     }
 
-    // Spacing following headings
-    h1 + * {
-        margin-block-start: var(--space-5);
+    // Heavy blocks get a bit more space after (improves scanability)
+    > :is(figure, blockquote, pre, table, hr) + * {
+      margin-block-start: var(--flow-space-loose);
     }
 
-    h1 + section {
-        margin-block-start: 0;
+  }
+
+  // ==========================================================================
+  // Headings: typography
+  // ==========================================================================
+
+  :is(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--font-sans-heading);
+    color: var(--color-text-heading);
+    line-height: var(--lh-tight);
+    text-wrap: balance;
+  }
+
+  // Page title (direct child of .page-grid in your examples)
+  > h1 {
+    font-weight: var(--fw-semibold);
+    font-size: var(--ms-step-8);
+    text-align: center;
+
+    // Strong “page start” spacing
+    margin-block-start: var(--space-6);
+  }
+
+  h2 {
+    font-weight: var(--fw-medium);
+    font-size: var(--ms-step-6);
+  }
+
+  h3 {
+    font-weight: var(--fw-regular);
+    font-size: var(--ms-step-4);
+  }
+
+  h4 {
+    font-weight: var(--fw-regular);
+    font-size: var(--ms-step-2);
+  }
+
+  h5 {
+    font-weight: var(--fw-regular);
+    font-size: var(--ms-step-1);
+  }
+
+  h6 {
+    font-weight: var(--fw-regular);
+    font-size: var(--ms-step-0);
+  }
+
+  // ==========================================================================
+  // Paragraphs
+  // ==========================================================================
+
+  p {
+    font-family: var(--font-sans-body);
+    font-size: var(--ms-step-0);
+    line-height: var(--lh-body);
+    font-weight: var(--fw-light);
+    text-wrap: pretty;
+    color: var(--color-text-primary);
+  }
+
+ 
+  > h1 + section#territorial-acknowledgement {
+    // Slightly tighter than normal section spacing so it reads as a unit
+    margin-block-start: var(--space-3);
+  }
+
+  section#territorial-acknowledgement {
+
+    // Reduce internal “section flow” gap: acknowledgement is a single thought
+    --flow-space: var(--space-2);
+
+    padding: var(--space-3);
+    background-color: var(--bg-territorial-acknowledgement);
+    border-radius: 0.5rem;
+
+    // Centre the acknowledgement block, but keep readable line-length
+    text-align: center;
+
+    // The paragraph is the styled component
+    .territorial-acknowledgement {
+      font-size: var(--ms-step--1);
+      font-style: italic;
+      line-height: var(--lh-body);
+
+      // Keep it from feeling “too wide” on large screens
+      max-width: 70ch;
+      margin-inline: auto;
+    }
+  }
+
+  // ==========================================================================
+  // Links
+  // ==========================================================================
+
+  a {
+    color: var(--color-link);
+    text-decoration-color: var(--underline);
+    text-decoration-thickness: var(--underline-thickness);
+    text-underline-offset: var(--underline-offset);
+    transition: text-decoration-color 0.3s ease-in-out;
+
+    &:is(:hover, :focus-visible) {
+      text-decoration-color: var(--underline-hover);
+      color: var(--color-link-hover);
+    }
+  }
+
+  // ==========================================================================
+  // Lists
+  // ==========================================================================
+
+  :is(ul, ol) {
+    font-family: var(--font-sans-body);
+    font-size: var(--ms-step--1);
+    line-height: var(--lh-body);
+    font-weight: var(--fw-light);
+
+    // Marker indentation with padding is more stable than margin
+    padding-inline-start: 1.25rem;
+  }
+
+  ul {
+    list-style: disc outside;
+  }
+
+  ol {
+    list-style: decimal outside;
+    padding-inline-start: 1.5rem;
+  }
+
+  li > :is(ul, ol) {
+    margin-block-start: var(--space-1);
+  }
+
+  // ==========================================================================
+  // Definition lists
+  // ==========================================================================
+
+  dl {
+    dt {
+      font-family: var(--font-sans-body);
+      font-size: var(--ms-step-0);
+      font-weight: var(--fw-regular);
     }
 
-    h2 + * {
+    dd {
+      font-family: var(--font-sans-body);
+      font-size: var(--ms-step-0);
+      font-weight: var(--fw-light);
+
+      & + dt {
         margin-block-start: var(--space-3);
+      }
+    }
+  }
+
+  // ==========================================================================
+  // Blockquotes
+  // ==========================================================================
+
+  blockquote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--ms-step-0);
+    line-height: var(--lh-body);
+    color: var(--color-text-secondary);
+
+    margin-inline-start: var(--space-3);
+    padding-inline-start: var(--space-3);
+    border-inline-start: 3px solid var(--figure-border-color);
+
+    .blockquote-footer {
+      font-family: var(--font-sans-body);
+      font-size: var(--ms-step--1);
+      font-weight: var(--fw-regular);
+      margin-block-start: var(--space-2);
+      text-align: right;
     }
 
-    h3 + * {
-        margin-block-start: var(--space-2);
+    @media (min-width: $desktop-sm) {
+      font-size: var(--ms-step-1);
     }
+  }
 
-    h4 + *,
-    h5 + *,
-    h6 + * {
-        margin-block-start: var(--space-1);
-    }
+  // ==========================================================================
+  // Figures
+  // ==========================================================================
 
-    // Body text
-    p {
-        font-family: var(--font-sans-body);
-        font-size: var(--ms-step-0);
-        line-height: var(--lh-body);
-        font-weight: var(--fw-light);
-        text-wrap: pretty;
-    }
+  figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    background-color: var(--figure-bg-color);
+  }
 
-    // Lists use body font for readability
-    :is(ul, ol) {
-        font-family: var(--font-sans-body);
-        font-size: var(--ms-step--1);
-        line-height: var(--lh-body);
-        font-weight: var(--fw-regular);
-    }
+  figure > img {
+    border: 1px solid var(--figure-border-color);
+  }
 
-    ul {
-        list-style: disc outside;
-        margin-inline-start: 1.25rem;
-    }
+  figure:has(img.portrait) {
+    grid-column: content;
+  }
 
-    ol {
-        list-style: decimal outside;
-        margin-inline-start: 1.5rem;
-    }
+  figcaption {
+    font-family: var(--font-sans-body);
+    font-size: var(--ms-step--1);
+    line-height: var(--lh-body);
+    color: var(--color-text-muted);
+    align-self: flex-start;
+  }
 
-    li > ul,
-    li > ol {
-        margin-block: var(--space-1);
-    }
+  // ==========================================================================
+  // Code blocks
+  // ==========================================================================
 
-    // Definition lists
-    dl {
-        dt {
-            font-family: var(--font-sans-body);
-            font-size: var(--ms-step-0);
-            font-weight: var(--fw-regular);
-        }
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.95em;
+  }
 
-        dd {
-            font-family: var(--font-sans-body);
-            font-size: var(--ms-step-0);
-            font-weight: var(--fw-light);
-            margin-block-start: var(--space-1);
+  pre {
+    max-width: 100%;
+    overflow-x: auto;
+    background-color: var(--color-code-bg);
+    padding: var(--space-2);
+    border-radius: 0.5rem;
+  }
 
-            & + dt {
-                margin-block-start: var(--space-3);
-            }
-        }
-    }
+  pre code {
+    font-size: var(--ms-step--1);
+    color: var(--color-code-fg);
+  }
 
-    // Blockquotes
-    blockquote {
-        font-family: var(--font-serif);
-        font-style: italic;
-        font-size: var(--ms-step-0);
-        line-height: var(--lh-body);
-        color: var(--color-text-secondary);
-        margin-inline-start: var(--space-3);
-        padding-inline-start: var(--space-3);
-        border-inline-start: 3px solid var(--figure-border-color);
+  // ==========================================================================
+  // Maps
+  // ==========================================================================
 
-        .blockquote-footer {
-            font-family: var(--font-sans-body);
-            font-size: var(--ms-step--1);
-            font-weight: var(--fw-regular);
-            margin-block-start: var(--space-2);
-            text-align: right;
-        }
+  div[id*="map"] {
+    // No explicit margins; section flow governs spacing
+  }
 
-        @media (min-width: $desktop-sm) {
-            font-size: var(--ms-step-1);
-        }
-    }
-
-    // Figures
-    figure {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: var(--space-2);
-        background-color: var(--figure-bg-color);
-    }
-
-    figure > img {
-        border: 1px solid var(--figure-border-color);
-    }
-
-    figure:has(img.portrait) {
-        grid-column: content;
-    }
-
-    figcaption {
-        font-family: var(--font-sans-body);
-        font-size: var(--ms-step--1);
-        line-height: var(--lh-body);
-        color: var(--color-text-muted);
-        align-self: flex-start;
-    }
-
-    // Code blocks
-    code {
-        font-family: var(--font-mono);
-        font-size: 0.95em;
-    }
-
-    pre {
-        max-width: 100%;
-        overflow-x: auto;
-        background-color: var(--color-code-bg);
-        padding: var(--space-2);
-        border-radius: 0.5rem;
-    }
-
-    pre code {
-        font-size: var(--ms-step--1);
-        color: var(--color-code-fg);
-    }
-
-    // Maps
-    div[id*="map"] {
-        margin-block: var(--space-4);
-    }
 }
