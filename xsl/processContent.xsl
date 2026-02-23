@@ -186,7 +186,7 @@
       <xsl:with-param name="img" select="."/>
     </xsl:call-template>
   </xsl:template>
-  
+
   <!-- Named template to add image dimensions -->
   <xsl:template name="add-image-dimensions">
     <xsl:param name="img" as="element(xhtml:img)"/>
@@ -201,12 +201,25 @@
           <xsl:copy>
             <xsl:copy-of select="@width"/>
             <xsl:copy-of select="@height"/>
+            <xsl:variable name="aspectClass">
+              <xsl:choose>
+                <xsl:when test="@width eq @height">
+                  <xsl:value-of select="'square'"/>
+                </xsl:when>
+                <xsl:when test="@width &gt; @height">
+                  <xsl:value-of select="'landscape'"/>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="'portrait'"/>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:variable>
             <xsl:choose>
               <xsl:when test="$img/@class">
-                <xsl:attribute name="class" select="concat($img/@class, ' ', ./@class)"/>
+                <xsl:attribute name="class" select="normalize-space(string-join(($img/@class, $aspectClass), ' '))"/>
               </xsl:when>
               <xsl:otherwise>
-                <xsl:copy-of select="@class"/>
+                <xsl:attribute name="class" select="$aspectClass"/>
               </xsl:otherwise>
             </xsl:choose>
             <!-- Fix src path for multilingual builds -->

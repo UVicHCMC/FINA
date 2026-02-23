@@ -107,12 +107,25 @@
           <xsl:copy>
             <xsl:copy-of select="@width"/>
             <xsl:copy-of select="@height"/>
+             <xsl:variable name="aspectClass">
+              <xsl:choose>
+                <xsl:when test="@width eq @height">
+                  <xsl:value-of select="'square'"/>
+                </xsl:when>
+                <xsl:when test="@width &gt; @height">
+                  <xsl:value-of select="'landscape'"/>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="'portrait'"/>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:variable>
             <xsl:choose>
               <xsl:when test="$currImg/@class">
-                <xsl:attribute name="class" select="concat($currImg/@class, ' ', ./@class)"/>
+                <xsl:attribute name="class" select="normalize-space(string-join(($currImg/@class, $aspectClass), ' '))"/>
               </xsl:when>
               <xsl:otherwise>
-                <xsl:copy-of select="@class"/>
+                <xsl:attribute name="class" select="$aspectClass"/>
               </xsl:otherwise>
             </xsl:choose>
             <!-- Fix src path for multilingual builds -->
