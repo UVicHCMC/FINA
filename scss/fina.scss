@@ -7,6 +7,13 @@
 @use "popover-nav-fullscreen" as *;
 @use "page-grid" as *;
 
+
+/* Enable automatic cross-page transitions */
+@view-transition {
+  navigation: auto;
+}
+
+
 //skip link for acessibility
 .skip-link {
     clip-path: polygon(0 0, 0 0, 0 0, 0 0);
@@ -45,7 +52,7 @@
 
 //top border on body
 body:not(#index) {
-    border-top: 5px solid var(--highlight);
+    border-top: 8px solid var(--highlight);
 }
 
 //controls viewport padding and margins, centers main content
@@ -72,6 +79,8 @@ body:not(#index) {
 
 header {
     width: 100%;
+    max-width: var(--desktop-lg);
+    margin-inline: auto;
 }
 
 .mobile-header-splash {
@@ -197,13 +206,13 @@ header {
 //Footer
 footer {
     width: 100%;
+    max-width: var(--desktop-lg);
+    margin-inline: auto;
 }
 
 .footer-container {
     margin-block-start: 3rem;
     padding-block: 1.5rem;
-    width: 100%;
-    max-width: $desktop-sm;
     border-block-start: 1px solid var(--border-color);
 
     & ul {

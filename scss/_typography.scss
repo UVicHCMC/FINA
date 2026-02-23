@@ -23,17 +23,21 @@
     sans-serif;
 
   --font-sans-heading:
-    "Roboto Condensed",
-    "Roboto",
-    "Helvetica Neue",
-    Arial,
+   "Alegreya Sans",
+    system-ui,
+    "Noto Sans",
     sans-serif;
 
   --font-sans-body:
-    "Roboto",
-    "Helvetica Neue",
-    Arial,
-    sans-serif;
+      system-ui,
+      "Noto Sans",
+      "Noto Sans Symbols",
+      "Noto Sans Symbols 2",
+      "Segoe UI",
+      "Roboto",
+      "Helvetica Neue",
+      Arial,
+      sans-serif;
 
   --font-serif:
     "Source Serif",
@@ -79,6 +83,7 @@
   --ms-step-7: calc(var(--ms-step-6) * var(--ms-ratio));
   --ms-step-8: calc(var(--ms-step-7) * var(--ms-ratio));
   --ms-step-9: calc(var(--ms-step-8) * var(--ms-ratio));
+  --ms-step-10: calc(var(--ms-step-9) * var(--ms-ratio));
 
   // ------------------------------------------------------------------------
   // Weights + line heights
@@ -172,7 +177,7 @@ body {
   // Global flow densities (tune these three and you tune the whole page)
   --flow-space: var(--space-3);
   --flow-space-tight: var(--space-2);
-  --flow-space-loose: var(--space-6);
+  --flow-space-loose: var(--space-5);
 
   // --------------------------------------------------------------------------
   // Top-level flow: children of .page-grid
@@ -193,18 +198,12 @@ body {
       margin-block-start: var(--flow-space);
     }
   
-    // Keep the page title attached to what follows (works with or without sections)
-    > h1 + * {
-      margin-block-start: var(--flow-space-tight);
-    }
-  
   
     // ------------------------------------------------------------------------
     // Sectioned pages: override only what needs overriding
     // ------------------------------------------------------------------------
   
-    // If the first section follows h1, use your preferred title→section spacing
-    > h1 + section {
+    > h1 + * {
       margin-block-start: var(--space-4);
     }
   
@@ -212,14 +211,7 @@ body {
     > section + section {
       margin-block-start: var(--flow-space-loose);
     }
-  
-    // If you find the generic `> * + *` makes section spacing too big,
-    // you can neutralize only the generic spacing for section siblings:
-    > section + section {
-      // This rule will win over `> * + *` because it’s more specific
-      margin-block-start: var(--flow-space-loose);
-    }
-  
+    
     // ------------------------------------------------------------------------
     // Section-local flow (applies only when sections exist)
     // ------------------------------------------------------------------------
@@ -269,7 +261,7 @@ body {
   // Page title (direct child of .page-grid in your examples)
   > h1 {
     font-weight: var(--fw-semibold);
-    font-size: var(--ms-step-8);
+    font-size: var(--ms-step-10);
     text-align: center;
 
     // Strong “page start” spacing
@@ -337,6 +329,16 @@ body {
       font-size: var(--ms-step--1);
       font-style: italic;
       line-height: var(--lh-body);
+      font-family:
+        system-ui,
+        "Noto Sans",
+        "Noto Sans Symbols",
+        "Noto Sans Symbols 2",
+        "Segoe UI",
+        "Roboto",
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
 
       // Keep it from feeling “too wide” on large screens
       max-width: 70ch;

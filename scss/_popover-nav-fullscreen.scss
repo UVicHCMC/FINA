@@ -201,7 +201,8 @@ button.popover-nav-close {
     @media (width >=768px) {
         position: static;
         display: block;
-        width: max-content;
+        width: auto;
+        max-width: 100%;
         height: max-content;
         border: none;
         inset: 0;
