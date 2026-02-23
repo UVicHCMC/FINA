@@ -217,15 +217,15 @@
             <xsl:copy-of select="@height"/>
             <xsl:variable name="aspectClass">
               <xsl:choose>
-                <xsl:when test="@width eq @height">
+                <xsl:when test="number(@width) = number(@height)">
                   <xsl:value-of select="'square'"/>
                 </xsl:when>
-                <xsl:when test="@width &gt; @height">
+                <xsl:when test="number(@width) &gt; number(@height)">
                   <xsl:value-of select="'landscape'"/>
                 </xsl:when>
-                <xsl:otherwise>
+                <xsl:when test="number(@width) &lt; number(@height)">
                   <xsl:value-of select="'portrait'"/>
-                </xsl:otherwise>
+                </xsl:when>
               </xsl:choose>
             </xsl:variable>
             <xsl:choose>
