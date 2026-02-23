@@ -34,7 +34,15 @@
 
     <h2>Partenaires</h2>
 
-    <p>[insert logos and links]</p>
+    <div class="logo-container">
+      
+    <a href=""><img src="images/logo-aieq.svg" alt="" /></a>
+    <a href=""><img src="images/logo-afls.svg" alt="" /></a>
+    <a href=""><img src="images/logo-accla.svg" alt="" /></a>
+    <a href=""><img src="images/logo-cefco.svg" alt="" /></a>
+    <a href=""><img src="images/logo-reseau-franco.svg" alt="" /></a>
+    <a href=""><img src="images/logo-uvic.svg" alt="" /></a>
+    </div>
 
   </section>
 
