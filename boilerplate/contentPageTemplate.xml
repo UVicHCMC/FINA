@@ -52,7 +52,7 @@
 
                 <div class="button-wrapper">
                     <!-- Primary navigation toggle (mobile) -->
-                    <button id="site-menu-toggle" class="popover-nav-open" type="button" popovertarget="site-navigation" popovertargetaction="toggle" aria-controls="site-navigation" aria-haspopup="true" aria-expanded="false">
+                    <button id="site-menu-toggle" class="popover-nav-open" type="button" popovertarget="site-navigation" popovertargetaction="toggle" aria-controls="site-navigation" aria-haspopup="true">
                         <span class="nav-toggle-label"><?nav-toggle-label?></span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="menu-burger" width="24" height="24" fill="none">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h18M3 6h18M3 18h18" />

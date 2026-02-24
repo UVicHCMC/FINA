@@ -46,10 +46,13 @@ $bp-grid-collapse: 52rem; // content geometry: reduce padding / collapse breakou
 // ==========================================================================
 
 .doc-shell {
-    margin-inline: auto;
+    width: 100%;
+    justify-self: center;
     padding-inline: 0; // page-wrapper provides safe padding
     container-type: inline-size; // boundary for container queries
     max-inline-size: var(--page-grid-wide-max);
+    background-color: #fbfbfb;
+    
 }
 
 .doc-layout {

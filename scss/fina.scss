@@ -76,13 +76,18 @@ body:not(#index) {
 .page-wrapper {
    // padding-inline: 1rem;
     background-color: #fbfbfb;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: minmax(0, 1fr);
+    justify-content: center;
 }
 
 #index header {
     
 }
 
-header {
+header:not(#index) {
     width: 100%;
     max-width: 100%;
     margin-inline: auto;
@@ -213,20 +218,41 @@ header {
 //about logos
 .logo-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    gap: 2rem;
     
     & .logo {
        height: auto; 
     }
     
-   
-
+    //logos in order of appearance, magic number widths
+    & .aieq {
+        width: 125px;
+    }
+    
+    & .afls {
+        width: 100px;
+    }
+    
+    & .accla {
+        width: 100px;
+    }
+    
+    & .cefco {
+        width: 175px;
+    }
+    
+    & .reseau-franco {
+       width: 100px; 
+    }
+    
+    & .uvic {
+        width: 250px;
+    }
 }
-
-
-
 
 //Footer
 footer {
@@ -247,5 +273,6 @@ footer {
         flex-wrap: wrap;
         align-items: center;
         list-style-type: none;
+        gap: 2rem;
     }
 }
