@@ -168,6 +168,40 @@
     </xsl:element>
   </xsl:template>
   
+  <!--If the input document has two or more section elements, create a subnav with links to each section-->
+  <xsl:template match="xhtml:body" priority="3">
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <xsl:variable name="sectionNavLabel" select="
+        if ($propertiesDoc/site/subnav-aria-label/*[local-name() = $lang]) then
+          normalize-space(string($propertiesDoc/site/subnav-aria-label/*[local-name() = $lang]))
+        else
+          'Section navigation'
+                      "/>
+      <xsl:variable name="contentNodes" select="$contentRoot/*/*"/>
+      <xsl:variable name="sections" as="element()*" select="$contentNodes/descendant-or-self::*[local-name() = 'section']"/>
+      <xsl:if test="count($sections) &gt;= 2">
+        <xsl:message>Creating section navigation with <xsl:value-of select="count($sections)"/> sections</xsl:message>
+        <nav class="subnav" aria-label="{$sectionNavLabel}">
+          <ul>
+            <xsl:for-each select="$sections">
+              <xsl:variable name="sectionId" select="@id"/>
+              <xsl:variable name="sectionTitle" select="(.//*[matches(local-name(), '^h[1-6]$')])[1]"/>
+              <xsl:if test="$sectionId and $sectionTitle">
+                <li>
+                  <a href="#{$sectionId}">
+                    <xsl:value-of select="$sectionTitle"/>
+                  </a>
+                </li>
+              </xsl:if>
+            </xsl:for-each>
+          </ul>
+        </nav>
+      </xsl:if>
+      <xsl:apply-templates select="node()"/>
+    </xsl:copy>
+  </xsl:template>
+  
   <!-- Process content in content mode (identity transform with image handling) -->
   <xsl:template match="xhtml:* | @*" mode="content" priority="1">
     <xsl:copy>

@@ -121,15 +121,20 @@
     <site-navigation-label>
         <fr>Primary</fr>
     </site-navigation-label>
+    
+    <!-- For subnav.aria-label-->
+    <subnav-aria-label>
+        <fr>Sous-navigation</fr>
+    </subnav-aria-label>
 
     <!--For button.aria-label-->
     <popover-close-label>
-        <fr>Close</fr>
+        <fr>Fermer</fr>
     </popover-close-label>
 
     <!--For span.nav-toggle-label-->
     <nav-toggle-label>
-        <fr>Site Menu</fr>
+        <fr>Menu du site</fr>
     </nav-toggle-label>
 
     <!--For div.footer-container-->
