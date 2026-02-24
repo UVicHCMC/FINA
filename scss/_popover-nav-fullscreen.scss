@@ -387,6 +387,7 @@ body:has(#site-navigation[popover]:popover-open) {
             padding-block-end: .5rem;
             
             &:hover {
+                cursor: pointer;
                 border-bottom: 3px solid var(--highlight);
             }
             
