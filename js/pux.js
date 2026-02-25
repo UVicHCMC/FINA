@@ -1,27 +1,46 @@
 /**
- * Popover nav (Popover API–first) + focus trap
+ * Popover navigation controller using the native Popover API.
  *
- * What this version does (and what it intentionally does NOT do):
+ * This script does NOT implement its own open/close logic. All visibility is controlled
+ * entirely by HTML attributes such as:
  *
- * ✅ Uses Popover API “the right way”
- *    - Opening/closing is handled by your HTML attributes:
- *        popovertarget / popovertargetaction on buttons + popover="auto" on the nav
- *    - We do NOT implement our own toggle logic.
+ *   - popover="auto" on the navigation element
+ *   - popovertarget / popovertargetaction on buttons
  *
- * ✅ Minimal JS responsibilities
- *    1) Keep the toggle button’s aria-expanded in sync with the *actual* popover state
- *       (covers: toggle button, close button, ESC, and light-dismiss click-away).
- *    2) Enforce your rule: at/above the desktop breakpoint, the popover must be closed.
- *    3) Trap focus inside the popover only while it is open; restore focus on close.
+ * Instead, this script adds the behavioural rules and accessibility mechanics that the
+ * Popover API does not handle automatically:
  *
- * Requirement:
- * - CSS defines: :root { --desktop-break: 48rem; }  <-- NOT supported here
- *   This script accepts only pixel values like "768px" or "768".
- *   If --desktop-break is missing or not parseable as pixels, it falls back to 768.
+ * 1) Desktop enforcement
+ *    At or above the configured desktop breakpoint (--desktop-break in :root, pixels only),
+ *    the navigation popover is forcibly closed and cannot remain open. This ensures the
+ *    popover is strictly a mobile-only navigation pattern.
+ *
+ * 2) Focus trapping while open
+ *    When the popover opens, keyboard focus is moved inside it and constrained so Tab and
+ *    Shift+Tab cycle only within the popover. This prevents keyboard users from navigating
+ *    to background content while the menu is open.
+ *
+ * 3) Focus restoration on close
+ *    When the popover closes (via toggle button, close button, ESC, click-away, or breakpoint
+ *    change), focus is restored to the element that originally opened it. This preserves
+ *    logical keyboard navigation flow.
+ *
+ * 4) Popover API–driven state synchronization
+ *    The script listens only to the Popover API "toggle" event, which fires for ALL open/close
+ *    causes. This guarantees consistent behaviour regardless of how the popover was closed.
+ *
+ * This script intentionally avoids:
+ *   - manual toggle logic
+ *   - fallback implementations for unsupported browsers
+ *   - redundant state tracking outside the Popover API
+ *
+ * Result: a minimal, standards-compliant mobile navigation controller.
  */
 
 (function initWhenReady() {
-	// Ensure the DOM exists before we query by ID.
+
+	// Ensure initialization runs only after the DOM is fully parsed.
+	// This guarantees required elements can be found safely.
 	if (document.readyState === "loading") {
 		document.addEventListener("DOMContentLoaded", init);
 	} else {
@@ -29,92 +48,77 @@
 	}
 
 	function init() {
-		// --- Required elements ---------------------------------------------------------------
 
+		// Locate the toggle button and the popover navigation element.
+		// These IDs must match the HTML structure.
 		const toggleBtn = document.getElementById("site-menu-toggle");
 		const popoverEl = document.getElementById("site-navigation");
+
+		// Abort initialization if required elements are missing.
 		if (!toggleBtn || !popoverEl) return;
 
-		// --- Popover API support check -------------------------------------------------------
 
-		// This is a Popover-first script. If the API isn't there, we bail out cleanly.
-		// (You asked to remove fallbacks.)
+		// Verify Popover API support before attaching any behaviour.
+		// This script relies entirely on native Popover API methods.
 		const hasPopoverAPI =
 			typeof popoverEl.showPopover === "function" &&
 			typeof popoverEl.hidePopover === "function" &&
 			typeof popoverEl.togglePopover === "function";
 
+		// Abort if Popover API is not available.
 		if (!hasPopoverAPI) return;
 
-		// --- Helpers: real state + ARIA ------------------------------------------------------
 
-		/**
-		 * Returns true if the popover is currently open.
-		 * :popover-open is the canonical way to read actual open state.
-		 */
+		// Determine whether the popover is currently open.
+		// The :popover-open pseudo-class reflects the actual open state.
 		function isOpen() {
 			return popoverEl.matches(":popover-open");
 		}
 
-		/**
-		 * Set aria-expanded on the toggle button.
-		 * This is the only ARIA attribute we manage here.
-		 */
-		function setExpanded(open) {
-			toggleBtn.setAttribute("aria-expanded", open ? "true" : "false");
-		}
 
-		/**
-		 * Close the popover if it’s open.
-		 * Used when enforcing the desktop rule.
-		 */
+		// Close the popover only if it is open.
+		// This avoids unnecessary toggle events.
 		function closePopover() {
-			if (popoverEl.matches(":popover-open")) popoverEl.hidePopover();
+			if (popoverEl.matches(":popover-open")) {
+				popoverEl.hidePopover();
+			}
 		}
 
-		// --- Breakpoint (read once) ----------------------------------------------------------
 
-		/**
-		 * Reads --desktop-break from :root. Accepts "768px" or "768".
-		 * Falls back to 768 if missing/invalid.
-		 *
-		 * If you want to support rem/em, the correct solution is to standardize
-		 * --desktop-break as pixels, or compute rem->px (but that adds JS complexity).
-		 */
+		// Read the desktop breakpoint from CSS custom property --desktop-break.
+		// Accepts values in pixels ("768px" or "768").
+		// Falls back to 768px if missing or invalid.
 		function readDesktopBreakPx() {
+
 			const raw = getComputedStyle(document.documentElement)
 				.getPropertyValue("--desktop-break")
 				.trim();
 
 			if (!raw) return 768;
 
-			// Only parse a plain pixel number.
-			const m = raw.match(/^([0-9]*\.?[0-9]+)\s*(px)?$/i);
-			return m ? Number(m[1]) : 768;
+			const match = raw.match(/^([0-9]*\.?[0-9]+)\s*(px)?$/i);
+
+			return match ? Number(match[1]) : 768;
 		}
 
+
+		// Create a MediaQueryList that tracks whether viewport is at desktop width.
 		const breakPx = readDesktopBreakPx();
 		const mqDesktop = window.matchMedia(`(min-width: ${breakPx}px)`);
 
-		/**
-		 * Enforce: on desktop widths, the popover must be closed and aria-expanded false.
-		 * On mobile widths, do nothing special; the Popover API governs open/close.
-		 */
+
+		// Enforce rule: popover must not remain open at desktop width.
+		// If open when entering desktop width, it is immediately closed.
 		function enforceDesktopClosed() {
+
 			if (mqDesktop.matches) {
-				// Closing triggers the popover "toggle" event, which will update ARIA + focus trap.
 				closePopover();
-				// We also set ARIA immediately in case the close is a no-op (already closed).
-				setExpanded(false);
 			}
 		}
 
-		// --- Focus trap ----------------------------------------------------------------------
 
-		/**
-		 * A selector for focusable elements.
-		 * We’ll query these within the popover whenever it is open.
-		 */
+		// Selector list defining elements considered keyboard-focusable.
+		// Used to build the focus trap inside the popover.
 		const FOCUSABLE_SELECTOR = [
 			"a[href]",
 			"area[href]",
@@ -129,191 +133,202 @@
 			"[tabindex]:not([tabindex='-1'])"
 		].join(",");
 
-		/**
-		 * Get focusable descendants of the popover, filtered to elements that are visible.
-		 * This avoids trapping focus onto display:none or visibility:hidden elements.
-		 */
+
+		// Collect focusable descendants of the popover and filter out elements
+		// that are hidden, non-interactive, or not currently visible.
 		function getFocusable() {
-			const candidates = Array.from(popoverEl.querySelectorAll(FOCUSABLE_SELECTOR));
+
+			const candidates = Array.from(
+				popoverEl.querySelectorAll(FOCUSABLE_SELECTOR)
+			);
 
 			return candidates.filter((el) => {
-				// hidden attribute explicitly removes element from interaction.
+
+				// Ignore elements explicitly marked hidden.
 				if (el.hasAttribute("hidden")) return false;
 
-				// Common edge case: elements inside closed <details> should not be focusable.
+				// Ignore elements inside closed <details>.
 				const details = el.closest("details");
 				if (details && !details.open) return false;
 
-				// Basic computed style visibility checks.
+				// Ignore elements that are not visible.
 				const style = getComputedStyle(el);
-				if (style.display === "none" || style.visibility === "hidden") return false;
+				if (style.display === "none" || style.visibility === "hidden") {
+					return false;
+				}
 
-				// Ensure it actually has a rendered box.
+				// Ignore elements without rendered layout boxes.
 				return el.getClientRects().length > 0;
 			});
 		}
 
-		// Track what had focus when the popover opened so we can restore it on close.
+
+		// Store the element that had focus before the popover opened.
+		// Used to restore focus after closing.
 		let restoreFocusTo = null;
 
-		// Track whether the trap is active to avoid double binding.
+
+		// Track whether focus trapping is currently active.
 		let trapActive = false;
 
-		/**
-		 * Move focus into the popover when it opens.
-		 * We focus the first focusable control (often your close button or first link).
-		 */
+
+		// Move focus to the first focusable element inside the popover.
+		// If none exist, focus the popover container itself.
 		function focusFirstInside() {
+
 			const focusables = getFocusable();
 
 			if (focusables.length > 0) {
+
 				focusables[0].focus({ preventScroll: true });
 				return;
 			}
 
-			// If there are no focusables (rare), make the popover itself focusable.
-			// tabindex="-1" allows programmatic focus without inserting into Tab order.
-			if (!popoverEl.hasAttribute("tabindex")) popoverEl.setAttribute("tabindex", "-1");
+			// Ensure popover itself can receive programmatic focus.
+			if (!popoverEl.hasAttribute("tabindex")) {
+				popoverEl.setAttribute("tabindex", "-1");
+			}
+
 			popoverEl.focus({ preventScroll: true });
 		}
 
-		/**
-		 * Trap Tab key navigation within the popover.
-		 * - Tab on the last element wraps to the first
-		 * - Shift+Tab on the first wraps to the last
-		 */
-		function onKeydownTrap(e) {
-			// Defensive: only trap if still open.
+
+		// Handle Tab and Shift+Tab to prevent focus from escaping the popover.
+		function onKeydownTrap(event) {
+
 			if (!isOpen()) return;
 
-			// Trap only Tab / Shift+Tab.
-			if (e.key !== "Tab") return;
+			if (event.key !== "Tab") return;
 
 			const focusables = getFocusable();
 
-			// If nothing focusable exists, prevent Tab from escaping.
 			if (focusables.length === 0) {
-				e.preventDefault();
+
+				event.preventDefault();
 				return;
 			}
 
 			const first = focusables[0];
 			const last = focusables[focusables.length - 1];
+
 			const active = document.activeElement;
 
-			// Shift+Tab from first should wrap to last.
-			if (e.shiftKey && active === first) {
-				e.preventDefault();
+
+			// Wrap backward navigation from first element to last.
+			if (event.shiftKey && active === first) {
+
+				event.preventDefault();
 				last.focus();
 				return;
 			}
 
-			// Tab from last should wrap to first.
-			if (!e.shiftKey && active === last) {
-				e.preventDefault();
+
+			// Wrap forward navigation from last element to first.
+			if (!event.shiftKey && active === last) {
+
+				event.preventDefault();
 				first.focus();
 			}
 		}
 
-		/**
-		 * Activate the trap:
-		 * - remember focus origin (so we can restore on close)
-		 * - bind keydown handler
-		 * - move focus into popover
-		 */
+
+		// Activate focus trap when popover opens.
+		// Saves previous focus and binds keyboard handler.
 		function activateTrap() {
+
 			if (trapActive) return;
+
 			trapActive = true;
 
 			restoreFocusTo = document.activeElement;
 
-			// Use document-level listener so focus cannot “slip past” the popover boundary.
 			document.addEventListener("keydown", onKeydownTrap);
 
-			// Defer focus move until after open has fully committed.
 			queueMicrotask(focusFirstInside);
 		}
 
-		/**
-		 * Deactivate the trap:
-		 * - remove keydown handler
-		 * - restore focus to opener (usually the toggle button)
-		 */
+
+		// Deactivate focus trap when popover closes.
+		// Removes keyboard handler and restores prior focus.
 		function deactivateTrap() {
+
 			if (!trapActive) return;
+
 			trapActive = false;
 
 			document.removeEventListener("keydown", onKeydownTrap);
 
-			// Restore focus if the saved element still exists; otherwise use the toggle button.
 			const target =
-				restoreFocusTo && document.contains(restoreFocusTo) ? restoreFocusTo : toggleBtn;
+				restoreFocusTo && document.contains(restoreFocusTo)
+					? restoreFocusTo
+					: toggleBtn;
 
-			// If focus is currently nowhere useful (body) or inside the (now closed) popover,
-			// restore it to the opener.
 			const active = document.activeElement;
+
 			const shouldRestore =
 				!active ||
 				active === document.body ||
 				(active && popoverEl.contains(active));
 
 			if (shouldRestore) {
-				queueMicrotask(() => target.focus({ preventScroll: true }));
+
+				queueMicrotask(() => {
+					target.focus({ preventScroll: true });
+				});
 			}
 
 			restoreFocusTo = null;
 		}
 
-		// --- Core wiring: rely on Popover API events -----------------------------------------
 
-		/**
-		 * The Popover API fires a "toggle" event when the popover opens/closes, no matter how:
-		 * - toggle button (popovertargetaction="toggle")
-		 * - close button (popovertargetaction="hide")
-		 * - ESC
-		 * - click-away light dismiss (popover="auto")
-		 *
-		 * This is the best single event to sync ARIA + focus trap.
-		 */
-		popoverEl.addEventListener("toggle", (e) => {
-			// Modern browsers provide e.newState: "open" | "closed".
-			// If absent, fall back to :popover-open.
-			const open = e && e.newState ? (e.newState === "open") : isOpen();
+		// Listen for Popover API toggle events.
+		// Fires on open and close regardless of trigger source.
+		popoverEl.addEventListener("toggle", (event) => {
 
-			setExpanded(open);
+			const open =
+				event && event.newState
+					? event.newState === "open"
+					: isOpen();
 
-			// Enforce “desktop must be closed” even if something tries to open it on desktop.
+
+			// Prevent popover from remaining open at desktop width.
 			if (open && mqDesktop.matches) {
-				closePopover(); // triggers another toggle -> closed
+
+				closePopover();
 				return;
 			}
 
-			// Focus trap toggles with the popover state.
-			if (open) activateTrap();
-			else deactivateTrap();
+
+			// Enable or disable focus trap based on open state.
+			if (open) {
+				activateTrap();
+			} else {
+				deactivateTrap();
+			}
 		});
 
-		/**
-		 * When crossing into desktop width, force close.
-		 * (If already closed, it’s a no-op.)
-		 */
+
+		// Listen for viewport breakpoint transitions.
+		// Ensures popover closes immediately when entering desktop width.
 		if (typeof mqDesktop.addEventListener === "function") {
+
 			mqDesktop.addEventListener("change", enforceDesktopClosed);
+
 		} else {
-			// Older Safari
+
 			mqDesktop.addListener(enforceDesktopClosed);
 		}
 
-		// --- Initial state sync ----------------------------------------------------------------
 
-		// Ensure aria-expanded matches whatever the popover state is at load.
-		setExpanded(isOpen());
-
-		// Enforce desktop closed immediately on load if needed.
+		// Apply desktop enforcement immediately during initialization.
 		enforceDesktopClosed();
 
-		// If the popover happens to be open at load on mobile (rare), activate the trap.
-		if (isOpen() && !mqDesktop.matches) activateTrap();
+
+		// Activate focus trap if popover starts open on mobile.
+		if (isOpen() && !mqDesktop.matches) {
+
+			activateTrap();
+		}
 	}
 })();
 

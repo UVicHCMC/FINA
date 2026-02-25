@@ -137,15 +137,15 @@
             </main>
             <footer>
 
-            <div class="footer-container">
-                     <ul class="footer-items">
-                       <li>
-                         <a href="https://hcmc.uvic.ca">
-                         <?uvic-logo?>
-                         </a>
-                       </li>
-                     </ul>
-                   </div>
+           <div class="logo-container">
+             
+           <a href=""><img class="logo aieq" src="images/logo-aieq.svg" alt="" /></a>
+           <a href=""><img class="logo afls" src="images/logo-afls.svg" alt="" /></a>
+           <a href=""><img class="logo accla" src="images/logo-accla.svg" alt="" /></a>
+           <a href=""><img class="logo cefco" src="images/logo-cefco.svg" alt="" /></a>
+           <a href=""><img class="logo reseau-franco" src="images/logo-reseau-franco.svg" alt="" /></a>
+           <a href=""><img class="logo uvic" src="images/logo-uvic.svg" alt="" /></a>
+           </div>
 
             </footer>
         </div>

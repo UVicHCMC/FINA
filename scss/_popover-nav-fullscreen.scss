@@ -391,6 +391,10 @@ body:has(#site-navigation[popover]:popover-open) {
                 border-bottom: 3px solid var(--highlight);
             }
             
+            &:has(.active) {
+               border-bottom: 3px solid var(--highlight); 
+            }
+            
         }
     }
 

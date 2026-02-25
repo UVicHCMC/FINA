@@ -12,10 +12,14 @@
     <!-- Compiled styles (includes page grid + layout system) -->
     <link rel="stylesheet" href="{?cssFile}" />
 
+    <!-- Script -->
+    <script src="{?jsFile}" />
+
     <!-- Favicons / PWA -->
     <link rel="icon" href="{?faviconIco}" sizes="48x48" />
     <link rel="icon" href="{?faviconSvg}" sizes="any" type="image/svg+xml" />
     <link rel="manifest" href="{?siteManifest}" />
+    
 
 </head>
 
@@ -121,7 +125,16 @@
             -->
         <footer class="site-footer">
             <div class="footer-container">
-                <?footer-content?>
+               <ul class="logo-container">
+                 
+               <a href=""><img class="logo aieq" src="images/logo-aieq.svg" alt="" /></a>
+               <a href=""><img class="logo afls" src="images/logo-afls.svg" alt="" /></a>
+               <a href=""><img class="logo accla" src="images/logo-accla.svg" alt="" /></a>
+               <a href=""><img class="logo cefco" src="images/logo-cefco.svg" alt="" /></a>
+               <a href=""><img class="logo reseau-franco" src="images/logo-reseau-franco.svg" alt="" /></a>
+               <a href=""><img class="logo uvic" src="images/logo-uvic.svg" alt="" /></a>
+               </ul>
+
             </div>
         </footer>
     </div>

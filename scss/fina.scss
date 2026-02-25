@@ -216,13 +216,15 @@ header:not(#index) {
 }
 
 //about logos
-.logo-container {
+.page-wrapper .logo-container {
+    list-style-type: none;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    padding-inline-start: 0;
     
     & .logo {
        height: auto; 
@@ -238,15 +240,15 @@ header:not(#index) {
     }
     
     & .accla {
-        width: 100px;
+        width: 75px;
     }
     
     & .cefco {
-        width: 175px;
+        width: 125px;
     }
     
     & .reseau-franco {
-       width: 100px; 
+       width: 75px; 
     }
     
     & .uvic {
@@ -257,12 +259,14 @@ header:not(#index) {
 //Footer
 footer {
     width: 100%;
-    max-width: var(--desktop-lg);
+    max-width: 100%;
     margin-inline: auto;
+    background-color: #ffffff;
+    margin-block-start: var(--space-6);
 }
 
 .footer-container {
-    margin-block-start: 3rem;
+    
     padding-block: 1.5rem;
     border-block-start: 1px solid var(--border-color);
 

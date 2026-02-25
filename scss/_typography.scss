@@ -381,6 +381,10 @@ body {
 
     // Marker indentation with padding is more stable than margin
     padding-inline-start: 1.25rem;
+    
+    & li {
+      margin-block-start: .25rem;
+    }
   }
 
   ul {
