@@ -3,7 +3,7 @@
 
   <h1>Inscriptions</h1><!--Page title-->
 
-  <section id="inscriptions">
+  <section id="colloque">
 
     <p>Vous pouvez vous inscrire au colloque par le biais de Eventbrite [link to be set up] <b>entre le 2 mars et le 15 avril 2026</b>. Les frais sont indiqués en <b>dollars canadiens</b> et couvrent les pauses-café et les repas du midi pour les trois jours du colloque. Des collations seront aussi offertes pour le déjeuner, avant le début des présentations.</p>
 
@@ -15,12 +15,37 @@
       <dd>100 $</dd>
     </dl>
 
+  </section>
+
+  <section id="banquet">
+
     <p>En plus de votre inscription au colloque, vous pouvez vous inscrire au banquet [link to be set up] qui aura lieu le jeudi 16 juin à compter de 18 h 30, au <a href="https://www.unionclub.com/">Union Club</a> (805 Gordon Street), dans la salle McKenzie (McKenzie Lounge). Le repas comprendra une entrée (choix entre deux), un plat principal (choix entre deux), un dessert (choix entre deux) ainsi qu’un verre de vin. Le club se fera un plaisir de répondre aux restrictions alimentaires.</p>
 
     <dl>
       <dt>Tarif banquet</dt>
       <dd>120 $</dd>
     </dl>
+
+    <p>Choix d’une des entrées suivantes :</p>
+
+    <ul>
+      <li>Soupe de pommes de terre et poireaux (plat végétarien)<br /><i>German butter potatoes, Saanich leeks, crisp sourdough and herb oil</i></li>
+      <li>Endives belges (plat sans gluten)<br /><i>Shaved prosciutto, crumbled Castle blue cheese, poached pears, candied walnuts and honey dill vinaigrette</i></li>
+    </ul>
+
+    <p>Choix d’un des plats principaux suivants :</p>
+
+    <ul>
+      <li>Poitrine de poulet (plat sans gluten)<br /><i>Chicken breast with garlic and chive potato ‘rosti’, sautéed broccolini, Cremini mushrooms, thyme infused red wine jus</i></li>
+      <li>Flétan de Haida Gwaii (plat sans gluten/sans produit laitier)<br /><i>Haida Gwaii halibut with Manila clams, bacon lardons, Shanghai bok choy, spring onions, nori and garlic dashi broth</i></li>
+    </ul>
+
+    <p>Choix d’un des desserts suivants :</p>
+
+    <ul>
+      <li>Crème brûlée au miel (plat sans gluten)<br /><i>Babes’ fireweed blossom honey, Chantilly cream, poached pear and mint</i></li>
+      <li>Mousse au chocolat noir (plat sans gluten)<br /><i>White chocolate cremeux, hazelnut sponge and salted caramel</i></li>
+    </ul>
 
   </section>
 
