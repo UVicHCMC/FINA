@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div id="root" xmlns="http://www.w3.org/1999/xhtml"><!--gets removed-->
+
+  <h1>Activité/Visite</h1><!--Page title-->
+
+  <section id="activite">
+    <h2>Butchart Gardens</h2>
+
+    <p>Nous pensons organiser un déplacement l’après-midi le dernier jour du colloque (le mercredi 17 juin) pour faire une visite de <a href="https://butchartgardens.com/">Butchart Gardens</a>, l’un des jardins d’exposition florale les plus prestigieux du Canada, à 20 km au nord de Victoria. Un courriel vous sera envoyé pour sonder l’intérêt suscité par cette visite. Si un nombre suffisant de personnes se montre intéressé (au moins 20 personnes), nous vous enverrons un lien pour que vous puissiez vous y inscrire et payer les frais.</p>
+
+    <p>Prix d’entrée aux Butchart Gardens : <b>44,25 $</b> (<b>39,83 $</b> si nous sommes au moins 25).</p>
+
+    <p>Aller : départ du campus dans un autobus spécialement affrété pour nous (52 places) à 14 h; arrivée à Butchart Gardens à 14 h 45. <br />Retour : départ de Butchart Gardens à 17 h 30; arrivée au centre-ville près du Royal BC Museum à 18 h 15.</p>
+
+    <p>Prix du transport (<a href="https://www.weacharters.ca/">Wea Charters</a>) : <b>44,28 $</b> si nous sommes 20 personnes <br />(<b>35,42 $</b> à 25 personnes; 29,52 $ à 30; 25,30 $ à 35; 22,14 $ à 40).</p>
+
+    <p>[bus photo]</p>
+    <p>[gardens photo]</p>
+  </section>
+
+
+</div>
+<!--end of root-->
