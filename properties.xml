@@ -121,7 +121,7 @@
     <site-navigation-label>
         <fr>Primary</fr>
     </site-navigation-label>
-    
+
     <!-- For subnav.aria-label-->
     <subnav-aria-label>
         <fr>Sous-navigation</fr>
@@ -165,6 +165,9 @@
         </item>
         <item href="accommodations.html">
             <fr>Hébergement</fr>
+        </item>
+        <item href="activity.html">
+            <fr>Activité/visite</fr>
         </item>
         <item href="to-do.html">
             <fr>À voir et à faire à Victoria</fr>
