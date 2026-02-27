@@ -12,9 +12,13 @@
 
     <p>Aller : départ du campus dans un autobus spécialement affrété pour nous (52 places) à 14 h; arrivée à Butchart Gardens à 14 h 45. <br />Retour : départ de Butchart Gardens à 17 h 30; arrivée au centre-ville près du Royal BC Museum à 18 h 15.</p>
 
-    <p>Prix du transport (<a href="https://www.weacharters.ca/">Wea Charters</a>) : <b>44,28 $</b> si nous sommes 20 personnes <br />(<b>35,42 $</b> à 25 personnes; 29,52 $ à 30; 25,30 $ à 35; 22,14 $ à 40).</p>
+    <p>Prix du transport (<a href="https://www.weacharters.ca/">WEA Charters</a>) : <b>44,28 $</b> si nous sommes 20 personnes <br />(<b>35,42 $</b> à 25 personnes; 29,52 $ à 30; 25,30 $ à 35; 22,14 $ à 40).</p>
 
-    <p>[bus photo]</p>
+    <figure>
+      <img src="images/wea-bus.webp" alt="A small yellow school bus." />
+      <figcaption>L'autobus (photo : WEA Charters)</figcaption>
+    </figure>
+
     <figure>
       <img src="images/butchart-gardens.webp" alt="" />
       <figcaption>Butchart Gardens (photo : Pierre-Don Giancarli)</figcaption>
