@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div id="root" xmlns="http://www.w3.org/1999/xhtml"><!--gets removed-->
+
+  <h1>Myriam Bergeron-Maguire, Université Sorbonne Nouvelle Paris 3 (France)</h1><!--Page title-->
+
+  <section id="myriam-bergeron-maguire">
+
+    <figure class="headshot">
+      <img src="images/myriam-bergeron-maguire-small.webp" alt="" />
+      <figcaption>Myriam Bergeron-Maguire</figcaption>
+    </figure>
+
+    <h2>« Les lettres françaises des ‘Prize Papers’ : un précieux gisement pour l’histoire du français en Amérique »</h2>
+
+    <p>Cette conférence portera sur la variation du français en Europe et en Amérique aux 17e et 18e siècles dans une perspective géohistorique. Elle s’appuiera sur les données du <a href="https://lettres-outre-mer.huma-num.fr/">projet ANR Macintosh (2023-2027)</a>, qui proviennent de lettres privées pour la plupart rédigées par des « peu-lettrés », adressées à des correspondants se trouvant dans l’ouest de la France ou bien outre-Atlantique, dans les jeunes colonies françaises de l’époque (Antilles, Nouvelle-France).</p>
+
+    <p>L’intérêt historique de cette nouvelle documentation pour la description des variétés du français en Amérique sera mis en évidence par la présentation d’une sélection de caractéristiques — grammaticales, lexicales et grapho-phonétiques — qui y sont attestées pour la première fois, ayant été exclues du français écrit soigné dès le départ.</p>
+
+    <p>Pour cerner les trajectoires respectives de ces phénomènes souterrains, plusieurs indices seront examinés : leur présence dans une ou plusieurs variétés contemporaines du français en Amérique du Nord, leur absence dans les régions francisées tardivement (domaines d’oc et francoprovençal) – ce qui suggère une stigmatisation précoce – et leur représentation dans la littérature « populaire » ou comique de l’époque (au théâtre, principalement).</p>
+
+    <p>L’examen conduira à mettre en lumière un état de langue que les études portant sur le français des 17e et 18e siècles ont longtemps passé sous silence faute de sources (philologiquement) fiables : un français resté relativement confidentiel, employé entre proches, qui représente le terreau sur lequel se fondent en grande partie les variétés contemporaines du français en Amérique.</p>
+
+  </section>
+
+</div>
+<!--end of root-->
