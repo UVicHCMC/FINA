@@ -215,6 +215,16 @@ header:not(#index) {
     height: auto;
 }
 
+.top-logo-container-internal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-internal {
+  filter: drop-shadow(0 1px 2px rgba(10, 13, 18, 0.10)) drop-shadow(0 1px 3px rgba(10, 13, 18, 0.10));
+}
+
 //about logos
 .page-wrapper .logo-container {
     list-style-type: none;

@@ -40,6 +40,8 @@
             -->
         <header id="site-header" class="site-masthead">
             <a href="#content" class="skip-link"><?skip-link?></a>
+            <div class="top-logo-container-internal">
+            <img src="images/logo-internal.svg" class="logo-internal" alt="" />
 
             <p class="internal-header-text">
                 <span class="site-title">Les français d’ici</span>
@@ -48,6 +50,7 @@
                     <time datetime="2026-06-15/2026-06-17">15–17 juin 2026</time>
                 </span>
             </p>
+            </div>
 
             <div class="nav-wrapper">
 
