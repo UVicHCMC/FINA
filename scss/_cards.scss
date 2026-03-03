@@ -1,0 +1,255 @@
+//cards
+@use "custom-properties" as *;
+
+// --------------------------------------------------------------------------
+// Card-grid tokens (CSS custom properties)
+// - Define defaults once; override per page/section by setting these vars on a
+//   wrapper (e.g., #plenieres, .card-grid, or a parent section).
+// --------------------------------------------------------------------------
+
+:root {
+	/* Card surface + depth */
+	--card-bg: #fff;
+	--card-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+	/* Media placeholder */
+	--card-photo-bg: #eee;
+
+	/* Description panel */
+	--card-desc-bg: var(--site-highlight);
+
+
+
+	/* Typography tokens (component baseline) */
+	--card-font-family: var(--font-sans);
+	--card-font-size: 1rem;
+	--card-line-height: 1.4;
+	--card-letter-spacing: normal;
+	--card-text-transform: none;
+
+	//Card name:
+	--card-name-ff: var(--font-sans-heading);
+	--card-name-color: var(--highlight);
+	--card-name-fw: var(--fw-medium);
+	--card-name-lh: 1.2;
+	--card-name-fs: var(--ms-step-2);
+	
+	//Card affill
+	
+	--card-affil-ff: var(--font-sans-body);
+	--card-affil-color: var(--grey-600);
+	--card-affil-fw: var(--fw-light);
+	--card-affil-lh: var(--lh-tight);
+	--card-affil-fs: var(--ms-step--4);
+
+	//Card CTA:
+	--card-cta-ff: var(--font-sans-body);
+	--card-cta-color: var(--highlight);
+	--card-cta-fw: var(--fw-regular);
+	--card-cta-lh: var(--lh-tight);
+	--card-cta-fs: var(--ms-step--2);
+
+	//Card subject
+	--card-subject-ff: var(--font-sans-body);
+	--card-subject-color: var(--grey-700);
+	--card-subject-fw: var(--fw-regular);
+	--card-subject-lh: var(--lh-body);
+	--card-subject-fs: var(--ms-step--1);
+	--card-subject-bg: transparent;
+	
+
+
+
+}
+
+// --------------------------------------------------------------------------
+// Grid wrapper
+// --------------------------------------------------------------------------
+
+.card-grid {
+	display: grid;
+	grid-template-columns: repeat(
+		 auto-fit,
+		minmax(min(300px, 100%), 1fr)
+	  );
+	align-items: start;
+	justify-content: center;
+	inline-size: 100%;
+	column-gap: 1.5rem;
+	width: 100%;
+	z-index: 1;
+
+	/* @media (width >=768px) {
+		grid-template-columns: repeat(2, 350px);
+	}
+
+	@media (width >=1024px) {
+		grid-template-columns: repeat(4, 1fr);
+	} */
+}
+
+//Flex wrapper if flex layout is wanted
+
+.card-flex {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1.5rem;
+	
+	& .card {
+	width: min(100%, 20rem);
+	background: linear-gradient(180deg, #FFF 82.21%, #E6F4FF 99.52%);
+	border: 1px solid transparent;
+	transition: all .5s ease-in-out;
+		&:hover {
+			border: 1px solid var(--highlight);
+		}
+	}
+	
+	
+}
+
+
+
+
+.card {
+	align-self: stretch;
+}
+
+// --------------------------------------------------------------------------
+// Card link container (the full-card anchor)
+// - Establishes a typography baseline so global heading styles do not leak in.
+// - Uses subgrid to inherit row sizing from the parent grid when available.
+// --------------------------------------------------------------------------
+
+.card-link-container {
+	display: grid;
+	grid-template-rows: min-content 1fr;
+	margin-block-end: 1.5rem;
+	height: 100%;
+
+	/* Visual surface */
+	//background: var(--card-bg);
+	overflow: hidden;
+	box-shadow: var(--card-shadow);
+
+	/* Reveal animation */
+	opacity: 1;
+	//transform: translateY(60px);
+	//animation: fade-up 1.5s ease-out forwards;
+
+	/* Anchor reset */
+	text-decoration: none;
+	color: inherit;
+
+	/* Typography baseline (component-owned) */
+	font-family: var(--card-font-family);
+	font-size: var(--card-font-size);
+	font-weight: 400;
+	line-height: var(--card-line-height);
+	letter-spacing: var(--card-letter-spacing);
+	text-transform: var(--card-text-transform);
+}
+
+@keyframes fade-up {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+// --------------------------------------------------------------------------
+// Photo section
+// --------------------------------------------------------------------------
+
+.card-photo-container {
+	aspect-ratio: 2 / 1;
+	background: var(--card-photo-bg);
+	overflow: hidden;
+}
+
+.card-photo {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	transform: scale(1);
+	transition: transform 0.3s ease-in-out;
+}
+
+.card-link-container:hover .card-photo,
+.card:hover .card-photo {
+	transform: scale(1.2);
+}
+
+// --------------------------------------------------------------------------
+// Description section
+// --------------------------------------------------------------------------
+
+.card-desc {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	background: var(--card-desc-bg);
+
+	/* Panel-level default weight */
+	font-weight: var(--card-desc-fw);
+}
+
+/* Card text elements (scoped to the component root to beat global typography) */
+.card-link-container .card-name,
+.card-link-container .card-role,
+.card-link-container .card-affil {
+	font-family: var(--card-font-family);
+	color: var(--card-text);
+	text-align: center;
+}
+
+/* Title: explicit sizing/weight so global h2/h3 rules don’t win */
+.card-link-container .card-name {
+	font-family: var(--card-name-ff);
+	font-weight: var(--card-name-fw);
+	font-size: var(--card-name-fs);
+	line-height: var(--card-name-lh);
+	color: var(--card-name-color);
+	margin: 0;
+	padding: 0;
+}
+
+/* Affiliation: explicit size/weight */
+.card-link-container .card-affil {
+	font-family: var(--card-affil-ff);
+	font-size: var(--card-affil-fs);
+	font-weight: var(--card-affil-fw);
+	color: var(--card-affil-color);
+	line-height: var(--card-affil-lh);
+}
+
+/* Role styling */
+.card-link-container .card-role {
+	font-style: italic;
+}
+
+//Subject
+.card-link-container .card-subject {
+	padding:.5rem;
+	font-family: var(--card-subject-ff);
+	font-size: var(--card-subject-fs);
+	font-weight: var(--card-subject-fw);
+	color: var(--card-subject-color);
+	line-height: var(--card-subject-lh);
+	background-color: var(--card-subject-bg);
+}
+
+/* CTA */
+.card-link-container .card-cta {
+	margin-block-start: auto;
+	text-decoration: underline;
+	font-family: var(--card-cta-ff);
+	font-size: var(--card-cta-fs);
+	font-weight: var(--card-cta-fw);
+	color: var(--card-cta-color);
+	line-height: var(--card-cta-lh);
+	text-align: right;
+}

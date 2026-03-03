@@ -2,264 +2,357 @@
 // Page Layout + Grid System (+ Optional TOC, Full-bleed, Bands)
 // ==========================================================================
 //
-// OVERVIEW
-// --------
-// Layer A — Page chrome + safe area: .page-wrapper
-// Layer B — Reading layout (+ optional TOC): .doc-shell / .doc-layout / .toc
-// Layer C — Content geometry ruler: .page-grid (+ utilities)
-// Layer D — Structural utilities: .full-bleed / .band
+// BEHAVIOUR (defaults)
+// --------------------
+// 1) .page-grid defines named tracks: full / breakout / content.
+// 2) Direct child <section> elements of .page-grid span FULL by default.
+//    - Each section becomes a track-inheriting grid container.
+//    - Direct children of each section default to CONTENT.
+//    - Use .content--breakout / .content--full to opt wider.
+// 3) Direct children of .page-grid that are NOT <section> default to CONTENT,
+//    unless they opt into .content--breakout or .content--full.
+//
+// TRACK-INHERITANCE (explicit opt-in)
+// ----------------------------------
+// Placement utilities (.content--breakout / .content--full) only choose tracks.
+// They do NOT force display/grid on the element. To let an element's children
+// align to the page ruler tracks, add .inherit-page-tracks.
 // ==========================================================================
+
 
 // --------------------------------------------------------------------------
 // SCSS breakpoints (compile-time constants)
 // --------------------------------------------------------------------------
 
-$bp-mobile: 48rem; // generic mobile behaviour
-$bp-toc-collapse: 64rem; // reading layout: TOC → no TOC
-$bp-grid-collapse: 52rem; // content geometry: reduce padding / collapse breakout
+$bp-mobile: 48rem;        // generic mobile behaviour
+$bp-toc-collapse: 64rem;  // reading layout: TOC → no TOC
+$bp-grid-collapse: 52rem; // (kept) collapse breakout/padding if you add rules later
+
 
 // --------------------------------------------------------------------------
 // Global defaults (tokens)
 // --------------------------------------------------------------------------
 
 :root {
-    --page-grid-gutter: clamp(1rem, 4vw, 3rem);
+  // Safe horizontal padding at the viewport edges (used by layout + utilities)
+  --page-grid-gutter: clamp(1rem, 4vw, 3rem);
 
-    /* max width for breakout content */
-    --page-grid-wide-max: 90rem;//1440px
+  // Maximum width permitted for wide/breakout content geometry
+  --page-grid-wide-max: 90rem; // 1440px
 }
+
 
 // ==========================================================================
 // Layer A — Page chrome + safe area
 // ==========================================================================
 
 .page-wrapper {
-    //padding-block: 1.5rem;
+  // Intentionally empty here; safe area/padding decisions live per project.
 }
 
 .site-masthead {
-    // Header-specific styles live elsewhere
+  // Header-specific styles live elsewhere.
 }
+
 
 // ==========================================================================
 // Layer B — Reading layout (+ optional TOC)
 // ==========================================================================
 
 .doc-shell {
-    width: 100%;
-    justify-self: center;
-    padding-inline: 0; // page-wrapper provides safe padding
-    container-type: inline-size; // boundary for container queries
-    max-inline-size: var(--page-grid-wide-max);
-    background-color: #fbfbfb;
-    
+  width: 100%;
+  justify-self: center;
+
+  // The wrapper provides safe padding; the shell stays flush for ruler math.
+  padding-inline: 0;
+
+  // Enables container queries for the TOC collapse behaviour below.
+  container-type: inline-size;
+
+  // Base maximum width (may widen when TOC exists).
+  max-inline-size: var(--page-grid-wide-max);
+
+  background-color: #fbfbfb;
 }
 
 .doc-layout {
-    display: grid;
-    align-items: start;
-    grid-template-columns: minmax(0, 1fr);
+  display: grid;
+  align-items: start;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .doc-layout:has(.toc) {
-    --toc-min: 14rem;
-    --toc-max: 18rem;
-    --toc-gap: var(--page-grid-gutter);
-    --toc-shell-extra: calc(var(--toc-max) + var(--toc-gap));
+  --toc-min: 14rem;
+  --toc-max: 18rem;
+  --toc-gap: var(--page-grid-gutter);
+  --toc-shell-extra: calc(var(--toc-max) + var(--toc-gap));
 
-    grid-template-columns:
-        minmax(0, 1fr)
-        minmax(var(--toc-min), var(--toc-max));
-    gap: var(--toc-gap);
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(var(--toc-min), var(--toc-max));
+  gap: var(--toc-gap);
 }
 
 /* widen shell only when TOC exists */
 .doc-shell:has(.doc-layout > .toc) {
-    max-inline-size: calc(var(--page-grid-wide-max) + var(--toc-shell-extra));
+  max-inline-size: calc(var(--page-grid-wide-max) + var(--toc-shell-extra));
 }
 
 .doc-layout > .page-grid {
-    grid-column: 1;
-    min-inline-size: 0;
+  grid-column: 1;
+  min-inline-size: 0;
 }
 
 .doc-layout > .toc {
-    grid-column: 2;
-    position: sticky;
-    top: var(--page-grid-gutter);
-    max-block-size: calc(100dvh - (var(--page-grid-gutter) * 2));
-    overflow: auto;
-    min-inline-size: 0;
+  grid-column: 2;
+  position: sticky;
+  top: var(--page-grid-gutter);
+  max-block-size: calc(100dvh - (var(--page-grid-gutter) * 2));
+  overflow: auto;
+  min-inline-size: 0;
 }
 
 /* container-query TOC collapse */
 @container (max-width: #{$bp-toc-collapse}) {
-    .doc-layout {
-        grid-template-columns: minmax(0, 1fr);
-    }
+  .doc-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
 
-    .doc-layout > .toc {
-        display: none;
-    }
+  .doc-layout > .toc {
+    display: none;
+  }
 
-    .doc-shell {
-        max-inline-size: var(--page-grid-wide-max);
-    }
+  .doc-shell {
+    max-inline-size: var(--page-grid-wide-max);
+  }
 }
+
 
 // ==========================================================================
 // Layer C — Content geometry ruler (.page-grid)
 // ==========================================================================
 //
+// .page-grid defines named tracks:
+//   - full:     edge-to-edge (includes gutters)
+//   - breakout: wider-than-content, but not full
+//   - content:  readable measure column
+// ==========================================================================
 
-.page-grid,
-.content--full {
-    display: grid;
+.page-grid {
+  display: grid;
 
-    /* horizontal safe area on both sides of the grid
-     clamp(min, fluid, max) */
-    --gutter: clamp(1rem, 4vw, 3rem);
+  // Safe horizontal padding at viewport edges.
+  --gutter: var(--page-grid-gutter);
 
-    /* preferred readable line length
-     this is the target width for the content column */
-    --content-max: 80ch;
+  // Readable measure for body text and typical content.
+  --content-max: 80ch;
 
-    /* absolute maximum width allowed for wide / breakout content */
-    --wide-max: 90rem;
+  // Maximum width allowed for breakout content.
+  --wide-max: var(--page-grid-wide-max);
 
-    /* breakout size calculation:
-     (wide-max - content-max) gives the total extra width available
-     dividing by 2 splits it evenly on the left and right */
-    --breakout: calc((var(--wide-max) - var(--content-max)) / 2);
+  // Breakout width on each side of content:
+  // (wide - content) / 2, then clamped down to 0 by minmax() when space is tight.
+  --breakout: calc((var(--wide-max) - var(--content-max)) / 2);
 
-    /* grid geometry:
-     the sum of all columns will never exceed the container width */
-    grid-template-columns:
-    /* outer flexible space:
-       - minimum = gutter (safe area)
-       - maximum = remaining free space */
-        [full-start] minmax(var(--gutter), 1fr)
-        /* breakout column:
-       - grows up to --breakout
-       - shrinks to 0 before content is forced to shrink */
-        [breakout-start] minmax(0, var(--breakout))
-        /* content column sizing math:
-       - calc(100% - gutter * 2) = available inner space
-       - min(...) ensures content never exceeds content-max
-       - content only shrinks when container < content-max + gutters */
-        [content-start] min(
-            calc(100% - (var(--gutter) * 2)),
-            var(--content-max)
-        )
-        [content-end]
-        /* symmetric breakout column on the right */
-        minmax(0, var(--breakout)) [breakout-end]
-        /* symmetric outer flexible space */
-        minmax(var(--gutter), 1fr) [full-end];
+  grid-template-columns:
+    [full-start] minmax(var(--gutter), 1fr)
+    [breakout-start] minmax(0, var(--breakout))
+    [content-start] min(
+      calc(100% - (var(--gutter) * 2)),
+      var(--content-max)
+    )
+    [content-end]
+    minmax(0, var(--breakout)) [breakout-end]
+    minmax(var(--gutter), 1fr) [full-end];
 }
 
-/* default: normal children go to content, including inside nested full */
-.page-grid > :not(.content--breakout, .content--full),
-.content--full > :not(.content--breakout, .content--full) {
-    grid-column: content;
-    min-inline-size: 0;
+
+// --------------------------------------------------------------------------
+// Track-inheritance utility (explicit opt-in)
+// --------------------------------------------------------------------------
+//
+// Turns the element into a grid container that reuses the page ruler's tracks.
+// Use this when the element's direct children should be able to use
+// grid-column: content|breakout|full to align with the surrounding .page-grid.
+//
+.inherit-page-tracks {
+  display: grid;
+  grid-template-columns: inherit;
 }
 
-/* breakout (wide) */
-.page-grid > .content--breakout {
-    grid-column: breakout;
-    min-inline-size: 0;
+
+// --------------------------------------------------------------------------
+// Direct children of .page-grid that are NOT <section>
+// --------------------------------------------------------------------------
+// - Any direct child of .page-grid (div, figure, nav, etc.) can use the tracks.
+// - Default placement is CONTENT unless it opts into breakout/full.
+// - Placement utilities do not change the element’s internal layout mode.
+// --------------------------------------------------------------------------
+
+// Default: non-section children go to CONTENT.
+.page-grid > :not(section):not(.content--breakout, .content--full) {
+  grid-column: content;
+  min-inline-size: 0;
 }
 
-/* full width (becomes a grid so its children can align to the same tracks) */
-.page-grid > .content--full {
-    grid-column: full;
-    min-inline-size: 0;
-
-    display: grid;
-    grid-template-columns: inherit;
+// Opt-in: non-section children can be BREAKOUT.
+.page-grid > :not(section).content--breakout {
+  grid-column: breakout;
+  min-inline-size: 0;
 }
 
-/* allow breakout inside full-width sections */
+// Opt-in: non-section children can be FULL.
+.page-grid > :not(section).content--full {
+  grid-column: full;
+  min-inline-size: 0;
+}
+
+
+
+
+// --------------------------------------------------------------------------
+// Default section behaviour (sections span FULL; section children default CONTENT)
+// --------------------------------------------------------------------------
+
+// Every direct <section> is a full-width row by default.
+// Each section becomes a track-inheriting grid container so its children
+// can align to content/breakout/full tracks without extra wrappers.
+.page-grid > section {
+  grid-column: full;
+  min-inline-size: 0;
+
+  display: grid;
+  grid-template-columns: inherit;
+}
+
+// Default: direct children of the section snap to readable CONTENT.
+.page-grid > section > :not(.content--breakout, .content--full, .grid-opt-out) {
+  grid-column: content;
+  min-inline-size: 0;
+}
+
+// Opt-in: section children can be BREAKOUT (placement only).
+.page-grid > section > .content--breakout {
+  grid-column: breakout;
+  min-inline-size: 0;
+}
+
+// Opt-in: section children can be FULL (placement only).
+.page-grid > section > .content--full {
+  grid-column: full;
+  min-inline-size: 0;
+}
+
+
+// --------------------------------------------------------------------------
+// Nested opt-ins inside full-width blocks (when they inherit page tracks)
+// --------------------------------------------------------------------------
+//
+// These rules assume the full-width element is a grid container with the
+// page ruler tracks (i.e., it is also .inherit-page-tracks or is a <section>).
+//
+
+// Allow breakout blocks inside any full-width block.
 .content--full > .content--breakout {
-    grid-column: breakout;
-    min-inline-size: 0;
+  grid-column: breakout;
+  min-inline-size: 0;
 }
 
-/* figure integration */
+// Keep normal descendants inside a full-width block in CONTENT by default.
+.content--full > :not(.content--breakout, .content--full, .grid-opt-out) {
+  grid-column: content;
+  min-inline-size: 0;
+}
+
+
+// --------------------------------------------------------------------------
+// Figure integration
+// --------------------------------------------------------------------------
+
 figure.content--breakout,
 figure.content--full {
-    margin: 0;
+  margin: 0;
 }
 
 figure.content--breakout > img,
 figure.content--full > img {
-    grid-column: full;
-    display: block;
-    inline-size: 100%;
-    max-inline-size: 100%;
-    block-size: auto;
+  grid-column: full;
+  display: block;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  block-size: auto;
 }
 
 figure.content--breakout > figcaption,
 figure.content--full > figcaption {
-    grid-column: content;
-    margin-block-start: 0.75rem;
+  grid-column: content;
+  margin-block-start: 0.75rem;
 }
 
-/* tables */
+
+// --------------------------------------------------------------------------
+// Tables
+// --------------------------------------------------------------------------
+
 .table-wrap {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .table-wrap > table {
-    inline-size: 100%;
-    border-collapse: collapse;
+  inline-size: 100%;
+  border-collapse: collapse;
 }
 
-/* code blocks */
+
+// --------------------------------------------------------------------------
+// Code blocks
+// --------------------------------------------------------------------------
+
 .codeblock {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 1rem;
-    border-radius: 0.75rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 1rem;
+  border-radius: 0.75rem;
 }
+
 
 // ==========================================================================
 // Layer D — Structural utilities (full-bleed + bands)
 // ==========================================================================
 
 .full-bleed {
-    /* if used inside .page-grid, allow it to span */
-    grid-column: full;
+  // If used inside .page-grid, allow it to span.
+  grid-column: full;
 
-    /* escape centred/max-width containers */
-    inline-size: 100%;
-    max-inline-size: none;
-    margin-inline: calc(50% - 50vw);
+  // Escape centred/max-width containers.
+  inline-size: 100%;
+  max-inline-size: none;
+  margin-inline: calc(50% - 50vw);
 
-    /* prevent 1–2px rounding scrollbars */
-    overflow-x: clip;
+  // Prevent 1–2px rounding scrollbars.
+  overflow-x: clip;
 }
 
 @supports (width: 100dvw) {
-    .full-bleed {
-        margin-inline: calc(50% - 50dvw);
-    }
+  .full-bleed {
+    margin-inline: calc(50% - 50dvw);
+  }
 }
 
 .full-bleed--mobile {
-    margin-inline: calc(var(--page-grid-gutter) * -1);
+  margin-inline: calc(var(--page-grid-gutter) * -1);
 
-    @media (width >= #{$bp-mobile}) {
-        margin-inline: 0;
-    }
+  @media (width >= #{$bp-mobile}) {
+    margin-inline: 0;
+  }
 }
 
 
-//subnav
+// --------------------------------------------------------------------------
+// Subnav (project-specific)
+// --------------------------------------------------------------------------
 
 .subnav {
-    display: none;
+  display: none;
 }

@@ -7,6 +7,59 @@
 // - Keeps headings “attached” to the content that follows
 // ==========================================================================
 
+//path to the fonts location 
+$fontPath : "../../fonts/";
+
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 100 900;
+  font-style: normal;
+  src: url("#{$fontPath}Roboto-VariableFont.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 100 900;
+  font-style: italic;
+  src: url("#{$fontPath}Roboto-Italic-VariableFont.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-weight: 100 900;
+  font-style: normal;
+  src: url("#{$fontPath}RobotoCondensed-VariableFont.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-weight: 100 900;
+  font-style: normal;
+  src: url("#{$fontPath}InterVariable.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Alegreya Sans';
+  font-weight: 100 900;
+  font-style: normal;
+  src: url("#{$fontPath}AlegreyaSans-variable.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-weight: 100 900;
+  font-style: italic;
+  src: url("#{$fontPath}InterVariable-Italic.woff2") format("woff2");
+  font-display: swap;
+}
+
+
+
 :root {
 
   // ------------------------------------------------------------------------
@@ -23,21 +76,30 @@
     sans-serif;
 
   --font-sans-heading:
-   "Alegreya Sans",
+    "Alegreya Sans",
     system-ui,
     "Noto Sans",
     sans-serif;
 
   --font-sans-body:
-      system-ui,
-      "Noto Sans",
-      "Noto Sans Symbols",
-      "Noto Sans Symbols 2",
-      "Segoe UI",
-      "Roboto",
-      "Helvetica Neue",
-      Arial,
-      sans-serif;
+    "Roboto",
+    "Noto Sans",
+    "Noto Sans Symbols",
+    "Noto Sans Symbols 2",
+    "Segoe UI",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  --font-sans:
+    "Roboto",
+    "Noto Sans",
+    "Noto Sans Symbols",
+    "Noto Sans Symbols 2",
+    "Segoe UI",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
 
   --font-serif:
     "Source Serif",
@@ -186,67 +248,67 @@ body {
   //   h1, section, section, section, ...
   // --------------------------------------------------------------------------
 
- // ------------------------------------------------------------------------
-    // Top-level defaults (covers pages with NO sections)
-    // ------------------------------------------------------------------------
-  
-    > * {
+  // ------------------------------------------------------------------------
+  // Top-level defaults (covers pages with NO sections)
+  // ------------------------------------------------------------------------
+
+  >* {
+    margin: 0;
+  }
+
+  // Generic spacing between top-level siblings (h1, p, ul, figure, etc.)
+  >*+* {
+    margin-block-start: var(--flow-space);
+  }
+
+
+  // ------------------------------------------------------------------------
+  // Sectioned pages: override only what needs overriding
+  // ------------------------------------------------------------------------
+
+  >h1+* {
+    margin-block-start: var(--space-4);
+  }
+
+  // Space between major sections (your boundary spacing)
+  >section+section {
+    margin-block-start: var(--flow-space-loose);
+  }
+
+  // ------------------------------------------------------------------------
+  // Section-local flow (applies only when sections exist)
+  // ------------------------------------------------------------------------
+
+  section {
+
+    >* {
       margin: 0;
     }
-  
-    // Generic spacing between top-level siblings (h1, p, ul, figure, etc.)
-    > * + * {
+
+    >*+* {
       margin-block-start: var(--flow-space);
     }
-  
-  
-    // ------------------------------------------------------------------------
-    // Sectioned pages: override only what needs overriding
-    // ------------------------------------------------------------------------
-  
-    > h1 + * {
+
+    // Headings at the start of a section: no extra top gap
+    > :is(h2, h3, h4, h5, h6):first-child {
+      margin-block-start: 0;
+    }
+
+    // Headings after content: stronger separation
+    >*+ :is(h2, h3) {
       margin-block-start: var(--space-4);
     }
-  
-    // Space between major sections (your boundary spacing)
-    > section + section {
-      margin-block-start: var(--flow-space-loose);
+
+    >*+ :is(h4, h5, h6) {
+      margin-block-start: var(--space-3);
     }
-    
-    // ------------------------------------------------------------------------
-    // Section-local flow (applies only when sections exist)
-    // ------------------------------------------------------------------------
-  
-    section {
-  
-      > * {
-        margin: 0;
-      }
-  
-      > * + * {
-        margin-block-start: var(--flow-space);
-      }
-  
-      // Headings at the start of a section: no extra top gap
-      > :is(h2, h3, h4, h5, h6):first-child {
-        margin-block-start: 0;
-      }
-  
-      // Headings after content: stronger separation
-      > * + :is(h2, h3) {
-        margin-block-start: var(--space-4);
-      }
-  
-      > * + :is(h4, h5, h6) {
-        margin-block-start: var(--space-3);
-      }
-  
-      // Tight after headings
-      > :is(h2, h3, h4, h5, h6) + * {
-        margin-block-start: var(--flow-space-tight);
-      }
-    
+
+    // Tight after headings
+    > :is(h2, h3, h4, h5, h6)+* {
+      margin-block-start: var(--flow-space-tight);
     }
+
+  }
 
   // ==========================================================================
   // Headings: typography
@@ -260,7 +322,7 @@ body {
   }
 
   // Page title (direct child of .page-grid in your examples)
-  > h1 {
+  >h1 {
     font-weight: var(--fw-semibold);
     font-size: var(--ms-step-10);
     text-align: center;
@@ -307,8 +369,8 @@ body {
     color: var(--color-text-primary);
   }
 
- 
-  > h1 + section#territorial-acknowledgement {
+
+  >h1+section#territorial-acknowledgement {
     // Slightly tighter than normal section spacing so it reads as a unit
     margin-block-start: var(--space-3);
   }
@@ -318,9 +380,7 @@ body {
     // Reduce internal “section flow” gap: acknowledgement is a single thought
     --flow-space: var(--space-2);
 
-    padding: var(--space-3);
-    background-color: var(--bg-territorial-acknowledgement);
-    border-radius: 0.5rem;
+    
 
     // Centre the acknowledgement block, but keep readable line-length
     text-align: center;
@@ -330,26 +390,20 @@ body {
       font-size: var(--ms-step--1);
       font-style: italic;
       line-height: var(--lh-body);
-      font-family:
-        system-ui,
-        "Noto Sans",
-        "Noto Sans Symbols",
-        "Noto Sans Symbols 2",
-        "Segoe UI",
-        "Roboto",
-        "Helvetica Neue",
-        Arial,
-        sans-serif;
+      font-family: var((--font-sans));
+      
+      padding: var(--space-3);
+      background-color: var(--bg-territorial-acknowledgement);
+      border-radius: 0.5rem;
 
-      // Keep it from feeling “too wide” on large screens
-      max-width: 70ch;
+    //  max-width: 70ch;
       margin-inline: auto;
     }
-    
+
     //more space following the territorial acknowlegement
-     & + * {
-        margin-block-start: var(--space-5);
-     }
+    &+* {
+      margin-block-start: var(--space-5);
+    }
   }
 
   // ==========================================================================
@@ -381,7 +435,7 @@ body {
 
     // Marker indentation with padding is more stable than margin
     padding-inline-start: 1.25rem;
-    
+
     & li {
       margin-block-start: .25rem;
     }
@@ -396,7 +450,7 @@ body {
     padding-inline-start: 1.5rem;
   }
 
-  li > :is(ul, ol) {
+  li> :is(ul, ol) {
     margin-block-start: var(--space-1);
   }
 
@@ -416,7 +470,7 @@ body {
       font-size: var(--ms-step-0);
       font-weight: var(--fw-light);
 
-      & + dt {
+      &+dt {
         margin-block-start: var(--space-3);
       }
     }
@@ -458,11 +512,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-2);
+    gap: var(--space-1);
     background-color: var(--figure-bg-color);
   }
 
-  figure > img {
+  figure>img {
     border: 1px solid var(--figure-border-color);
   }
 
@@ -476,6 +530,8 @@ body {
     line-height: var(--lh-body);
     color: var(--color-text-muted);
     align-self: flex-start;
+    text-align: center;
+    width: 100%;
   }
 
   // ==========================================================================
@@ -508,4 +564,10 @@ body {
     // No explicit margins; section flow governs spacing
   }
 
+}
+
+//Centering
+
+.text-center {
+  text-align: center;
 }
