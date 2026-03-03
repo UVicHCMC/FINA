@@ -4,8 +4,6 @@
   <h1>Programme</h1><!--Page title-->
 
 
-
-
   <section id="plenieres">
 
 
@@ -21,7 +19,7 @@
 
             <div class="card-desc">
               <h3 class="card-name">Myriam Bergeron-Maguire</h3>
-              <span class="card-affil">Université Sorbonne Nouvelle Paris 3 (France)</span>
+              <span class="card-affil">Sorbonne Nouvelle)</span>
               <span class="card-subject">« Les lettres françaises des ‘Prize Papers’ : un précieux gisement pour l’histoire du français en Amérique »</span>
               <span class="card-cta">Lire la suite</span>
             </div>
@@ -36,7 +34,7 @@
 
             <div class="card-desc">
               <h3 class="card-name">Marie-Hélène Côté</h3>
-              <span class="card-affil">Université de Lausanne (Suisse)</span>
+              <span class="card-affil">Université de Lausanne</span>
               <span class="card-subject">Le destin des traits laurentiens</span>
               <span class="card-cta">Lire la suite</span>
             </div>
@@ -51,7 +49,7 @@
 
             <div class="card-desc">
               <h3 class="card-name">France Martineau</h3>
-              <span class="card-affil">Université d’Ottawa (Ontario, Canada)</span>
+              <span class="card-affil">Université d’Ottawa</span>
               <span class="card-subject">« Niez, niez, il en restera toujours quelque chose » : la négation dans la correspondance familiale de l’élite québécoise au XIXe siècle</span>
               <span class="card-cta">Lire la suite</span>
             </div>
@@ -66,7 +64,7 @@
 
             <div class="card-desc">
               <h3 class="card-name">Oliver Mayeux</h3>
-              <span class="card-affil">University of Cambridge (Angleterre)</span>
+              <span class="card-affil">University of Cambridge</span>
               <span class="card-subject">L’accord grammatical en créole louisianais</span>
               <span class="card-cta">Lire la suite</span>
             </div>
@@ -81,7 +79,7 @@
 
             <div class="card-desc">
               <h3 class="card-name">Basile Roussel</h3>
-              <span class="card-affil">Université de Moncton, campus de Shippagan (Nouveau-Brunswick, Canada)</span>
+              <span class="card-affil">Université de Moncton</span>
               <span class="card-subject">Sur les traces d’un changement? Un portrait diachronique de la variation morphosyntaxique dans le nord-est du Nouveau-Brunswick</span>
               <span class="card-cta">Lire la suite</span>
             </div>
@@ -91,13 +89,6 @@
     </div>
 
   </section>
-
-
-
-
-
-
-
 
 
   <section id="horaire">
