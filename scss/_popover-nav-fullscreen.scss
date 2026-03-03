@@ -380,25 +380,24 @@ body:has(#site-navigation[popover]:popover-open) {
 
         @media (width >= 768px) {
             
-            border-bottom: 3px solid transparent;
-            border-top: 3px solid transparent;
-            transition: border-bottom 0.5s ease-in-out;
+            transition: none;
             margin-bottom: 0;
-            padding-block-end: .5rem;
             
-            &:hover {
-                cursor: pointer;
-                border-bottom: 3px solid var(--highlight);
-            }
+         
             
-            &:has(.active) {
-               border-bottom: 3px solid var(--highlight); 
-            }
+            
             
         }
     }
 
     & .item {
+        display: block;
+        padding-block-end: .5rem;
+        
+        border-bottom: 3px solid transparent;
+        border-top: 3px solid transparent;
+        transition: border-bottom 0.5s ease-in-out;
+        
         font-family: var(--font-sans);
         font-weight: var(--popover-font-weight);
         font-size: var(--popover-font-size);
@@ -407,6 +406,12 @@ body:has(#site-navigation[popover]:popover-open) {
 
         &:is(:hover, :focus-visible) {
             text-decoration-color: var(--popover-text-decoration-color-active);
+            cursor: pointer;
+            border-bottom: 3px solid var(--highlight);
+        }
+        
+        &.active {
+           border-bottom: 3px solid var(--highlight); 
         }
 
         @media (width >=768px) {
