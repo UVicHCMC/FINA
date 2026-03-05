@@ -345,9 +345,9 @@ body:has(#site-navigation[popover]:popover-open) {
     display: flex;
     flex-direction: column;
     list-style-type: none;
-    padding-block-start: 1.5rem;
+    padding-block-start: 0;
     padding-inline-start: 1.5rem;
-    gap: 0.5rem;
+    gap: 0rem;
     /* animation-name: fade-in;
 	animation-duration: 3s;
 	animation-delay: .75s;
@@ -387,7 +387,7 @@ body:has(#site-navigation[popover]:popover-open) {
 
     & .item {
         display: block;
-        padding-block-end: .5rem;
+        
         
         border-bottom: 3px solid transparent;
         border-top: 3px solid transparent;
@@ -395,9 +395,10 @@ body:has(#site-navigation[popover]:popover-open) {
         
         font-family: var(--font-sans);
         font-weight: var(--popover-font-weight);
-        font-size: var(--popover-font-size);
+        font-size: var(--ms-step-0);
         color: var(--popover-color);
         text-decoration-color: var(--popover-text-decoration-color);
+        
 
         &:is(:hover, :focus-visible) {
             text-decoration-color: var(--popover-text-decoration-color-active);
@@ -406,12 +407,19 @@ body:has(#site-navigation[popover]:popover-open) {
         }
         
         &.active {
+            display: inline;
+            border-bottom: 2px solid #fff;
+            @media (width >= $desktop-break) {
            border-bottom: 3px solid var(--highlight); 
+           
         }
+        
+    }
 
         @media (width >=768px) {
+            padding-block-end: .5rem;
             color: var(--nav-items-font-color);
-            font-size: var(--nav-items-font-size);
+            font-size: var(--ms-step-1);
             font-weight: var(--nav-items-font-weight);
             text-decoration-color: var(--nav-items-text-decoration-color);
 
@@ -419,5 +427,32 @@ body:has(#site-navigation[popover]:popover-open) {
                 text-decoration: none;
             }
         }
+    }
+}
+//text that appears on mobile popover above nav items
+.popover-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-block-end: var(--space-3);
+    font-family: var(--font-sans-title);
+    color: #ffffff;
+    line-height: var(--lh-tight);
+    
+    & .site-title {
+        font-size: var(--ms-step-4);
+        font-weight: var(--fw-bold);
+    }
+    
+    & .location {
+        font-size: var(--ms-step-0);
+        font-weight: var(--fw-regular);
+
+    }
+    
+    & .date {
+        font-size: var(--ms-step-3);
+        font-weight: var(--fw-regular);
     }
 }

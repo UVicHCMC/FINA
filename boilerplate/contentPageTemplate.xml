@@ -81,9 +81,9 @@
 
                             <div class="popover-group-container">
                                 <div class="popover-header">
-                                   <img src="images/logo-internal.svg" class="logo-internal" alt="" />
+                                   <img src="images/logo-popover.svg" class="logo-internal" alt="" />
                                    
-                                   <p class="internal-header-text">
+                                   <p class="popover-text">
                                        <span class="site-title">Les français d’ici</span>
                                        <span class="location">Victoria, Colombie-Britannique, Canada</span>
                                        <span class="date">

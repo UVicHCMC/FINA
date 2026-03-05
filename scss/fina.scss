@@ -139,6 +139,34 @@ header:not(#index) {
     }
 }
 
+//text that appears on mobile popover above nav items
+.popover-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-block-end: var(--space-3);
+    font-family: var(--font-sans-title);
+    color: #ffffff;
+    line-height: var(--lh-tight);
+    
+    & .site-title {
+        font-size: var(--ms-step-4);
+        font-weight: var(--fw-bold);
+    }
+    
+    & .location {
+        font-size: var(--ms-step-0);
+        font-weight: var(--fw-regular);
+
+    }
+    
+    & .date {
+        font-size: var(--ms-step-3);
+        font-weight: var(--fw-regular);
+    }
+}
+
 
 //blob on brecht splash
 .blob {
@@ -215,22 +243,7 @@ header:not(#index) {
     height: auto;
 }
 
-.top-logo-container-internal {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-.logo-internal {
-  filter: drop-shadow(0 1px 2px rgba(10, 13, 18, 0.10)) drop-shadow(0 1px 3px rgba(10, 13, 18, 0.10));
-}
-
-//logo and text on popover
-.popover-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 //about logos
 .page-wrapper .logo-container {
