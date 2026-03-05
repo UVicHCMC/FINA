@@ -37,7 +37,7 @@
     <ul class="logo-container">
 
       <a href="https://www2.gov.bc.ca/gov/content/governments/organizational-structure/office-of-the-premier/intergovernmental-relations-secretariat/en-francais/affaires-francophones">
-        <img class="logo bc-gov" src="images/logo-bcgov.svg" alt="" />
+        <img class="logo bc-gov" src="images/logo-bcgov.png" alt="" />
       </a>
       <a href="https://cla-acl.ca/">
         <img class="logo accla" src="images/logo-accla.svg" alt="" />
@@ -52,7 +52,7 @@
         <img class="logo cefco" src="images/logo-cefco.svg" alt="" />
       </a>
       <a href="https://www.csf.bc.ca/">
-        <img class="logo csf" src="images/logo-csf.svg" alt="" />
+        <img class="logo csf" src="images/logo-csf.png" alt="" />
       </a>
       <a href="https://fondationricard.com/">
         <img class="logo ricard" src="images/logo-fondation-ricard.png" alt="" />
