@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <div id="root" xmlns="http://www.w3.org/1999/xhtml"><!--gets removed-->
 
-  <h1>Marie-Hélène Côté</h1><!--Page title-->
-  <span class="affil">Université de Lausanne</span>
+  <header class="speaker-header">
+    <h1>Marie-Hélène Côté</h1>
+    <p class="affil">Université de Lausanne</p>
+  </header>
+
   <section id="marie-helene-cote">
 
     <figure class="headshot">

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <div id="root" xmlns="http://www.w3.org/1999/xhtml"><!--gets removed-->
 
-  <h1>Oliver Mayeux</h1><!--Page title-->
-  <span class="affil">University of Cambridge</span>
+  <header class="speaker-header">
+    <h1>Oliver Mayeux</h1>
+    <p class="affil">University of Cambridge</p>
+  </header>
+
   <section id="oliver-mayeux">
 
     <figure class="headshot">
