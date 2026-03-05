@@ -91,10 +91,44 @@
   </section>
 
   <section id="ateliers">
-    <h2>Ateliers</h2>
 
-    <p>[workshop info]</p>
+    <h2 class="text-center">Ateliers</h2>
 
+    <div class="content--breakout">
+      <div class="card-flex .grid-opt-out">
+
+        <article class="card">
+          <a class="card-link-container" href="oliver-mayeux-workshop.html">
+            <div class="card-photo-container">
+              <img src="images/oliver-mayeux-card.webp" width="350" height="350" class="card-photo landscape" alt="Oliver Mayeux" />
+            </div>
+
+            <div class="card-desc">
+              <h3 class="card-name">Oliver Mayeux</h3>
+              <span class="card-affil">University of Cambridge</span>
+              <span class="card-subject">Communauté, corpus, collecte de données linguistiques</span>
+              <span class="card-cta">Lire la suite</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="card">
+          <a class="card-link-container" href="basile-roussel-workshop.html">
+            <div class="card-photo-container">
+              <img src="images/basile-roussel-card.webp" width="350" height="350" class="card-photo landscape" alt="Basile Roussel" />
+            </div>
+
+            <div class="card-desc">
+              <h3 class="card-name">Basile Roussel</h3>
+              <span class="card-affil">Université de Moncton</span>
+              <span class="card-subject">À la rencontre des chiffres et des lettres : une introduction pratique à la méthodologie variationniste</span>
+              <span class="card-cta">Lire la suite</span>
+            </div>
+          </a>
+        </article>
+
+      </div>
+    </div>
   </section>
 
   <section id="horaire">

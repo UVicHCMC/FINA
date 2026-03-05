@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div id="root" xmlns="http://www.w3.org/1999/xhtml"><!--gets removed-->
+
+  <header class="speaker-header">
+    <h1>Basile Roussel</h1>
+    <p class="affil">Sorbonne Nouvelle</p>
+  </header>
+
+  <section id="basile-roussel-atelier">
+
+    <figure class="headshot">
+      <img src="images/basile-roussel-small.webp" alt="" />
+      <figcaption>Basile Roussel</figcaption>
+    </figure>
+
+    <h2>À la rencontre des chiffres et des lettres : une introduction pratique à la méthodologie variationniste</h2>
+
+    <p>Cet atelier se veut une introduction pratique à la méthodologie issue du courant variationniste de la sociolinguistique. Des concepts de base tels que le principe de redevabilité des données et la circonscription du contexte variable seront abordés en mettant l’accent sur le processus d’extraction, de codage et d’analyse des données. Des notions pratiques liées à l’utilisation du logiciel de concordance AntConc ainsi qu’à l’utilisation du logiciel GoldVarb X seront également abordées.</p>
+
+  </section>
+
+</div>
+<!--end of root-->
