@@ -37,7 +37,7 @@
     <ul class="logo-container">
 
       <a href="https://www2.gov.bc.ca/gov/content/governments/organizational-structure/office-of-the-premier/intergovernmental-relations-secretariat/en-francais/affaires-francophones">
-        <img class="logo aieq" src="images/logo-bcgov.svg" alt="" />
+        <img class="logo bc-gov" src="images/logo-bcgov.png" alt="" />
       </a>
       <a href="https://aieq.qc.ca/">
         <img class="logo aieq" src="images/logo-aieq.svg" alt="" />
