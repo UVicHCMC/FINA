@@ -225,6 +225,13 @@ header:not(#index) {
   filter: drop-shadow(0 1px 2px rgba(10, 13, 18, 0.10)) drop-shadow(0 1px 3px rgba(10, 13, 18, 0.10));
 }
 
+//logo and text on popover
+.popover-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 //about logos
 .page-wrapper .logo-container {
     list-style-type: none;
