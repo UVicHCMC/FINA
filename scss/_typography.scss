@@ -435,18 +435,24 @@ body {
     // Marker indentation with padding is more stable than margin
     padding-inline-start: 1.25rem;
 
+    
+  }
+
+  ul {
+    list-style: disc outside;
+    
     & li {
       margin-block-start: .25rem;
     }
   }
 
-  ul {
-    list-style: disc outside;
-  }
-
   ol {
     list-style: decimal outside;
     padding-inline-start: 1.5rem;
+    
+    & li {
+      margin-block-start: 1rem;
+    }
   }
 
   li> :is(ul, ol) {

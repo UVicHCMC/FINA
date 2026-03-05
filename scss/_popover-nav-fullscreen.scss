@@ -410,6 +410,7 @@ body:has(#site-navigation[popover]:popover-open) {
             display: inline;
             border-bottom: 2px solid #fff;
             @media (width >= $desktop-break) {
+                display: block;
            border-bottom: 3px solid var(--highlight); 
            
         }
