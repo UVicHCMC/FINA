@@ -35,13 +35,25 @@
     <h2>Partenaires</h2>
 
     <ul class="logo-container">
-      
-    <a href=""><img class="logo aieq" src="images/logo-aieq.svg" alt="" /></a>
-    <a href=""><img class="logo afls" src="images/logo-afls.svg" alt="" /></a>
-    <a href=""><img class="logo accla" src="images/logo-accla.svg" alt="" /></a>
-    <a href=""><img class="logo cefco" src="images/logo-cefco.svg" alt="" /></a>
-    <a href=""><img class="logo reseau-franco" src="images/logo-reseau-franco.svg" alt="" /></a>
-    <a href=""><img class="logo uvic" src="images/logo-uvic.svg" alt="" /></a>
+
+      <a href="https://aieq.qc.ca/">
+        <img class="logo aieq" src="images/logo-aieq.svg" alt="" />
+      </a>
+      <a href="https://afls.net/">
+        <img class="logo afls" src="images/logo-afls.svg" alt="" />
+      </a>
+      <a href="https://cla-acl.ca/">
+        <img class="logo accla" src="images/logo-accla.svg" alt="" />
+      </a>
+      <a href="https://ustboniface.ca/cefco/accueil">
+        <img class="logo cefco" src="images/logo-cefco.svg" alt="" />
+      </a>
+      <a href="https://onlineacademiccommunity.uvic.ca/reseaufranco/">
+        <img class="logo reseau-franco" src="images/logo-reseau-franco.svg" alt="" />
+      </a>
+      <a href="https://www.uvic.ca/humanities/hcmc/index.php">
+        <img class="logo uvic" src="images/logo-uvic.svg" alt="" />
+      </a>
     </ul>
 
   </section>
