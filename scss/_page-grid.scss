@@ -412,3 +412,34 @@ figure.content--full > figcaption {
         color: var(--color-text-heading);
     }   
 }
+
+//footer styles: 
+//Footer
+footer {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: auto;
+    background-color: #ffffff;
+    margin-block-start: var(--space-6);
+}
+
+.footer-container {
+    
+    padding-block: 1.5rem;
+    border-block-start: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    padding-block: var(--space-4);
+
+    & ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        list-style-type: none;
+        gap: 2rem;
+    }
+}
+
+

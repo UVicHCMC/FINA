@@ -280,30 +280,7 @@ header:not(#index) {
     }
 }
 
-//Footer
-footer {
-    width: 100%;
-    max-width: 100%;
-    margin-inline: auto;
-    background-color: #ffffff;
-    margin-block-start: var(--space-6);
-}
 
-.footer-container {
-    
-    padding-block: 1.5rem;
-    border-block-start: 1px solid var(--border-color);
-
-    & ul {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
-        align-items: center;
-        list-style-type: none;
-        gap: 2rem;
-    }
-}
 //spans that are affiliation of speakers on their individual pages: 
 span.affil {
   font-size: var(--ms-step-3);

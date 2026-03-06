@@ -147,6 +147,7 @@ $fontPath : "../../fonts/";
   --ms-step-9: calc(var(--ms-step-8) * var(--ms-ratio));
   --ms-step-10: calc(var(--ms-step-9) * var(--ms-ratio));
   --ms-step-11: calc(var(--ms-step-10) * var(--ms-ratio));
+  --ms-step-12: calc(var(--ms-step-11) * var(--ms-ratio));
 
   // ------------------------------------------------------------------------
   // Weights + line heights
@@ -210,6 +211,8 @@ $fontPath : "../../fonts/";
   --figure-border-color: #333333;
 
   --bg-territorial-acknowledgement: var(--grey-100);
+  
+  --color-text-footer: var(--highlight);
 }
 
 // ==========================================================================
@@ -332,7 +335,7 @@ body {
   // Page title (direct child of .page-grid in your examples)
   >h1 {
     font-weight: var(--fw-semibold);
-    font-size: var(--ms-step-10);
+    font-size: var(--ms-step-12);
     text-align: center;
 
     margin-block-start: var(--space-3);
@@ -594,4 +597,24 @@ body {
 
 .text-center {
   text-align: center;
+}
+
+//button style <a href="link">link</a>
+
+.button-style {
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-weight: var(--fw-medium);
+  padding: .5rem;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  transition: all .3s ease-in-out;
+  background-color: var(--highlight);
+  color: #fff;
+  
+  &:is(:hover, :focus-visible)  {
+    color: var(--color-text-footer);
+    background-color: transparent;
+    border: 1px solid var(--highlight);
+  }
 }
