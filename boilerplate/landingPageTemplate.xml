@@ -22,7 +22,7 @@
         <meta name="description" content="{?metaDescription}" />
     </head>
 
-    <body>
+    <body class="splash">
         <!-- Global safe-area wrapper -->
         <div class="page-wrapper">
 
@@ -35,82 +35,40 @@
                     <img class="mobile-header" src="{?mobile-header}" />
 
                     <div class="button-wrapper">
-                        <button
-                            id="site-menu-toggle"
-                            class="popover-nav-open"
-                            type="button"
-                            popovertarget="site-navigation"
-                            popovertargetaction="toggle"
-                            aria-controls="site-navigation"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                        >
-                            <span
-                                class="nav-toggle-label"
-                            ><?nav-toggle-label?></span>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="menu-burger"
-                                width="24"
-                                height="24"
-                                fill="none"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M3 12h18M3 6h18M3 18h18"
-                                />
-                            </svg>
-                        </button>
+                    <!-- Primary navigation toggle (mobile) -->
+                    <button id="site-menu-toggle" class="popover-nav-open" type="button" popovertarget="site-navigation" popovertargetaction="toggle" aria-controls="site-navigation" aria-haspopup="true">
+                        <span class="nav-toggle-label">
+                            <?nav-toggle-label?>
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="menu-burger" width="24" height="24" fill="none">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h18M3 6h18M3 18h18" />
+                        </svg>
+                    </button>
 
-                        <nav
-                            id="site-navigation"
-                            class="main-menu"
-                            aria-label="{?site-navigation-label}"
-                            popover="auto"
-                        >
-                            <button
-                                type="button"
-                                class="popover-nav-close"
-                                aria-label="{?popover-close-label}"
-                                popovertarget="site-navigation"
-                                popovertargetaction="hide"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="close-x"
-                                    width="24"
-                                    height="24"
-                                    fill="none"
-                                    viewbox="0 0 24 24"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M18 6 6 18M6 6l12 12"
-                                    />
+                        <nav id="site-navigation" class="main-menu" aria-label="{?site-navigation-label}" popover="auto">
+                        
+                            <button type="button" class="popover-nav-close" aria-label="{?popover-close-label}" popovertarget="site-navigation" popovertargetaction="hide">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="close-x" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6 6 18M6 6l12 12" />
                                 </svg>
                             </button>
-
-
+                        
                             <div class="popover-group-container">
-                                <div class="popover-header" aria-hidden="true">
-                                    <img
-                                        class="popover-splash-icon"
-                                        alt=""
-                                        src="{?popover-splash-icon}"
-                                        width="901"
-                                        height="257"
-                                    />
-
+                                <div class="popover-header">
+                                   <img src="images/logo-popover.svg" class="logo-internal" alt="" />
+                                   
+                                   <p class="popover-text">
+                                       <span class="site-title">Les français d’ici</span>
+                                       <span class="location">Victoria, Colombie-Britannique, Canada</span>
+                                       <span class="date">
+                                           <time datetime="2026-06-15/2026-06-17">15–17 juin 2026</time>
+                                       </span>
+                                   </p>
                                 </div>
-
+                        
                                 <ul class="popover-nav-items">
                                     <?navigation?>
                                 </ul>
-
                             </div>
                         </nav>
                         <nav aria-label="{?nav-aria-label}">
@@ -131,23 +89,12 @@
             </header>
 
             <main>
-                <div class="blob">
-                    <?splash-logo?>
-                </div>
             </main>
-            <footer>
-
-           <div class="logo-container">
-             
-           <a href=""><img class="logo aieq" src="images/logo-aieq.svg" alt="" /></a>
-           <a href=""><img class="logo afls" src="images/logo-afls.svg" alt="" /></a>
-           <a href=""><img class="logo accla" src="images/logo-accla.svg" alt="" /></a>
-           <a href=""><img class="logo cefco" src="images/logo-cefco.svg" alt="" /></a>
-           <a href=""><img class="logo reseau-franco" src="images/logo-reseau-franco.svg" alt="" /></a>
-           <a href=""><img class="logo uvic" src="images/logo-uvic.svg" alt="" /></a>
-           </div>
-
-            </footer>
+          <footer class="site-footer">
+              <div class="footer-container">
+                  <a class="thank-you button-style" href="about.html#partenaires">Merci à nos soutiens</a>
+              </div>
+          </footer>
         </div>
     </body>
 

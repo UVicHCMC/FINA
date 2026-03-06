@@ -55,25 +55,38 @@ body:not(#index) {
     border-top: 8px solid var(--highlight);
 }
 
+body.splash {
+ min-height: 100vh;
+ background:
+   linear-gradient(
+     180deg,
+     #4ab0e4 0%,
+     rgb(164 215 241 / 0.8) 15%,
+     rgb(255 255 255 / 0) 40%
+   ),
+   url("../images/bg-splash.webp") center center / cover no-repeat;
+}
+
 //controls viewport padding and margins, centers main content
 #index .page-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding-inline: 1rem;
-    padding-block: 1rem;
     margin-inline: auto;
     width: 100%;
-
-    @media (width >= $desktop-break) {
-        padding-inline: 2rem;
-        padding-block: 1rem;
-        max-width: var(--desktop-lg);
-    }
+    min-height: 100dvh;
+    background-color: transparent;
 }
 
-.page-wrapper {
+#index footer {
+  margin-block-start: auto;
+}
+
+#index .popover-nav-items .item {
+  color:#fff;
+}
+
+html:not(#index) .page-wrapper {
    // padding-inline: 1rem;
     background-color: #fbfbfb;
     min-height: 100vh;
@@ -83,16 +96,29 @@ body:not(#index) {
     justify-content: center;
 }
 
-#index header {
-    
-}
 
-header:not(#index) {
+
+#index header {
     width: 100%;
     max-width: 100%;
     margin-inline: auto;
     padding-block-start: var(--space-3);
-    background-color: #fff;
+    background-color: transparent;
+    
+    & .item {
+      color: #fff;
+    }
+}
+
+#index  #site-navigation {
+  background-color: var(--popover-bg-color);
+  @media (width >= $desktop-break){
+    background-color: transparent;
+}
+}
+
+#index .nav-wrapper {
+  border-block-end: none;
 }
 
 .mobile-header-splash {
