@@ -143,28 +143,7 @@
             -->
             <footer class="site-footer">
                 <div class="footer-container">
-                    <ul class="logo-container">
-
-                        <a href="">
-                            <img class="logo aieq" src="images/logo-aieq.svg" alt="" />
-                        </a>
-                        <a href="">
-                            <img class="logo afls" src="images/logo-afls.svg" alt="" />
-                        </a>
-                        <a href="">
-                            <img class="logo accla" src="images/logo-accla.svg" alt="" />
-                        </a>
-                        <a href="">
-                            <img class="logo cefco" src="images/logo-cefco.svg" alt="" />
-                        </a>
-                        <a href="">
-                            <img class="logo reseau-franco" src="images/logo-reseau-franco.svg" alt="" />
-                        </a>
-                        <a href="">
-                            <img class="logo uvic" src="images/logo-uvic.svg" alt="" />
-                        </a>
-                    </ul>
-
+                    
                 </div>
             </footer>
         </div>

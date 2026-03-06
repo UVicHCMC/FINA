@@ -4,7 +4,7 @@
   <h1>Programme</h1><!--Page title-->
 
 
-  <section id="plenieres">
+  <section id="plenieres" class="highlight">
 
 
     <h2 class="text-center">Conférences plénières</h2>
@@ -90,7 +90,7 @@
 
   </section>
 
-  <section id="ateliers">
+  <section id="ateliers" class="highlight">
 
     <h2 class="text-center">Ateliers</h2>
 

@@ -72,7 +72,7 @@ $bp-grid-collapse: 52rem; // (kept) collapse breakout/padding if you add rules l
   container-type: inline-size;
 
   // Base maximum width (may widen when TOC exists).
-  max-inline-size: var(--page-grid-wide-max);
+ inline-size: 100%;
 
   background-color: #fbfbfb;
 }
@@ -219,12 +219,43 @@ $bp-grid-collapse: 52rem; // (kept) collapse breakout/padding if you add rules l
 // Every direct <section> is a full-width row by default.
 // Each section becomes a track-inheriting grid container so its children
 // can align to content/breakout/full tracks without extra wrappers.
+:root {
+  --highlight: #0C6994;
+}
+
 .page-grid > section {
   grid-column: full;
   min-inline-size: 0;
 
   display: grid;
   grid-template-columns: inherit;
+
+  &.highlight {
+    color: #fff;
+    padding-block-start: var(--space-4);
+    padding-block-end: var(--space-7);
+
+    /* 1st (lightest, but still safe for white text) */
+    background-color: color-mix(in oklab, var(--highlight) 70%, white);
+
+    /* 2nd */
+    & + section.highlight {
+      background-color: color-mix(in oklab, var(--highlight) 88%, white);
+      margin-block-start: 0;
+    }
+
+    /* 3rd */
+    & + section.highlight + section.highlight {
+      background-color: color-mix(in oklab, var(--highlight) 88%, black);
+      margin-block-start: 0;
+    }
+
+    /* 4th (darkest) */
+    & + section.highlight + section.highlight + section.highlight {
+      background-color: color-mix(in oklab, var(--highlight) 70%, black);
+      margin-block-start: 0;
+    }
+  }
 }
 
 // Default: direct children of the section snap to readable CONTENT.

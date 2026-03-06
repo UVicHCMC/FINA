@@ -173,6 +173,14 @@ $fontPath : "../../fonts/";
   --space-4: var(--baseline);
   --space-5: calc(var(--baseline) * 1.5);
   --space-6: calc(var(--baseline) * 2);
+  --space-7:  calc(var(--baseline) * 2.5);
+  --space-8:  calc(var(--baseline) * 3);
+  --space-9:  calc(var(--baseline) * 3.5);
+  --space-10: calc(var(--baseline) * 4);
+  --space-11: calc(var(--baseline) * 4.5);
+  --space-12: calc(var(--baseline) * 5);
+  --space-13: calc(var(--baseline) * 5.5);
+  --space-14: calc(var(--baseline) * 6);
 
   // ------------------------------------------------------------------------
   // Colours
@@ -571,6 +579,16 @@ body {
 
 }
 
+
+//changes that occur when text is in a .highlight section tag
+
+.highlight {
+  & h2 {
+    font-size: var(--ms-step-9);
+    text-align: center;
+    color: #fff;
+  }
+}
 
 //Centering
 

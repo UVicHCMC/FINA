@@ -97,6 +97,11 @@
 	justify-content: center;
 	gap: 1.5rem;
 	
+	//give some space when in a highlight section
+	.highlight & {
+		margin-block-start: var(--space-1);
+	}
+	
 	& .card {
 	width: min(100%, 20rem);
 	background: linear-gradient(180deg, #FFF 82.21%, #E6F4FF 99.52%);
@@ -106,9 +111,9 @@
 			border: 1px solid var(--highlight);
 		}
 	}
-	
-	
 }
+
+
 
 
 

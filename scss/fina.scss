@@ -220,7 +220,7 @@ header:not(#index) {
 
 
 //about logos
-.page-wrapper .logo-container {
+  .page-grid .logo-container {
     list-style-type: none;
     display: flex;
     flex-direction: row;
@@ -228,13 +228,33 @@ header:not(#index) {
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    padding-inline-start: 0;
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: var(--card-shadow);
     
     & .logo {
        height: auto; 
     }
     
     //logos in order of appearance, magic number widths
+    
+    & .bc-gov {
+      width: 150px
+    }
+    
+    & .csf {
+      width: 150px;
+    }
+    
+    & .commons {
+      width: 150px;
+    }
+    
+    & .ricard {
+      width: 150px;
+    }
+    
     & .aieq {
         width: 125px;
     }
