@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <div id="root" xmlns="http://www.w3.org/1999/xhtml"><!--gets removed-->
 
-  <header class="speaker-header">
+  <header class="title-stack">
     <h1>France Martineau</h1>
     <p class="affil">Université d’Ottawa</p>
   </header>

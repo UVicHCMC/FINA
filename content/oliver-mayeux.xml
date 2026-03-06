@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <div id="root" xmlns="http://www.w3.org/1999/xhtml"><!--gets removed-->
 
-  <header class="speaker-header">
+  <header class="title-stack">
     <h1>Oliver Mayeux</h1>
     <p class="affil">University of Cambridge</p>
   </header>
