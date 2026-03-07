@@ -56,6 +56,13 @@
     </xsl:element>
   </xsl:template>
 
+  <!-- Preserve SVG namespace elements -->
+  <xsl:template match="*[namespace-uri() = 'http://www.w3.org/2000/svg']" priority="3">
+    <xsl:element name="{local-name()}" namespace="http://www.w3.org/2000/svg">
+      <xsl:apply-templates select="@* | node()"/>
+    </xsl:element>
+  </xsl:template>
+
   <!-- Identity template for attributes -->
   <xsl:template match="@*" priority="1">
     <xsl:copy/>
