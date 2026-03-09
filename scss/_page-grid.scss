@@ -392,6 +392,7 @@ figure.content--full > figcaption {
 
 //this is the mini-header that appears over the horizontal desktop menu
 .top-logo-container-internal {
+  margin-block-start: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;

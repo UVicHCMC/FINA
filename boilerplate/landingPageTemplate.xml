@@ -89,6 +89,19 @@
             </header>
 
             <main>
+            
+            <div class="top-logo-container-splash">
+                <img src="images/logo-splash.svg" class="logo-splash" alt="" />
+            
+                <header class="splash-header-stack">
+                    <h1 class="site-title">Les français d’ici</h1>
+                    <p class="location">Victoria, Colombie-Britannique, Canada</p>
+                    <p class="date">
+                        <time datetime="2026-06-15/2026-06-17">15–17 juin 2026</time>
+                    </p>
+                </header>
+            </div>
+            
             </main>
           <footer class="site-footer">
               <div class="footer-container">
