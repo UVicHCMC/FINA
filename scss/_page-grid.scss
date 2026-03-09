@@ -46,7 +46,7 @@ $bp-grid-collapse: 52rem; // (kept) collapse breakout/padding if you add rules l
 
 // ==========================================================================
 // Layer A — Page chrome + safe area
-// ==========================================================================
+  // ==========================================================================
 
 .page-wrapper {
   // Intentionally empty here; safe area/padding decisions live per project.
@@ -421,17 +421,20 @@ footer {
     width: 100%;
     max-width: 100%;
     margin-inline: auto;
-    background-color: #ffffff;
     margin-block-start: var(--space-6);
 }
 
 .footer-container {
     
-    padding-block: 1.5rem;
     border-block-start: 1px solid var(--border-color);
     display: flex;
     justify-content: center;
     padding-block: var(--space-4);
+    background-color: #fff;
+    #index & {
+      background-color: transparent;
+      border-block-start: none;
+    }
 
     & ul {
         display: flex;

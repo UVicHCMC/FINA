@@ -62,8 +62,14 @@ body.splash {
      180deg,
      #1b91cd 0%,
      rgb(164 215 241 / 0.8) 25%,
-     rgb(255 255 255 / 0) 100%
+     rgb(255 255 255 / 0) 30%
    ),
+   linear-gradient(
+      0deg,
+      #1b91cd 0%,
+      rgb(164 215 241 / 0.8) 10%,
+      rgb(255 255 255 / 0) 25%
+    ),
    url("../images/bg-splash.webp") center center / cover no-repeat;
 }
 
@@ -93,7 +99,7 @@ body.splash {
   flex-direction: column;
   align-items: center;
   
-  :is(.site-title, .location, .date) {
+  & :is(.site-title, .location, .date) {
     font-family: var(--font-sans-heading);
     color: #fff;
     line-height: 1.2;
@@ -101,15 +107,22 @@ body.splash {
    
   }
   
-  .site-title {
+  & .site-title {
    font-size: clamp(2rem, 2.5rem + 2vw, 5rem);
   }
-  .location {
+  & .location {
     font-size: clamp(1rem, 1rem + 1.25vw, 2.5rem);
   }
-  .date {
+  & .date {
     font-size: clamp(1rem, 1rem + 1.25vw, 2.5rem);
   }
+  
+  & .button-style {
+    margin-block-start: 1.5rem;
+    background-color: hsl(from var(--highlight) h s l / .6)
+  }
+  
+  
   
 }
 
@@ -160,6 +173,10 @@ header {
 #index .nav-wrapper {
   border-block-end: none;
   justify-content: flex-end;  
+  padding-inline: 0;
+  @media (width >= $desktop-break) {
+  padding-inline: 1rem;
+}
 }
 
 .mobile-header-splash {

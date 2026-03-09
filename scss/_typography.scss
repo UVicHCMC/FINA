@@ -612,9 +612,28 @@ body {
   background-color: var(--highlight);
   color: #fff;
   
+  &.dark-theme {
+    color: #fff;
+    background-color: transparent;
+    border: 1px solid #fff;
+  }
+  
+  &.dark-theme:is(:hover, :focus-visible) {
+     color: #fff;
+     border: 1px solid var(--highlight);
+     background-color: var(--highlight);
+  }
+  
   &:is(:hover, :focus-visible)  {
     color: var(--color-text-footer);
     background-color: transparent;
     border: 1px solid var(--highlight);
   }
+  
+  //different style for splash: 
+ #index &:is(:hover, :focus-visible) {
+   color: #fff;
+   border: 1px solid #fff;
+ }
+ 
 }
