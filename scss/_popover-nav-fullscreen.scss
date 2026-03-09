@@ -381,7 +381,7 @@ body:has(#site-navigation[popover]:popover-open) {
         transition:
             translate 0.3s ease var(--stagger),
             opacity 0.3s ease var(--stagger);
-
+     translate: 0 0;
         @starting-style {
             opacity: 0;
             translate: -100px 0;
@@ -415,7 +415,10 @@ body:has(#site-navigation[popover]:popover-open) {
         &:is(:hover, :focus-visible) {
             text-decoration-color: var(--popover-text-decoration-color-active);
             cursor: pointer;
+            border-bottom: 0;
+            @media (width >= $desktop-break) {
             border-bottom: 3px solid var(--highlight);
+        }
         }
         
         //index get white hover color
@@ -429,7 +432,7 @@ body:has(#site-navigation[popover]:popover-open) {
         }
 
         &.active {
-            display: inline;
+            display: inline-block;
             border-bottom: 2px solid #fff;
 
 
