@@ -51,12 +51,23 @@
 }
 
 //top border on body
-body:not(#index) {
+html:not(#index) body {
     border-top: 8px solid var(--highlight);
 }
 
+#index body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: var(--highlight);
+  z-index: 9999;
+}
+
 body.splash {
- min-height: 100vh;
+ min-height: 100lvh;
  background:
    linear-gradient(
      180deg,
@@ -88,7 +99,14 @@ body.splash {
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding-inline: 1rem;
+  padding: 1rem;
+  margin-inline: 1rem;
+  background: linear-gradient(180deg, rgba(29, 96, 131, 0.15) 0%, rgba(6, 21, 29, 0.00) 100%);
+  border-radius: 8px;
+  
+  @media (width >= $desktop-break){
+  padding: 3rem;
+}
 }
 
 .logo-splash {
