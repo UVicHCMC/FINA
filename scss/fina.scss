@@ -82,6 +82,7 @@ body.splash {
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding-inline: 1rem;
 }
 
 .logo-splash {
@@ -101,13 +102,13 @@ body.splash {
   }
   
   .site-title {
-    font-size: 4rem;
+   font-size: clamp(2rem, 2.5rem + 2vw, 5rem);
   }
   .location {
-    font-size: 2.5rem;
+    font-size: clamp(1rem, 1rem + 1.25vw, 2.5rem);
   }
   .date {
-    font-size: 2.5rem;
+    font-size: clamp(1rem, 1rem + 1.25vw, 2.5rem);
   }
   
 }
@@ -131,7 +132,7 @@ html:not(#index) .page-wrapper {
 }
 
 
-
+//splash page bg header color
 #index header {
     width: 100%;
     max-width: 100%;
@@ -144,6 +145,11 @@ html:not(#index) .page-wrapper {
     }
 }
 
+//non splash page header bg color
+header {
+  background-color: #fff
+}
+
 #index  #site-navigation {
   background-color: var(--popover-bg-color);
   @media (width >= $desktop-break){
@@ -153,6 +159,7 @@ html:not(#index) .page-wrapper {
 
 #index .nav-wrapper {
   border-block-end: none;
+  justify-content: flex-end;  
 }
 
 .mobile-header-splash {
