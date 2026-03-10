@@ -408,6 +408,8 @@ figure.content--full > figcaption {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: transparent;
+    margin-block-start: var(--space-5);
     
     & p {
         font-weight: var(--fw-medium);

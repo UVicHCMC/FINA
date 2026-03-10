@@ -42,13 +42,6 @@ $fontPath : "../../fonts/";
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Alegreya Sans';
-  font-weight: 100 900;
-  font-style: normal;
-  src: url("#{$fontPath}AlegreyaSans-variable.woff2") format("woff2");
-  font-display: swap;
-}
 
 @font-face {
   font-family: 'Inter';
@@ -58,6 +51,102 @@ $fontPath : "../../fonts/";
   font-display: swap;
 }
 
+//Alegreya sans
+@font-face {
+  font-family: "Alegreya Sans";
+  font-style: normal;
+  font-weight: 100;
+  src: url("#{$fontPath}AlegreyaSans-Thin.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alegreya Sans";
+  font-style: italic;
+  font-weight: 100;
+  src: url("#{$fontPath}AlegreyaSans-ThinItalic.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alegreya Sans";
+  font-style: normal;
+  font-weight: 300;
+  src: url("#{$fontPath}AlegreyaSans-Light.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alegreya Sans";
+  font-style: italic;
+  font-weight: 300;
+  src: url("#{$fontPath}AlegreyaSans-LightItalic.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alegreya Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("#{$fontPath}AlegreyaSans-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alegreya Sans";
+  font-style: italic;
+  font-weight: 400;
+  src: url("#{$fontPath}AlegreyaSans-Italic.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alegreya Sans";
+  font-style: normal;
+  font-weight: 500;
+  src: url("#{$fontPath}AlegreyaSans-Medium.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alegreya Sans";
+  font-style: italic;
+  font-weight: 500;
+  src: url("#{$fontPath}AlegreyaSans-MediumItalic.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alegreya Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: url("#{$fontPath}AlegreyaSans-Bold.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alegreya Sans";
+  font-style: italic;
+  font-weight: 700;
+  src: url("#{$fontPath}AlegreyaSans-BoldItalic.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alegreya Sans";
+  font-style: normal;
+  font-weight: 800;
+  src: url("#{$fontPath}AlegreyaSans-ExtraBold.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alegreya Sans";
+  font-style: italic;
+  font-weight: 800;
+  src: url("#{$fontPath}AlegreyaSans-ExtraBoldItalic.woff2") format("woff2");
+  font-display: swap;
+}
 
 
 :root {
@@ -158,6 +247,8 @@ $fontPath : "../../fonts/";
   --fw-medium: 500;
   --fw-semibold: 600;
   --fw-bold: 700;
+  --fw-extrabold: 800;
+  --fw-black: 900;
 
   --lh-tight: 1.15;
   --lh-body: 1.6;
