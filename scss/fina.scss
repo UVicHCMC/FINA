@@ -101,7 +101,7 @@ body.splash {
   flex-direction: column;
   padding: 1rem;
   margin-inline: 1rem;
-  background: linear-gradient(0deg, rgba(29, 96, 131, 0.15) 15%, rgba(6, 21, 29, 0.00) 100%);
+  background: linear-gradient(0deg, rgba(29, 96, 131, 0.5) 10%, rgba(6, 21, 29, 0.00) 100%);
   border-radius: 8px;
   
   @media (width >= $desktop-break){
@@ -160,6 +160,10 @@ body.splash {
     
     & a {
       color: #fff;
+      
+      &:is(:hover, :focus-visible) {
+        text-decoration: none;
+      }
     }
   }
   
@@ -411,7 +415,7 @@ header {
     }
     
     & .uvic {
-        width: 250px;
+        width: 290px;
     }
 }
 

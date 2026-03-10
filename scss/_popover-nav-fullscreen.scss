@@ -78,7 +78,12 @@ header {
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    padding-inline-end: 1rem;
+    padding-inline-end: 0;
+    
+    //Put paddding on the menu button on the splash page
+    #index & {
+        padding-inline-end: 1rem;
+    }
 
     @media (width >=768px) {
         justify-content: center;
