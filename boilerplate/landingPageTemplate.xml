@@ -28,44 +28,46 @@
 
             <!-- Site chrome -->
             <header id="site-header" class="site-masthead">
-                <a href="#content" class="skip-link"><?skip-link?></a>
+                <a href="#content" class="skip-link">
+                    <?skip-link?>
+                </a>
 
                 <div class="nav-wrapper">
                     <!--Insert instruction for mobile header logo-->
                     <img class="mobile-header" src="{?mobile-header}" />
 
                     <div class="button-wrapper">
-                    <!-- Primary navigation toggle (mobile) -->
-                    <button id="site-menu-toggle" class="popover-nav-open" type="button" popovertarget="site-navigation" popovertargetaction="toggle" aria-controls="site-navigation" aria-haspopup="true">
-                        <span class="nav-toggle-label">
-                            <?nav-toggle-label?>
-                        </span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="menu-burger" width="24" height="24" fill="none">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h18M3 6h18M3 18h18" />
-                        </svg>
-                    </button>
+                        <!-- Primary navigation toggle (mobile) -->
+                        <button id="site-menu-toggle" class="popover-nav-open" type="button" popovertarget="site-navigation" popovertargetaction="toggle" aria-controls="site-navigation" aria-haspopup="true">
+                            <span class="nav-toggle-label">
+                                <?nav-toggle-label?>
+                            </span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="menu-burger" width="24" height="24" fill="none">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h18M3 6h18M3 18h18" />
+                            </svg>
+                        </button>
 
                         <nav id="site-navigation" class="main-menu" aria-label="{?site-navigation-label}" popover="auto">
-                        
+
                             <button type="button" class="popover-nav-close" aria-label="{?popover-close-label}" popovertarget="site-navigation" popovertargetaction="hide">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="close-x" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6 6 18M6 6l12 12" />
                                 </svg>
                             </button>
-                        
+
                             <div class="popover-group-container">
                                 <div class="popover-header">
-                                   <img src="images/logo-popover.svg" class="logo-internal" alt="" />
-                                   
-                                   <p class="popover-text">
-                                       <span class="site-title">Les français d’ici</span>
-                                       <span class="location">Victoria, Colombie-Britannique, Canada</span>
-                                       <span class="date">
-                                           <time datetime="2026-06-15/2026-06-17">15–17 juin 2026</time>
-                                       </span>
-                                   </p>
+                                    <img src="images/logo-popover.svg" class="logo-internal" alt="" />
+
+                                    <p class="popover-text">
+                                        <span class="site-title">Les français d’ici</span>
+                                        <span class="location">Victoria, Colombie-Britannique, Canada</span>
+                                        <span class="date">
+                                            <time datetime="2026-06-15/2026-06-17">15–17 juin 2026</time>
+                                        </span>
+                                    </p>
                                 </div>
-                        
+
                                 <ul class="popover-nav-items">
                                     <?navigation?>
                                 </ul>
@@ -89,31 +91,30 @@
             </header>
 
             <main>
-            
-            <div class="top-logo-container-splash">
-                <img src="images/logo-splash.svg" class="logo-splash" alt="" />
-            
-                <header class="splash-header-stack">
-                    <p class="pre-title">Colloque international</p>
-                    <h1 class="site-title">Les français d’ici</h1>
-                    <p class="location-one">Université de Victoria, Victoria</p>
-                    <p class="location-two">Colombie-Britannique, Canada</p>
-                    <p class="date">
-                        <time datetime="2026-06-15/2026-06-17">du 15–17 juin 2026</time>
-                    </p>
-                    <p class="contact-us">
-                    Pour plus de renseignements, n’hésitez pas à communiquer avec les organisateurs du colloque : <a href="mailto:lfdi2026@uvic.ca ">lfdi2026@uvic.ca</a>
-                </p>
-                    
-                </header>
-            </div>
-            
+
+                <div class="top-logo-container-splash">
+                    <img src="images/logo-splash.svg" class="logo-splash" alt="" />
+
+                    <header class="splash-header-stack">
+                        <p class="pre-title">Colloque international</p>
+                        <h1 class="site-title">Les français d’ici</h1>
+                        <p class="location-one">Université de Victoria, Victoria</p>
+                        <p class="location-two">Colombie-Britannique, Canada</p>
+                        <p class="date">
+                            <time datetime="2026-06-15/2026-06-17">du 15–17 juin 2026</time>
+                        </p>
+                        <p class="contact-us"> Contact : <a href="mailto:lfdi2026@uvic.ca ">lfdi2026@uvic.ca</a>
+                        </p>
+
+                    </header>
+                </div>
+
             </main>
-          <footer class="site-footer">
-              <div class="footer-container">
-                  <a class="thank-you button-style" href="about.html#partenaires">Merci à nos soutiens</a>
-              </div>
-          </footer>
+            <footer class="site-footer">
+                <div class="footer-container">
+                    <a class="thank-you button-style" href="about.html#partenaires">Merci à nos partenaires</a>
+                </div>
+            </footer>
         </div>
     </body>
 

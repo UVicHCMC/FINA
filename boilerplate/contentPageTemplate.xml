@@ -81,15 +81,15 @@
 
                             <div class="popover-group-container">
                                 <div class="popover-header">
-                                   <img src="images/logo-popover.svg" class="logo-internal" alt="" />
-                                   
-                                   <p class="popover-text">
-                                       <span class="site-title">Les français d’ici</span>
-                                       <span class="location">Victoria, Colombie-Britannique, Canada</span>
-                                       <span class="date">
-                                           <time datetime="2026-06-15/2026-06-17">15–17 juin 2026</time>
-                                       </span>
-                                   </p>
+                                    <img src="images/logo-popover.svg" class="logo-internal" alt="" />
+
+                                    <p class="popover-text">
+                                        <span class="site-title">Les français d’ici</span>
+                                        <span class="location">Victoria, Colombie-Britannique, Canada</span>
+                                        <span class="date">
+                                            <time datetime="2026-06-15/2026-06-17">15–17 juin 2026</time>
+                                        </span>
+                                    </p>
                                 </div>
 
                                 <ul class="popover-nav-items">
@@ -143,7 +143,7 @@
             -->
             <footer class="site-footer">
                 <div class="footer-container">
-                    <a class="thank-you button-style" href="about.html#partenaires">Merci à nos soutiens</a>
+                    <a class="thank-you button-style" href="about.html#partenaires">Merci à nos partenaires</a>
                 </div>
             </footer>
         </div>
