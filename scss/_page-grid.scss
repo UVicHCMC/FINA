@@ -387,7 +387,19 @@ figure.content--full > figcaption {
 // --------------------------------------------------------------------------
 
 .subnav {
+  position: sticky;
+  top: 0;
   display: none;
+}
+
+.subnav a.active,
+.subnav a[aria-current="location"] {
+  color: var(--highlight);
+  font-weight: 700;
+}
+
+.page-grid section > h2 {
+  scroll-margin-top: 8rem;
 }
 
 //this is the mini-header that appears over the horizontal desktop menu

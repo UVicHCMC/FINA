@@ -1,3 +1,211 @@
+/* =========================
+   TOC active heading
+   ========================= */
+(function () {
+  "use strict";
+
+  function initToc() {
+	const toc = document.querySelector(".subnav");
+	if (!toc) return;
+
+	const links = Array.from(toc.querySelectorAll('a[href^="#"]'));
+	if (!links.length) return;
+
+	const items = links
+	  .map((link) => {
+		const href = link.getAttribute("href");
+		if (!href || href.length < 2) return null;
+
+		const id = decodeURIComponent(href.slice(1));
+		const section = document.getElementById(id);
+		if (!section) return null;
+
+		// Track the section heading, not the whole section. This keeps
+		// active-state changes tied to the actual section entry point.
+		const heading = section.querySelector("h2");
+		if (!heading) return null;
+
+		return { id, link, heading };
+	  })
+	  .filter(Boolean);
+
+	if (!items.length) return;
+
+	// Fast lookups for observer targets and hash targets.
+	const headingToId = new Map(items.map((item) => [item.heading, item.id]));
+	const itemById = new Map(items.map((item) => [item.id, item]));
+
+	// Headings currently intersecting the observer region.
+	const visibleIds = new Set();
+
+	let activeId = null;
+	let rafId = 0;
+
+	// Heading becomes active once it crosses this viewport line.
+	let activationLine = 24;
+
+	function updateActivationLine() {
+	  const header = document.querySelector(".site-masthead");
+	  const headerHeight = header ? header.getBoundingClientRect().height : 0;
+
+	  // Push the switch point below the masthead so the TOC stays aligned
+	  // with the visible reading area instead of raw viewport top.
+	  activationLine = headerHeight + 24;
+	}
+
+	function setActive(id) {
+	  if (!id || id === activeId) return;
+
+	  activeId = id;
+
+	  for (const item of items) {
+		const isActive = item.id === id;
+		item.link.classList.toggle("active", isActive);
+
+		if (isActive) {
+		  item.link.setAttribute("aria-current", "location");
+		} else {
+		  item.link.removeAttribute("aria-current");
+		}
+	  }
+	}
+
+	function findCurrentIdByScan() {
+	  // Fallback resolver: headings are in document order, so binary search
+	  // finds the last heading above the activation line with fewer reads
+	  // than a full linear scan.
+	  let low = 0;
+	  let high = items.length - 1;
+	  let result = items[0].id;
+
+	  while (low <= high) {
+		const mid = (low + high) >> 1;
+		const top = items[mid].heading.getBoundingClientRect().top;
+
+		if (top <= activationLine) {
+		  result = items[mid].id;
+		  low = mid + 1;
+		} else {
+		  high = mid - 1;
+		}
+	  }
+
+	  return result;
+	}
+
+	function resolveFromVisibleHeadings() {
+	  if (!visibleIds.size) return null;
+
+	  let candidateId = null;
+
+	  for (const item of items) {
+		if (!visibleIds.has(item.id)) continue;
+
+		const top = item.heading.getBoundingClientRect().top;
+
+		// The current section is the last visible heading that has crossed
+		// the activation line.
+		if (top <= activationLine) {
+		  candidateId = item.id;
+		} else {
+		  break;
+		}
+	  }
+
+	  return candidateId;
+	}
+
+	function resolveActiveId() {
+	  return resolveFromVisibleHeadings() || findCurrentIdByScan();
+	}
+
+	function update() {
+	  rafId = 0;
+	  setActive(resolveActiveId());
+	}
+
+	function scheduleUpdate() {
+	  // Collapse scroll/resize/observer bursts into one paint-cycle update.
+	  if (rafId) return;
+	  rafId = window.requestAnimationFrame(update);
+	}
+
+	function handleScroll() {
+	  scheduleUpdate();
+	}
+
+	function handleResize() {
+	  updateActivationLine();
+	  scheduleUpdate();
+	}
+
+	if ("IntersectionObserver" in window) {
+	  const observer = new IntersectionObserver(
+		(entries) => {
+		  for (const entry of entries) {
+			const id = headingToId.get(entry.target);
+			if (!id) continue;
+
+			if (entry.isIntersecting) {
+			  visibleIds.add(id);
+			} else {
+			  visibleIds.delete(id);
+			}
+		  }
+
+		  scheduleUpdate();
+		},
+		{
+		  root: null,
+
+		  // Bias observation toward the upper reading zone so headings lower
+		  // in the viewport do not influence active state too early.
+		  rootMargin: "0px 0px -70% 0px",
+		  threshold: 0
+		}
+	  );
+
+	  for (const item of items) {
+		observer.observe(item.heading);
+	  }
+	}
+
+	updateActivationLine();
+
+	// Honour deep links immediately, then let the next scheduled update
+	// reconcile against final layout/scroll position.
+	if (location.hash) {
+	  const id = decodeURIComponent(location.hash.slice(1));
+	  if (itemById.has(id)) {
+		setActive(id);
+	  }
+	}
+
+	scheduleUpdate();
+
+	window.addEventListener("scroll", handleScroll, { passive: true });
+	window.addEventListener("resize", handleResize, { passive: true });
+	window.addEventListener("pageshow", scheduleUpdate, { passive: true });
+
+	window.addEventListener("hashchange", () => {
+	  const id = decodeURIComponent(location.hash.slice(1));
+
+	  if (itemById.has(id)) {
+		setActive(id);
+	  }
+
+	  scheduleUpdate();
+	});
+  }
+
+  if (document.readyState === "loading") {
+	document.addEventListener("DOMContentLoaded", initToc);
+  } else {
+	initToc();
+  }
+})();
+
+
 /**
  * Popover navigation controller using the native Popover API.
  *

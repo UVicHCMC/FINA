@@ -93,7 +93,7 @@
             <main>
 
                 <div class="top-logo-container-splash">
-                    <img src="images/logo-splash.svg" class="logo-splash" alt="" />
+                    <!-- <img src="images/logo-splash.svg" class="logo-splash" alt="" /> -->
 
                     <header class="splash-header-stack">
                         <p class="pre-title">Colloque international</p>
