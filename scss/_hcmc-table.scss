@@ -3,10 +3,10 @@
 
 //Variables
 table {
-	--table-font: var(--primary-serif);
-	--table-font-color: #222222;
-	--table-font-desktop-size: var(--fs-300);
-	--table-font-weight: 400;
+	--table-font: var(--font-sans);
+	--table-font-color: var(--color-text-primary);
+	--table-font-desktop-size: var(--ms-step-1);
+	--table-font-weight: var(--fw-regular);
 	--th-font-weight: 600;
 
 	--table-caption-font-weight: 600;
@@ -49,6 +49,10 @@ table {
 	margin-left: auto;
 	margin-right: auto;
 	grid-column: full-width;
+	
+	&.noborder {
+		width: fit-content;
+	}
 }
 
 caption {
@@ -96,6 +100,13 @@ td {
 	border-right: 1px solid var(--td-border-color);
 	color: var(--table-font-color);
 	text-align: left;
+	
+	//borderless table cells
+	.noborder & {
+		border: none;
+		vertical-align: top;
+		font-weight: var(--fw-light);	
+	}
 }
 
 td.numeric {
