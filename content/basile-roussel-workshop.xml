@@ -8,15 +8,17 @@
 
   <section id="roussel-dion-atelier">
 
-    <figure class="headshot">
-      <img src="images/basile-roussel-small.webp" alt="" />
-      <figcaption>Basile Roussel</figcaption>
-    </figure>
+    <div class="figure-container">
+      <figure class="headshot">
+        <img src="images/basile-roussel-small.webp" alt="" />
+        <figcaption>Basile Roussel</figcaption>
+      </figure>
 
-    <figure class="headshot">
-      <img src="images/nathalie-dion-small.webp" alt="" />
-      <figcaption>Nathalie Dion</figcaption>
-    </figure>
+      <figure class="headshot">
+        <img src="images/nathalie-dion-small.webp" alt="" />
+        <figcaption>Nathalie Dion</figcaption>
+      </figure>
+    </div>
 
     <p>Cet atelier se veut une introduction pratique à la méthodologie issue du courant variationniste de la sociolinguistique. Des concepts de base tels que le principe de redevabilité des données et la circonscription du contexte variable seront abordés en mettant l’accent sur le processus d’extraction, de codage et d’analyse des données. Des notions pratiques liées au traitement statistique des données seront également abordées.</p>
 
