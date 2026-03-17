@@ -17,7 +17,7 @@
 
     <p>Lorsque les langues créoles à base lexicale française se forment, elles n’héritent généralement pas du système d’accord grammatical, cf. (1). Dans un contexte de contact continu avec les variétés de français louisianais, certains locuteurs du créole louisianais contemporain présentent pourtant, dans le syntagme déterminant (DP), des degrés variables d'accord grammatical en genre (2a) et en nombre (2b) (Neumann 1985: 59; Klingler 2003: 186).</p>
 
-    <table>
+    <table class="noborder">
       <tr>
         <td colspan="2"> (1) </td>
         <td> [<span class="smallcaps">DP</span> <i>mo</i> [<i>fiy</i>]] </td>
@@ -46,10 +46,10 @@
     <h4>Références</h4>
     <ul class="bibliography">
       <li>
-        <p>Dorian, Nancy C. 1994. Varieties of Variation in a Very Small Place: Social Homogeneity, Prestige Norms, and Linguistic Variation. <cite>Language</cite> 70(4). 631.<a href="https://doi.org/10.2307/416324">https://doi.org/10.2307/416324.</a></p>
+        <p>Dorian, Nancy C. 1994. Varieties of Variation in a Very Small Place: Social Homogeneity, Prestige Norms, and Linguistic Variation. <cite>Language</cite> 70(4). 631.<a href="https://doi.org/10.2307/416324"> https://doi.org/10.2307/416324.</a></p>
       </li>
       <li>
-        <p>Eckert, Penelope. 2008. Variation and the indexical field. <cite>Journal of Sociolinguistic</cite> 12(4). 453–476.<a href="https://doi.org/10.1111/j.1467-9841.2008.00374.x">https://doi.org/10.1111/j.1467-9841.2008.00374.x.</a></p>
+        <p>Eckert, Penelope. 2008. Variation and the indexical field. <cite>Journal of Sociolinguistic</cite> 12(4). 453–476.<a href="https://doi.org/10.1111/j.1467-9841.2008.00374.x"> https://doi.org/10.1111/j.1467-9841.2008.00374.x.</a></p>
       </li>
       <li>
         <p>Klingler, Thomas A. 2003. <cite>If I could turn my tongue like that: The Creole Language of Pointe Coupee Parish, Louisiana.</cite> Baton Rouge, LA: Louisiana State University Press.</p>
@@ -58,10 +58,10 @@
         <p>Neumann, Ingrid. 1985. <cite>Le créole de Breaux Bridge, Louisiane: étude morphosyntaxique, textes, vocabulaire.</cite> Hamburg: Helmut Buske Verlag.</p>
       </li>
       <li>
-        <p>Walkden, George &amp; Anne Breitbarth. 2019. Complexity as L2-difficulty: Implications for syntactic change. <cite>Theoretical Linguistics</cite> 45(3–4). 183–209.<a href="https://doi.org/10.1515/tl-2019-0012">https://doi.org/10.1515/tl-2019-0012.</a></p>
+        <p>Walkden, George &amp; Anne Breitbarth. 2019. Complexity as L2-difficulty: Implications for syntactic change. <cite>Theoretical Linguistics</cite> 45(3–4). 183–209.<a href="https://doi.org/10.1515/tl-2019-0012"> https://doi.org/10.1515/tl-2019-0012.</a></p>
       </li>
       <li>
-        <p>Wendte, Nathan A. 24 mai 2018. <cite>La variation linguistique « neutre » en créole louisianais au Texas.</cite> Conférence « Les français d’ici », Université Concordia de Montréal. URL : <a href="https://www.academia.edu/36708509/La_variation_neutre_en_cr%C3%A9ole_louisianais_au_Texas">https://www.academia.edu/36708509/La_variation_neutre_en_cr%C3%A9ole_louisianais_au_Texas</a></p>
+        <p>Wendte, Nathan A. 24 mai 2018. <cite>La variation linguistique « neutre » en créole louisianais au Texas.</cite> Conférence « Les français d’ici », Université Concordia de Montréal. URL :<a href="https://www.academia.edu/36708509/La_variation_neutre_en_cr%C3%A9ole_louisianais_au_Texas"> https://www.academia.edu/36708509/La_variation_neutre_en_cr%C3%A9ole_louisianais_au_Texas</a></p>
       </li>
     </ul>
 
