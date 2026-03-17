@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project basedir="." default="fullBuild" name="brecht" xmlns:if="ant:if"
+<project basedir="." default="fullBuild" name="FINA" xmlns:if="ant:if"
          xmlns:unless="ant:unless">
     <description>
         #####################################################################
@@ -40,6 +40,14 @@
         It requires java libraries that are in the /lib/ folder.
         
         It also requires ant-contrib.
+        
+        You can also only process a specific page by running the processSingleContent convenience target with the content file as a parameter. For example:
+        
+        ant processSingleContent -Dcontent.file=content/mycontent.xml
+        
+        If the site is multilingual, the content file must be in the form content/{lang}/file.xml, and the currentLang and outputDir parameters will be inferred from the path. For example:
+        
+        ant processSingleContent -Dcontent.file=content/fr/mycontent.xml
         
         If you're happy with the results, run:
         
@@ -317,6 +325,47 @@
         </java>
         
         <var name="content.basename" unset="true"/>
+    </target>
+    
+    <!-- Convenience wrapper: process a single content file with one required parameter -->
+    <target name="processSingleContent" depends="generateContentTemplates,getImageDimensions">
+        <fail unless="content.file"
+              message="Missing required parameter: -Dcontent.file=content/yourpage.xml"/>
+        
+        <!-- Defaults for monolingual builds -->
+        <var name="single.currentLang" value="${defaultLang}"/>
+        <var name="single.outputDir" value="site"/>
+        
+        <!-- In multilingual mode, infer language from content/{lang}/file.xml -->
+        <sequential if:true="${isMultilingual}">
+            <propertyregex property="single.lang.from.path"
+                           input="${content.file}"
+                           regexp="^content/([^/]+)/[^/]+\.xml$"
+                           select="\1"
+                           defaultValue=""/>
+            
+            <condition property="single.bad.path.for.multilingual">
+                <equals arg1="${single.lang.from.path}" arg2=""/>
+            </condition>
+            <fail if="single.bad.path.for.multilingual"
+                  message="For multilingual builds, content.file must look like content/{lang}/page.xml"/>
+            
+            <var name="single.currentLang" value="${single.lang.from.path}"/>
+            <var name="single.outputDir" value="site/${single.currentLang}"/>
+        </sequential>
+        
+        <mkdir dir="${single.outputDir}"/>
+        
+        <antcall target="processOneContent">
+            <param name="content.file" value="${content.file}"/>
+            <param name="currentLang" value="${single.currentLang}"/>
+            <param name="outputDir" value="${single.outputDir}"/>
+        </antcall>
+        
+        <!-- Cleanup mutable vars -->
+        <var name="single.currentLang" unset="true"/>
+        <var name="single.outputDir" unset="true"/>
+        <var name="single.lang.from.path" unset="true"/>
     </target>
     
     <!-- Full build target -->
