@@ -17,15 +17,25 @@
 
     <p>Lorsque les langues créoles à base lexicale française se forment, elles n’héritent généralement pas du système d’accord grammatical, cf. (1). Dans un contexte de contact continu avec les variétés de français louisianais, certains locuteurs du créole louisianais contemporain présentent pourtant, dans le syntagme déterminant (DP), des degrés variables d'accord grammatical en genre (2a) et en nombre (2b) (Neumann 1985: 59; Klingler 2003: 186).</p>
 
-    <ol>
-      <li>[<span class="smallcaps">DP</span> <i>mo</i> [<i>fiy</i>]] « ma fille; mes filles »</li>
-      <li>
-        <ol class="alpha">
-          <li>[DP <i>mo~ma</i>F [<i>fiy</i>]] « ma fille »</li>
-          <li>[DP <i>mo~me</i>PL [<i>fiy</i>]] « mes filles » (exemples construits)</li>
-        </ol>
-      </li>
-    </ol>
+    <table>
+      <tr>
+        <td colspan="2"> (1) </td>
+        <td> [<span class="smallcaps">DP</span> <i>mo</i> [<i>fiy</i>]] </td>
+        <td colspan="2"> « ma fille; mes filles » </td>
+      </tr>
+      <tr>
+        <td rowspan="2"> (2) </td>
+        <td> a. </td>
+        <td> [DP <i>mo~ma</i>F [<i>fiy</i>]] </td>
+        <td colspan="2"> « ma fille » </td>
+      </tr>
+      <tr>
+        <td> b. </td>
+        <td> [DP <i>mo~me</i>PL [<i>fiy</i>]] </td>
+        <td> « mes filles » </td>
+        <td> (exemples construits) </td>
+      </tr>
+    </table>
 
     <p>Cette conférence propose une analyse sociolinguistique de l’accord grammatical en créole louisianais en retraçant le développement de ce phénomène depuis les textes du XVIIIe siècle jusqu’aux données contemporaines. À partir d’un corpus diachronique et synchronique, l’analyse mobilise des méthodes quantitatives afin d’offrir une vue d’ensemble de cette variation en fonction de facteurs sociolinguistiques.</p>
 
