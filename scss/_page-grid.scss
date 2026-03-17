@@ -423,10 +423,35 @@ figure.content--full > figcaption {
     background-color: transparent;
     margin-block-start: var(--space-5);
     
+    & h1 {
+      text-align: center;
+    }
+    
     & p {
         font-weight: var(--fw-medium);
         color: var(--color-text-heading);
     }   
+}
+
+//images 
+
+.portrait {
+  width: 300px;
+  height: auto;
+}
+
+//Groups of figures side-by-side 
+.figure-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  
+  & figure > img {
+    width: 275px;
+    height: auto;
+  }
 }
 
 //footer styles: 
