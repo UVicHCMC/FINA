@@ -382,6 +382,7 @@ header {
     
     & .logo {
        height: auto; 
+       cursor: pointer;
     }
     
     //logos in order of appearance, magic number widths
@@ -427,7 +428,15 @@ header {
     }
     
     & .patrimoine {
-      width: 300px;
+      width: 175px;
+    }
+    
+    & .hcmc {
+      width: 150px;
+    }
+    
+    & .humanities {
+      width: 175px;
     }
 }
 
