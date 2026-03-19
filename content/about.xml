@@ -57,6 +57,9 @@
       <a href="https://www.uvic.ca/humanities/research/critical-humanities-commons/index.php">
         <img class="logo commons" src="images/logo-commons.webp" alt="" />
       </a>
+      <a href="https://www.uvic.ca/humanities/index.php">
+        <img class="logo humanities" src="images/logo-humanities.webp" alt="" />
+      </a>
       <a href="https://www.canada.ca/fr/patrimoine-canadien.html">
         <img class="logo patrimoine" src="images/logo-patrimoine.webp" alt="" />
       </a>
@@ -64,7 +67,7 @@
         <img class="logo ricard" src="images/logo-fondation-ricard.webp" alt="" />
       </a>
       <a href="https://www.uvic.ca/humanities/hcmc/index.php">
-        <img class="logo uvic" src="images/logo-uvic.svg" alt="" />
+        <img class="logo hcmc" src="images/logo-hcmc.webp" alt="" />
       </a>
       <a href="https://onlineacademiccommunity.uvic.ca/reseaufranco/">
         <img class="logo reseau-franco" src="images/logo-reseau-franco.svg" alt="" />
