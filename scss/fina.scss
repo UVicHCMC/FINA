@@ -375,7 +375,7 @@ header {
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    padding: 1rem;
+    padding: 1.5rem;
     background-color: #ffffff;
     border-radius: 5px;
     box-shadow: var(--card-shadow);
@@ -438,6 +438,25 @@ header {
     & .humanities {
       width: 175px;
     }
+    
+    & .logo-stack {
+      flex-basis: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: .5rem;
+      
+      & .logo-stack-text {
+        color: var(--text-color);
+        font-size: var(--ms-step--3);
+      }
+      
+      & .sshrc {
+        width: 100%;
+        max-width: 500px;
+      }
+     }
 }
 
 

@@ -74,6 +74,14 @@
       <a href="https://www.sdecb.com/">
         <img class="logo sdecb" src="images/logo-sdecb.svg" alt="" />
       </a>
+      <div class="logo-stack">
+      <span class="logo-stack-text">
+        Les Français d’ici est en partie financé par le Conseil de recherches en sciences humaines du Canada.
+      </span>
+        <a href="https://sshrc-crsh.canada.ca/fr.aspx">
+          <img class="logo sshrc" src="images/logo-sshrc.svg" alt="" />
+        </a>
+      </div>
     </ul>
 
   </section>
