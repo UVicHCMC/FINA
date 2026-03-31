@@ -75,12 +75,12 @@
         <img class="logo sdecb" src="images/logo-sdecb.svg" alt="" />
       </a>
       <div class="logo-stack">
-      <span class="logo-stack-text">
-        Les français d’ici est en partie financé par le Conseil de recherches en sciences humaines du Canada.
-      </span>
         <a href="https://sshrc-crsh.canada.ca/fr.aspx">
           <img class="logo sshrc" src="images/logo-sshrc.svg" alt="" />
         </a>
+        <span class="logo-stack-text">
+         Le colloque <i>Les français d’ici</i> est en partie financé par le Conseil de recherches en sciences humaines du Canada
+        </span>
       </div>
     </ul>
 
