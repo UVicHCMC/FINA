@@ -20,6 +20,10 @@
   <xsl:param name="lang" select="'en'"/>
   <xsl:param name="languages" select="'en'"/>
   
+  <!-- Hashed asset paths for CSS and JS output files -->
+  <xsl:param name="hashedCssFile" as="xs:string" select="''"/>
+  <xsl:param name="hashedJsFile" as="xs:string" select="''"/>
+  
   <!-- Check if bilingual -->
   <xsl:variable name="isBilingual" select="contains($languages, ',')"/>
 
@@ -472,6 +476,12 @@
             <!-- Handle special placeholders that need computation -->
             <xsl:variable name="value">
               <xsl:choose>
+                <xsl:when test="$placeholder = 'cssFile' and $hashedCssFile != ''">
+                  <xsl:value-of select="$hashedCssFile"/>
+                </xsl:when>
+                <xsl:when test="$placeholder = 'jsFile' and $hashedJsFile != ''">
+                  <xsl:value-of select="$hashedJsFile"/>
+                </xsl:when>
                 <!-- Check lang-config first for language-specific properties -->
                 <xsl:when test="$properties/lang-config/*[local-name() = $lang]/*[local-name() = $placeholder]">
                   <xsl:call-template name="get-text-value">

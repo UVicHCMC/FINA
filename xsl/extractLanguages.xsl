@@ -37,6 +37,15 @@
       <xsl:otherwise>false</xsl:otherwise>
     </xsl:choose>
     <xsl:text>&#10;</xsl:text>
+    
+    <!-- Extract CSS and JS file paths for cache busting -->
+    <xsl:text>cssFile=</xsl:text>
+    <xsl:value-of select="/site/files/cssFile"/>
+    <xsl:text>&#10;</xsl:text>
+    
+    <xsl:text>jsFile=</xsl:text>
+    <xsl:value-of select="/site/files/jsFile"/>
+    <xsl:text>&#10;</xsl:text>
   </xsl:template>
   
 </xsl:stylesheet>

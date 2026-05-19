@@ -78,6 +78,10 @@
     <!-- Properties with default values -->
     <property name="templates.dir" value="templates"/>
     <property name="saxon" value="lib/saxon-he-12.jar"/>
+    <exec executable="sh" outputproperty="projectNameLower">
+        <arg value="-c"/>
+        <arg value="printf '%s' &quot;${ant.project.name}&quot; | tr '[:upper:]' '[:lower:]'"/>
+    </exec>
     
     <!-- Load languages from properties.xml using XSLT -->
     <tempfile property="temp.languages.file" suffix=".properties" deleteonexit="true"/>
@@ -114,13 +118,14 @@
     <echo message="Default language: ${defaultLang}"/>
     <echo message="Language count: ${languageCount}"/>
     <echo message="Has language selector: ${hasLanguageSelector}"/>
+    <echo message="Project name (lowercase): ${projectNameLower}"/>
     
     <!-- ========================================= -->
     <!-- UNIFIED MULTILINGUAL BUILD TARGETS        -->
     <!-- ========================================= -->
     
     <!-- Generate landing page template (monolingual or multilingual) -->
-    <target name="generateLandingTemplate">
+    <target name="generateLandingTemplate" depends="copyWebResources">
         <description>Generates landing page template(s)</description>
         
         <!-- Monolingual: generate single template -->
@@ -134,6 +139,8 @@
                 <arg value="-o:templates/landingPage.xml"/>
                 <arg value="lang=${defaultLang}"/>
                 <arg value="languages=${languages}"/>
+                <arg value="hashedCssFile=${hashed.cssFile}"/>
+                <arg value="hashedJsFile=${hashed.jsFile}"/>
             </java>
         </sequential>
         
@@ -151,6 +158,8 @@
                         <arg value="-o:templates/@{lang}/landingPage.xml"/>
                         <arg value="lang=@{lang}"/>
                         <arg value="languages=${languages}"/>
+                        <arg value="hashedCssFile=${hashed.cssFile}"/>
+                        <arg value="hashedJsFile=${hashed.jsFile}"/>
                     </java>
                 </sequential>
             </for>
@@ -158,7 +167,7 @@
     </target>
     
     <!-- Generate content page templates for all languages -->
-    <target name="generateContentTemplates">
+    <target name="generateContentTemplates" depends="copyWebResources">
         <description>Generates content page templates for all languages</description>
         <echo message="Generating content page templates..."/>
         
@@ -174,6 +183,8 @@
                 <arg value="-o:templates/contentPage.xml"/>
                 <arg value="lang=${defaultLang}"/>
                 <arg value="languages=${languages}"/>
+                <arg value="hashedCssFile=${hashed.cssFile}"/>
+                <arg value="hashedJsFile=${hashed.jsFile}"/>
             </java>
         </sequential>
         
@@ -191,6 +202,8 @@
                         <arg value="-o:templates/@{lang}/contentPage.xml"/>
                         <arg value="lang=@{lang}"/>
                         <arg value="languages=${languages}"/>
+                        <arg value="hashedCssFile=${hashed.cssFile}"/>
+                        <arg value="hashedJsFile=${hashed.jsFile}"/>
                     </java>
                 </sequential>
             </for>
@@ -369,7 +382,7 @@
     </target>
     
     <!-- Full build target -->
-    <target name="fullBuild" depends="getImageDimensions, copyWebResources,makeLandingPage,processContent">
+    <target name="fullBuild" depends="clean, getImageDimensions, copyWebResources,makeLandingPage,processContent">
         <description>Full multilingual build (DEFAULT)</description>
         <echo message="Build complete! Languages: ${languages}"/>
     </target>
@@ -470,6 +483,48 @@
         <echo message="Copying web manifest to the 'site' folder."/>
         <copy file="${basedir}/site.webmanifest" tofile="${basedir}/site/site.webmanifest" preservelastmodified="true"/>
 
+        <basename property="css.basename" file="${cssFile}" suffix=".css"/>
+        <propertyregex property="css.dir"
+                   input="${cssFile}"
+                   regexp="^(.*)/[^/]+\.css$"
+                   select="\1"
+                   override="true"/>
+        <basename property="js.basename" file="${jsFile}" suffix=".js"/>
+        <propertyregex property="js.dir"
+                   input="${jsFile}"
+                   regexp="^(.*)/[^/]+\.js$"
+                   select="\1"
+                   override="true"/>
+
+        <delete includeemptydirs="false">
+            <fileset dir="${basedir}/site">
+                <include name="${css.dir}/${css.basename}.*.css"/>
+                <include name="${js.dir}/${js.basename}.*.js"/>
+            </fileset>
+        </delete>
+
+        <echo message="Computing content hashes for cache busting..."/>
+        <checksum file="${basedir}/site/${cssFile}" property="css.cachebuster" algorithm="MD5"/>
+        <checksum file="${basedir}/site/${jsFile}" property="js.cachebuster" algorithm="MD5"/>
+        <propertyregex property="css.cachebuster.short"
+                       input="${css.cachebuster}"
+                       regexp="^(.{8}).*$"
+                       select="\1"
+                       override="true"/>
+        <propertyregex property="js.cachebuster.short"
+                       input="${js.cachebuster}"
+                       regexp="^(.{8}).*$"
+                       select="\1"
+                       override="true"/>
+        <property name="hashed.cssFile" value="${css.dir}/${css.basename}.${css.cachebuster.short}.css"/>
+        <property name="hashed.jsFile" value="${js.dir}/${js.basename}.${js.cachebuster.short}.js"/>
+        <copy file="${basedir}/site/${cssFile}" tofile="${basedir}/site/${hashed.cssFile}" preservelastmodified="true"/>
+        <copy file="${basedir}/site/${jsFile}" tofile="${basedir}/site/${hashed.jsFile}" preservelastmodified="true"/>
+        <delete file="${basedir}/site/${cssFile}"/>
+        <delete file="${basedir}/site/${jsFile}"/>
+        <echo message="CSS asset: ${hashed.cssFile}"/>
+        <echo message="JS  asset: ${hashed.jsFile}"/>
+
         <!--<copy todir="site" preservelastmodified="true">
              <fileset dir="favicons">
              <include name="*.*"/>
@@ -536,7 +591,7 @@
             <arg value="-e"/>
             <arg value="ssh"/>
             <arg value="./site/"/>
-            <arg value="hcmc@nfs.hcmc.uvic.ca:/home1t/hcmc/www/project/fina"/>
+            <arg value="hcmc@nfs.hcmc.uvic.ca:/home1t/hcmc/www/project/${projectNameLower}"/>
         </exec>
     </target>
     
