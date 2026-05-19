@@ -446,6 +446,12 @@
         <copy todir="${basedir}/site/js" preservelastmodified="true">
             <fileset dir="${basedir}/js"/>
         </copy>
+        
+        <echo message="Copying PDFs to site/pdf folder."/>
+        <copy todir="${basedir}/site/pdf" preservelastmodified="true">
+            <fileset dir="${basedir}/pdf"/>
+        </copy>
+
         <echo message="Copying images to the 'site/images' folder."/>
         <path id="image.files">
             <fileset dir="${basedir}/images" includes="**/*"/>
@@ -508,6 +514,30 @@
             <arg value="${basedir}/site"/>
         </java>
         <delete file="${basedir}/lib/vnu.jar"/>
+    </target>
+    
+    <target name="rsyncToLiveServer">
+        <description>
+            TARGET rsyncToLiveServer
+            This pushes the content up to the FINA folder on the HCMC server.
+            Requires the HCMC NFS username and password.
+            This will overwrite the existing site. Use with care.
+        </description>
+        <echo message="${echo.separator}"/>
+        <echo message="Pushing content up to the live site."/>
+        <exec executable="rsync" dir="${basedir}">
+            <arg value="--stats"/>
+            <arg value="--recursive"/>
+            <arg value="--times"/>
+            <arg value="--verbose"/>
+            <arg value="--delete"/>
+            <arg value="--progress"/>
+            <arg value="--compress"/>
+            <arg value="-e"/>
+            <arg value="ssh"/>
+            <arg value="./site/"/>
+            <arg value="hcmc@nfs.hcmc.uvic.ca:/home1t/hcmc/www/project/fina"/>
+        </exec>
     </target>
     
 </project>
