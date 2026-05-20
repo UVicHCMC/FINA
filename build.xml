@@ -484,62 +484,53 @@
         <echo message="Copying web manifest to the 'site' folder."/>
         <copy file="${basedir}/site.webmanifest" tofile="${basedir}/site/site.webmanifest" preservelastmodified="true"/>
 
-        <basename property="css.basename" file="${cssFile}" suffix=".css"/>
-        <propertyregex property="css.dir"
-                   input="${cssFile}"
-                   regexp="^(.*)/[^/]+\.css$"
-                   select="\1"
-                   override="true"/>
-        <basename property="js.basename" file="${jsFile}" suffix=".js"/>
-        <propertyregex property="js.dir"
-                   input="${jsFile}"
-                   regexp="^(.*)/[^/]+\.js$"
-                   select="\1"
-                   override="true"/>
-
-        <delete includeemptydirs="false">
-            <fileset dir="${basedir}/site">
-                <include name="${css.dir}/${css.basename}.*.css"/>
-                <include name="${js.dir}/${js.basename}.*.js"/>
-            </fileset>
-        </delete>
-
-        <echo message="Computing content hashes for cache busting..."/>
-        <checksum file="${basedir}/site/${cssFile}" property="css.cachebuster" algorithm="MD5"/>
-        <checksum file="${basedir}/site/${jsFile}" property="js.cachebuster" algorithm="MD5"/>
-        <propertyregex property="css.cachebuster.short"
-                       input="${css.cachebuster}"
-                       regexp="^(.{8}).*$"
-                       select="\1"
-                       override="true"/>
-        <propertyregex property="js.cachebuster.short"
-                       input="${js.cachebuster}"
-                       regexp="^(.{8}).*$"
-                       select="\1"
-                       override="true"/>
-        <property name="hashed.cssFile" value="${css.dir}/${css.basename}.${css.cachebuster.short}.css"/>
-        <property name="hashed.jsFile" value="${js.dir}/${js.basename}.${js.cachebuster.short}.js"/>
-        <copy file="${basedir}/site/${cssFile}" tofile="${basedir}/site/${hashed.cssFile}" preservelastmodified="true"/>
-        <copy file="${basedir}/site/${jsFile}" tofile="${basedir}/site/${hashed.jsFile}" preservelastmodified="true"/>
-        <!-- Copy and rename the .map file to match the hashed CSS filename -->
-        <copy file="${basedir}/css/fina.css.map" tofile="${basedir}/site/css/fina.${css.cachebuster.short}.css.map" preservelastmodified="true"/>
-        <delete file="${basedir}/site/${cssFile}"/>
-        <delete file="${basedir}/site/${jsFile}"/>
-        <echo message="CSS asset: ${hashed.cssFile}"/>
-        <echo message="JS  asset: ${hashed.jsFile}"/>
-        
-        <echo message="Updating references to CSS and map files to use hashed filenames..."/>
-        <!--Update the .css file to reference the hashed map filename using Ant replaceregexp -->
-        <replaceregexp file="${basedir}/site/${hashed.cssFile}"
-            match='(/\*# sourceMappingURL=)[^*]+(\s*\*/)'
-            replace='\1fina.${css.cachebuster.short}.css.map\2'
-            byline="true"/>
-        
-        <!-- Update the .map file to reference the hashed CSS filename using Ant replaceregexp -->
-        <replaceregexp file="${basedir}/site/css/fina.${css.cachebuster.short}.css.map"
-            match='("file"\s*:\s*")[^"]+("\s*)'
-            replace='\1fina.${css.cachebuster.short}.css\2'
-            byline="true"/>
+        <!-- Dev: stable filenames + keep source map; Prod: content-hashed, no map -->
+        <if>
+            <isset property="cacheBust"/>
+            <then>
+                <echo message="Computing content hashes for cache busting..."/>
+                <basename property="css.basename" file="${cssFile}" suffix=".css"/>
+                <propertyregex property="css.dir"
+                           input="${cssFile}"
+                           regexp="^(.*)/[^/]+\.css$"
+                           select="\1" override="true"/>
+                <basename property="js.basename" file="${jsFile}" suffix=".js"/>
+                <propertyregex property="js.dir"
+                           input="${jsFile}"
+                           regexp="^(.*)/[^/]+\.js$"
+                           select="\1" override="true"/>
+                <checksum file="${basedir}/site/${cssFile}" property="css.cachebuster" algorithm="MD5"/>
+                <checksum file="${basedir}/site/${jsFile}"  property="js.cachebuster"  algorithm="MD5"/>
+                <propertyregex property="css.cachebuster.short"
+                               input="${css.cachebuster}" regexp="^(.{8}).*$"
+                               select="\1" override="true"/>
+                <propertyregex property="js.cachebuster.short"
+                               input="${js.cachebuster}"  regexp="^(.{8}).*$"
+                               select="\1" override="true"/>
+                <var name="hashed.cssFile" value="${css.dir}/${css.basename}.${css.cachebuster.short}.css"/>
+                <var name="hashed.jsFile"  value="${js.dir}/${js.basename}.${js.cachebuster.short}.js"/>
+                <copy file="${basedir}/site/${cssFile}" tofile="${basedir}/site/${hashed.cssFile}" preservelastmodified="true"/>
+                <copy file="${basedir}/site/${jsFile}"  tofile="${basedir}/site/${hashed.jsFile}"  preservelastmodified="true"/>
+                <!-- Strip sourceMappingURL — no map file deployed to production -->
+                <replaceregexp file="${basedir}/site/${hashed.cssFile}"
+                    match='/\*# sourceMappingURL=[^*]+\*/'
+                    replace='' byline="true"/>
+                <delete file="${basedir}/site/${cssFile}"/>
+                <delete file="${basedir}/site/${jsFile}"/>
+                <echo message="CSS asset: ${hashed.cssFile}"/>
+                <echo message="JS  asset: ${hashed.jsFile}"/>
+            </then>
+            <else>
+                <!-- Dev build: plain filenames, keep source map for debugging -->
+                <var name="hashed.cssFile" value="${cssFile}"/>
+                <var name="hashed.jsFile"  value="${jsFile}"/>
+                <copy file="${basedir}/css/fina.css.map"
+                      tofile="${basedir}/site/css/fina.css.map"
+                      preservelastmodified="true"/>
+                <echo message="CSS asset (dev): ${hashed.cssFile}"/>
+                <echo message="JS  asset (dev): ${hashed.jsFile}"/>
+            </else>
+        </if>
 
         <!--<copy todir="site" preservelastmodified="true">
              <fileset dir="favicons">
@@ -585,6 +576,18 @@
             <arg value="${basedir}/site"/>
         </java>
         <delete file="${basedir}/lib/vnu.jar"/>
+    </target>
+    
+    <target name="productionReady">
+        <description>
+            TARGET productionReady
+            This runs all the steps necessary to produce a build that is ready to be pushed to the live server.
+            It includes a full build, validation, and sitemap generation.
+        </description>
+        <antcall target="fullBuild">
+            <param name="cacheBust" value="true"/>
+        </antcall>
+        <antcall target="validateSite"/>
     </target>
     
     <target name="rsyncToLiveServer">
