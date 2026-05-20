@@ -51,6 +51,10 @@
         
         If you're happy with the results, run:
         
+        ant productionReady
+        
+        This will run a full build with cache busting, and validate the output using the VNU validator. If that all looks good, you can run either:
+        
         ant rsyncToDevServer
         
         to push the results up to the development site (requires HCMC
@@ -382,7 +386,7 @@
     </target>
     
     <!-- Full build target -->
-    <target name="fullBuild" depends="clean, getImageDimensions, copyWebResources,makeLandingPage,processContent">
+    <target name="fullBuild" depends="clean, getImageDimensions, copyWebResources,makeLandingPage,processContent,buildSitemap">
         <description>Full multilingual build (DEFAULT)</description>
         <echo message="Build complete! Languages: ${languages}"/>
     </target>
