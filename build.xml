@@ -430,6 +430,7 @@
         <echo message="Building SCSS source to create CSS files in HTML folder."/>
         <mkdir dir="${basedir}/site/css"/>
         <exec executable="sass">
+            <arg value="--embed-sources"/>
             <arg value="${basedir}/scss:${basedir}/css"/>
         </exec>
     </target>
@@ -526,6 +527,14 @@
         <delete file="${basedir}/site/${jsFile}"/>
         <echo message="CSS asset: ${hashed.cssFile}"/>
         <echo message="JS  asset: ${hashed.jsFile}"/>
+        
+        <echo message="Updating references to CSS and map files to use hashed filenames..."/>
+        <!--Update the .css file to reference the hashed map filename using Ant replaceregexp -->
+        <replaceregexp file="${basedir}/site/${hashed.cssFile}"
+            match='(/\*# sourceMappingURL=)[^*]+(\s*\*/)'
+            replace='\1fina.${css.cachebuster.short}.css.map\2'
+            byline="true"/>
+        
         <!-- Update the .map file to reference the hashed CSS filename using Ant replaceregexp -->
         <replaceregexp file="${basedir}/site/css/fina.${css.cachebuster.short}.css.map"
             match='("file"\s*:\s*")[^"]+("\s*)'
