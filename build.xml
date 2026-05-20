@@ -520,10 +520,17 @@
         <property name="hashed.jsFile" value="${js.dir}/${js.basename}.${js.cachebuster.short}.js"/>
         <copy file="${basedir}/site/${cssFile}" tofile="${basedir}/site/${hashed.cssFile}" preservelastmodified="true"/>
         <copy file="${basedir}/site/${jsFile}" tofile="${basedir}/site/${hashed.jsFile}" preservelastmodified="true"/>
+        <!-- Copy and rename the .map file to match the hashed CSS filename -->
+        <copy file="${basedir}/css/fina.css.map" tofile="${basedir}/site/css/fina.${css.cachebuster.short}.css.map" preservelastmodified="true"/>
         <delete file="${basedir}/site/${cssFile}"/>
         <delete file="${basedir}/site/${jsFile}"/>
         <echo message="CSS asset: ${hashed.cssFile}"/>
         <echo message="JS  asset: ${hashed.jsFile}"/>
+        <!-- Update the .map file to reference the hashed CSS filename using Ant replaceregexp -->
+        <replaceregexp file="${basedir}/site/css/fina.${css.cachebuster.short}.css.map"
+            match='("file"\s*:\s*")[^"]+("\s*)'
+            replace='\1fina.${css.cachebuster.short}.css\2'
+            byline="true"/>
 
         <!--<copy todir="site" preservelastmodified="true">
              <fileset dir="favicons">
