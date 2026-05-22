@@ -1,3 +1,4 @@
+# For sites that may have frequent changes this prevents the need for reloads
 <IfModule mod_headers.c>
     <FilesMatch "\.(html|htm)$">
         Header set Cache-Control "no-cache, must-revalidate"
