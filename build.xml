@@ -488,7 +488,7 @@
         <echo message="Copying web manifest to the 'site' folder."/>
         <copy file="${basedir}/site.webmanifest" tofile="${basedir}/site/site.webmanifest" preservelastmodified="true"/>
 
-        <!-- Dev: stable filenames + keep source map; Prod: content-hashed, no map -->
+        <!-- Dev: stable filenames + keep source map, no .htaccess; Prod: content-hashed, no map, copy .htaccess file -->
         <if>
             <isset property="cacheBust"/>
             <then>
@@ -523,6 +523,9 @@
                 <delete file="${basedir}/site/${jsFile}"/>
                 <echo message="CSS asset: ${hashed.cssFile}"/>
                 <echo message="JS  asset: ${hashed.jsFile}"/>
+                
+                <echo message="Copying .htaccess file for production..."/>
+                <copy file="${basedir}/utilities/.htaccess" tofile="${basedir}/site/.htaccess" preservelastmodified="true"/>
             </then>
             <else>
                 <!-- Dev build: plain filenames, keep source map for debugging -->
