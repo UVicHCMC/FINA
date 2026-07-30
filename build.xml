@@ -488,7 +488,7 @@
         <echo message="Copying web manifest to the 'site' folder."/>
         <copy file="${basedir}/site.webmanifest" tofile="${basedir}/site/site.webmanifest" preservelastmodified="true"/>
 
-        <!-- Dev: stable filenames + keep source map, no .htaccess; Prod: content-hashed, no map, copy .htaccess file -->
+        <!-- Dev: stable filenames + keep source map, no .htaccess; Prod: content-hashed, no map, generate .htaccess -->
         <if>
             <isset property="cacheBust"/>
             <then>
@@ -524,8 +524,19 @@
                 <echo message="CSS asset: ${hashed.cssFile}"/>
                 <echo message="JS  asset: ${hashed.jsFile}"/>
                 
-                <echo message="Copying .htaccess file for production..."/>
-                <copy file="${basedir}/utilities/.htaccess" tofile="${basedir}/site/.htaccess" preservelastmodified="true"/>
+                <tstamp>
+                    <format property="build.http.date"
+                            pattern="EEE, dd MMM yyyy HH:mm:ss 'GMT'"
+                            timezone="GMT"
+                            locale="en,US"/>
+                </tstamp>
+                <echo message="Generating .htaccess for production (build ${build.http.date})..."/>
+                <echo file="${basedir}/site/.htaccess"><![CDATA[
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "no-cache, must-revalidate"
+        Header set Expires "${build.http.date}"
+    </FilesMatch>
+]]></echo>
             </then>
             <else>
                 <!-- Dev build: plain filenames, keep source map for debugging -->
